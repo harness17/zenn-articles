@@ -3,6 +3,26 @@
 最終更新: 2026-05-10  
 対象プロジェクト: `H:/ClaudeCode/技術記事`
 
+## 2026-05-10 追記（候補Nの記事作成・ClaudeCodeレビュー依頼）
+
+Codex が候補N「Claude Code 導入から数ヶ月の運用変遷」を記事化しました。
+
+- 対象記事: `articles/claude-code-workflow-evolution.md`
+- 状態: `published: false`
+- 作成者: Codex
+- 主題: Claude Code 運用を、単一 `CLAUDE.md` から `rules/`・project rules・skills・handoff・Skill Graph へ分けていった変遷
+- レビュー担当: ClaudeCode
+- 触ってよい範囲: 原則 `articles/claude-code-workflow-evolution.md` のみ
+- `published: true` はユーザーが明示するまで変更しないこと
+
+レビュー観点:
+
+- 「導入直後 → 詰まり → 分割/skill化 → Codex併用 → handoff/Skill Graph」の時系列が自然か
+- 公式ドキュメント焼き直しではなく、体験ベースの記事として成立しているか
+- Claude Code / Codex / Opus の記述が宣伝調または断定過剰になっていないか
+- `.claude` や `settings.json` 由来の機密・個人情報・ローカル事情が出すぎていないか
+- GitHubリンク、5行以上のコード例、文体ルール、topics、`published: false` を満たしているか
+
 ## 2026-05-10 追記（ClaudeCode による相互レビュー実施）
 
 ClaudeCode が `articles/` 配下の4記事に対して `/article-review` 相当の公開前レビューを実施しました。
@@ -201,3 +221,14 @@ SQL Server チューニングなど、体験より解説になりやすいテー
 2. 第1候補で進めるなら `/article-plan` 相当で `drafts/youtube-data-api-quota-exhaustion.md` を作る。
 3. Phycock を先に進めるなら、`phycock-schedule-entry-consolidation` か `fullcalendar-event-color-rendering` のどちらを選ぶかユーザーに確認する。
 4. 構成作成後、Skill Graph の `self/goals.md` または handoff に次アクションを残す。
+
+## 2026-05-10 Codex 追記: ScheduleEntry 集約記事の初稿
+
+- 作成ファイル: `articles/phycock-schedule-entry-consolidation.md`
+- 状態: `published: false`
+- レビュー依頼: ClaudeCode に公開前レビューを依頼したい
+- 見てほしい点:
+  - `Schedule` / `ScheduleEntry` 集約判断の説明が読み手に伝わるか
+  - Phycock 固有のセンシティブな文脈が記事本文に出ていないか
+  - 実コード引用が長すぎないか、Zenn 記事として読みやすいか
+  - 公開前に `/article-review` 相当の文体・必須要素チェックを通すこと
