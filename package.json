@@ -1,0 +1,15 @@
+{
+  "name": "zenn-articles",
+  "version": "1.0.0",
+  "description": "細川 良 の Zenn 技術記事リポジトリ",
+  "private": true,
+  "scripts": {
+    "preview": "zenn preview",
+    "new:article": "zenn new:article"
+  },
+  "author": "harness17",
+  "license": "MIT",
+  "dependencies": {
+    "zenn-cli": "^0.4.7"
+  }
+}

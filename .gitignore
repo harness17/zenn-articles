@@ -1,0 +1,27 @@
+# 個人設定（Claude Code 用）
+CLAUDE.local.md
+.claude/settings.local.json
+
+# Node.js（zenn-cli）
+node_modules/
+package-lock.json
+npm-debug.log*
+
+# Zenn の作業ディレクトリ
+.zenn/
+
+# 環境変数
+.env
+.env.local
+
+# OS / エディタ
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# 一時ファイル
+*.tmp
+*.bak
+*~
