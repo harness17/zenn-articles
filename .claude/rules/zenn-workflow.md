@@ -54,10 +54,20 @@ published: false      # ★完成するまで false。公開時のみ true に�
 ## 公開フロー
 
 1. `published: false` のまま執筆・プレビュー確認
-2. `/article-review` で公開前チェック
-3. `published: true` に変更してコミット
-4. main に push → Zenn に自動反映
-5. `/article-publish` で公開後アクションを実行
+2. 作成者と別エージェントへの相互レビュー依頼を handoff に記録
+3. `/article-review` で公開前チェック
+4. 重大指摘がなく、ユーザーが公開を明示したら `published: true` に変更してコミット
+5. main に push → Zenn に自動反映
+6. `/article-publish` で公開後アクションを実行
+
+## 相互レビューゲート
+
+記事作成後は `cross-agent-review.md` に従い、Codex と ClaudeCode の相互レビューを通す。
+
+- Codex が作成した記事: ClaudeCode へのレビュー依頼を `CLAUDE_CODE_HANDOFF.md` に追記する
+- ClaudeCode が作成した記事: Codex へのレビュー依頼を `CLAUDE_CODE_HANDOFF.md` に追記する
+- 継続作業に関わる場合は My-Skill-Graph の `ops/handoffs/` と `self/goals.md` も更新する
+- `published: true` は、相互レビュー記録とユーザーの明示が揃うまで変更しない
 
 ## 親プロジェクト連携
 

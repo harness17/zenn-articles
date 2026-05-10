@@ -25,3 +25,7 @@ Thumbs.db
 *.tmp
 *.bak
 *~
+tmp/
+
+# Claude Code worktree
+.claude/worktrees/

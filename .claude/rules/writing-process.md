@@ -24,15 +24,17 @@
 
 ## Phase 4: 推敲（60分）
 
-1. `/article-review` を実行（文体ルール違反、必須要素、守秘義務チェック）
-2. 指摘を反映
-3. ローカルプレビュー（`npx zenn preview`）で見た目確認
+1. 作成者と別エージェントへの相互レビュー依頼を `CLAUDE_CODE_HANDOFF.md` に残す
+2. `/article-review` を実行（文体ルール違反、必須要素、守秘義務、相互レビュー記録チェック）
+3. 指摘を反映
+4. ローカルプレビュー（`npx zenn preview`）で見た目確認
 
 ## Phase 5: 公開・拡散（30分）
 
-1. フロントマターを `published: true` に変更してコミット
-2. main に push → Zenn 自動反映
-3. `/article-publish` を実行（README更新、Lapras確認予約、職経書追記検討）
+1. 相互レビューの重大指摘が残っていないことを確認
+2. ユーザーが公開を明示したら、フロントマターを `published: true` に変更してコミット
+3. main に push → Zenn 自動反映
+4. `/article-publish` を実行（README更新、Lapras確認予約、職経書追記検討）
 
 ## 推奨ペース
 
