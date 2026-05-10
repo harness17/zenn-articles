@@ -60,6 +60,12 @@ published: false      # ★完成するまで false。公開時のみ true に�
 5. main に push → Zenn に自動反映
 6. `/article-publish` で公開後アクションを実行
 
+## Zenn 投稿制限メモ
+
+- 2026-05-10 時点で、Zenn 側のレートリミットにより 1 日 2 本を超える公開反映が止まる可能性がある。
+- 以後の公開は 1 日 2 本までを目安にし、公開反映されなかった記事は翌日以降に状況確認する。
+- `published: false` の非公開記事は Zenn 上で下書き反映されるため、コミットしてよい。
+
 ## 相互レビューゲート
 
 記事作成後は `cross-agent-review.md` に従い、Codex と ClaudeCode の相互レビューを通す。
