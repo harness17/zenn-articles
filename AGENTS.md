@@ -61,6 +61,16 @@ GitHub: harness17の Zenn 技術記事執筆プロジェクト。コードリポ
 - Codex 側: `.codex/hooks.json` → `.codex/hooks/check-article-style.sh`
 - Claude 側: `.claude/settings.json` → `.claude/hooks/check-article-style.sh`
 
+## Git 規約
+
+Claude 側 `.claude/rules/git-ops.md` と同等のルールを Codex 側にも適用する。
+
+- `git add -A` / `git add .` は使用しない。個別ファイル指定に統一する
+- 開発は `feature/xxx` ブランチで行う
+- **`main` への直接コミット禁止**。マージは Pull Request または `git merge --no-ff`
+- `--no-verify` で pre-commit hook をスキップしない（hook が落ちたら原因を直す）
+- 既存コミットへの `--amend` より新規コミットを優先する
+
 ## 親プロジェクトとの関係
 
 - 親：`F:/Dropbox/Job-hunting/`（職務経歴書、応募管理、Gmail分析）

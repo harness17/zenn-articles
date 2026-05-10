@@ -2,11 +2,12 @@
 
 公開した記事の記録。Lapras スコア確認予定日と関連リポジトリの紐付け管理用。
 
-## 2026-05-10 公開（3本同時公開・初回まとめ公開）
+## 2026-05-10 公開（初回まとめ公開）
 
 ### 1. YouTube Data API のクォータ枯渇を RSS で99%削減した話
 
 - URL: https://zenn.dev/harness17/articles/youtube-data-api-rss-quota-reduction
+- Zenn反映状況: レートリミットにより未公開。2026-05-11 に様子を見る予定
 - テーマ系統: 個人開発 / API クォータ設計
 - 文字数: 約4,500字
 - 関連リポジトリ: [youtube-schedule](https://github.com/harness17/youtube-schedule)
@@ -42,3 +43,17 @@
 - 関連リポジトリ: [youtube-schedule](https://github.com/harness17/youtube-schedule)
 - 保留理由: 第1記事と同じリポジトリ題材で重複感あり。技術深度の高い記事で評価を作ってから公開する想定
 - 改稿候補: 候補I（SmartScreen / OAuth配布）と統合する余地
+
+### Claude Code 運用変遷記事（候補N）
+
+- ファイル: `articles/claude-code-workflow-evolution.md`
+- 関連リポジトリ: [zenn-articles](https://github.com/harness17/zenn-articles)
+- 保留理由: ClaudeCode による相互レビュー待ち。公開はユーザー明示後
+- 位置づけ: 候補N。Claude Code の導入体験ではなく、rules / skills / handoff / Skill Graph へ運用を分割した変遷記事
+
+### ScheduleEntry 集約記事（候補J）
+
+- ファイル: `articles/phycock-schedule-entry-consolidation.md`
+- 関連リポジトリ: [DevNext](https://github.com/harness17/DevNext)
+- 保留理由: Codex 初稿作成済み。ClaudeCode による公開前レビュー待ち
+- 位置づけ: ASP.NET Core MVC の予定入力モデル設計判断。Phycock 固有のセンシティブな文脈は一般化済み
