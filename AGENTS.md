@@ -1,6 +1,6 @@
-# CLAUDE.md
+# AGENTS.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Codex (Codex.ai/code) when working with code in this repository.
 
 ## プロジェクト概要
 
@@ -17,10 +17,16 @@ GitHub: harness17の Zenn 技術記事執筆プロジェクト。コードリポ
 ├── drafts/            # 公開前の下書き・構成メモ・コードサンプル
 ├── images/            # 記事用画像
 ├── .claude/
-│   ├── rules/         # トピック別ルール（@import で参照）
-│   ├── skills/        # /article-plan, /article-review, /article-publish
-│   └── settings.json  # Hook 設定
-├── CLAUDE.md          # 本ファイル
+│   ├── rules/         # トピック別ルール
+│   ├── skills/        # Claude 側スキル mirror
+│   ├── hooks/         # 文体チェック hook
+│   └── settings.json  # Claude 側 Hook 設定
+├── .agents/
+│   └── skills/        # Codex 側スキル（article-plan / article-review / article-publish）
+├── .codex/
+│   ├── hooks/         # Codex 側 hook 実体
+│   └── hooks.json     # Codex 側 Hook 設定
+├── AGENTS.md          # 本ファイル
 ├── CLAUDE.local.md    # 個人設定（gitignore）
 └── README.md
 ```
@@ -42,19 +48,18 @@ GitHub: harness17の Zenn 技術記事執筆プロジェクト。コードリポ
 | Phase | コマンド | 成果物 |
 |-------|---------|--------|
 | 構成 | `/article-plan` | drafts/<slug>.md に見出しとコード例計画 |
-| 執筆 | （手動 or Claude支援） | articles/<slug>.md（`published: false`） |
-| 相互レビュー依頼 | handoff 更新 | ClaudeCode 作成なら Codex、Codex 作成なら ClaudeCode に公開前レビューを依頼 |
+| 執筆 | （手動 or Codex支援） | articles/<slug>.md（`published: false`） |
+| 相互レビュー依頼 | handoff 更新 | Codex 作成なら ClaudeCode、ClaudeCode 作成なら Codex に公開前レビューを依頼 |
 | 推敲 | `/article-review` | 文体・必須要素・守秘義務チェック結果 |
 | 公開 | フロントマターを `published: true` に変更してコミット & push | Zenn 自動反映 |
 | 公開後 | `/article-publish` | README更新、Lapras確認、職経書追記検討 |
 
-## 最新の引き継ぎ
-
-記事候補と Codex/ClaudeCode 連携の最新メモは `CLAUDE_CODE_HANDOFF.md` を参照する。
-
 ## Hook
 
-`articles/*.md` を保存すると、文体ルール違反語（「素晴らしい」「驚くべき」など）を警告する PostToolUse hook が走る。詳細は `.claude/settings.json`。
+`articles/*.md` を保存すると、文体ルール違反語（「素晴らしい」「驚くべき」など）を警告する PostToolUse hook が走る。
+
+- Codex 側: `.codex/hooks.json` → `.codex/hooks/check-article-style.sh`
+- Claude 側: `.claude/settings.json` → `.claude/hooks/check-article-style.sh`
 
 ## 親プロジェクトとの関係
 
