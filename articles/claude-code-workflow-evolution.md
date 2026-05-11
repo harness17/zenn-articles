@@ -3,7 +3,7 @@ title: "Claude Code運用を数ヶ月で見直してrulesとskillsに分けた�
 emoji: "🛠️"
 type: "tech"
 topics: ["claudecode", "codex", "ai", "workflow", "zenn"]
-published: false
+published: true
 ---
 
 ## はじめに
