@@ -55,13 +55,15 @@ Youtom の中心は、配信予定とライブ中の動画を一覧で見る画�
 
 簡易モードの入口は、チャンネルごとの RSS フィードです。
 
-```text
+URL は次の形式です。
+
+```http
 https://www.youtube.com/feeds/videos.xml?channel_id={channelId}
 ```
 
 実装では `fast-xml-parser` で Atom フィードを読み、動画 ID、タイトル、URL、公開時刻を取り出しています。
 
-```javascript
+```js:rssFetcher.js
 export function createRssFetcher({ timeoutMs = 3000, fetchImpl = nodeFetch } = {}) {
   const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: '' })
 
@@ -99,7 +101,7 @@ export function createRssFetcher({ timeoutMs = 3000, fetchImpl = nodeFetch } = {
 
 画面側でも、認証状態によって表示するタブを切り替えています。
 
-```javascript
+```js:tabs.js
 const tabs = [
   { key: 'feed', label: '新着動画', mode: 'simple' },
   { key: 'schedule', label: '予定・ライブ', mode: 'full' },
@@ -123,10 +125,12 @@ Youtom は最初から完成形を狙ったアプリではありません。自�
 
 その一方で、配布するときに邪魔になる部分も見えてきました。
 
+:::message alert
 - `credentials.json` の配置手順が分かりづらい
 - Windows の未署名アプリ警告が出る
 - YouTube Data API のクォータをどう分離するか考える必要がある
 - RSS と API では取れる情報の粒度が違う
+:::
 
 このあたりは、個人開発アプリを「自分だけが使える道具」から「他の人も試せる道具」に寄せるときに避けて通れませんでした。
 
