@@ -1,4 +1,4 @@
-# Schedule と ScheduleEntry を分けるのをやめた理由
+# ASP.NET Core MVCでScheduleEntryに寄せた設計判断
 
 ## メタ情報
 
@@ -6,7 +6,7 @@
 - topics: [aspnetcore, csharp, mvc, design, database]
 - 想定文字数: 3000〜4000字
 - 想定執筆時間: 5〜6時間
-- ステータス: 初稿作成済み・公開前レビュー待ち
+- ステータス: レビュー指摘対応済み・公開指示待ち
 - 想定 slug: `phycock-schedule-entry-consolidation`
 
 ## 想定読者
