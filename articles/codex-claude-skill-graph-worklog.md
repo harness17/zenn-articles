@@ -8,15 +8,15 @@ published: false
 
 ## はじめに
 
-Codex と Claude Code を、個人開発と技術記事執筆で併用しています。
+OpenAI のコーディングエージェント環境である Codex と、Anthropic の Claude Code を、個人開発と技術記事執筆で併用しています。
 
 最初は、会話ごとに作業が進めば十分だと思っていました。Codex に実装や記事の下書きを頼み、Claude Code にレビューや別視点の確認を頼む。1回の会話の中では、それでかなり進みます。
 
 ただ、複数日にまたがる作業では別の問題が出てきました。前回なぜその判断をしたのか。次にどのファイルを見るべきなのか。Claude にレビューしてほしい論点は何なのか。こうした情報が、会話ログの中に埋もれていきました。
 
-そこで、Obsidian のボルトとして運用している My-Skill-Graph を、AI との会話ログ置き場ではなく、**作業判断と引き継ぎを残す共有記録**として使うようにしました。
+そこで、Obsidian で運用している個人用ナレッジベース `My-Skill-Graph` を、AI との会話ログ置き場ではなく、**作業判断と引き継ぎを残す共有記録**として使うようにしました。
 
-この記事では、Zenn 記事管理リポジトリ [harness17/zenn-articles](https://github.com/harness17/zenn-articles) で実際に使っている、Codex と Claude Code の作業記録を My-Skill-Graph に残す運用を書きます。
+この記事では、Zenn 記事管理リポジトリ [harness17/zenn-articles](https://github.com/harness17/zenn-articles) で実際に使っている、Codex と Claude Code の作業記録を `My-Skill-Graph` に残す運用を書きます。
 
 ## 会話ログは残っていても、作業記録にはならなかった
 
@@ -41,14 +41,14 @@ Claude Code にレビューを頼む場面でも同じでした。Codex が記�
 
 ## My-Skill-Graph に4種類の置き場を作った
 
-My-Skill-Graph では、記録の種類ごとに置き場を分けています。
+`My-Skill-Graph` では、記録の種類ごとに置き場を分けています。
 
 | 置き場 | 役割 | 例 |
 | --- | --- | --- |
 | `decisions/` | 技術判断と理由 | `XしたのはYのため` |
-| `strategies/` | 記事・OSS・就職活動への接続 | 記事テーマやポートフォリオ化の方針 |
-| `ops/handoffs/` | Codex / Claude Code 間の引き継ぎ | 対象、変更、検証、未解決点 |
-| `self/goals.md` | 現在の作業スレッド | 次に進める記事候補 |
+| `strategies/` | 記事・OSS・就職活動への接続 | `記事テーマやポートフォリオ化の方針` |
+| `ops/handoffs/` | Codex / Claude Code 間の引き継ぎ | `対象、変更、検証、未解決点` |
+| `self/goals.md` | 現在の作業スレッド | `次に進める記事候補` |
 
 ポイントは、会話単位ではなく、**記録の用途**で分けたことです。
 
@@ -98,7 +98,7 @@ Persist when any of these happened:
 - フォーマットだけの変更
 - git 操作だけで終わる作業
 
-この線引きを入れたことで、My-Skill-Graph が作業ログの置き場になりすぎるのを避けられました。
+この線引きを入れたことで、`My-Skill-Graph` が作業ログの置き場になりすぎるのを避けられました。
 
 記録したいのは、すべての行動ではありません。後から説明したい判断です。
 
@@ -110,7 +110,7 @@ Codex と Claude Code を併用していて、一番効いたのは handoff の�
 
 片方のエージェントが作ったものを、もう片方に見てもらう。これは便利ですが、依頼が曖昧だとレビューも曖昧になります。
 
-そこで、My-Skill-Graph の `ops/handoffs/` に、次のような観点で引き継ぎを書くようにしました。
+そこで、`My-Skill-Graph` の `ops/handoffs/` に、次のような観点で引き継ぎを書くようにしました。
 
 ```markdown
 ## Context
@@ -142,7 +142,7 @@ handoff は日記ではなく、次の担当者が動くための入口です。
 
 ## 記録を記事戦略にもつなげる
 
-My-Skill-Graph を共有記録にしたことで、開発作業だけでなく、記事戦略にもつながるようになりました。
+`My-Skill-Graph` を共有記録にしたことで、開発作業だけでなく、記事戦略にもつながるようになりました。
 
 設計判断を `decisions/` に残しておくと、後から「この判断は記事にできるか」を見直せます。戦略メモを `strategies/` に残しておくと、「この記事は何のために書くのか」を会話の外に出せます。
 
@@ -158,7 +158,7 @@ My-Skill-Graph を共有記録にしたことで、開発作業だけでなく�
 
 Codex と Claude Code を併用する中で、会話ログをそのまま残すだけでは、次の作業に使いにくいと感じました。
 
-そこで、My-Skill-Graph に `decisions/`、`strategies/`、`ops/handoffs/`、`self/goals.md` という役割を持たせ、判断、戦略、引き継ぎ、現在地を分けて残すようにしました。
+そこで、`My-Skill-Graph` に `decisions/`、`strategies/`、`ops/handoffs/`、`self/goals.md` という役割を持たせ、判断、戦略、引き継ぎ、現在地を分けて残すようにしました。
 
 特に効いたのは、次の3点です。
 
