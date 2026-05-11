@@ -1,7 +1,98 @@
 # ClaudeCode 引き継ぎ資料
 
-最終更新: 2026-05-10  
+最終更新: 2026-05-11  
 対象プロジェクト: `H:/ClaudeCode/技術記事`
+
+## 2026-05-11 追記（ClaudeCode による electron-smartscreen-oss-distribution 公開前レビュー結果）
+
+ClaudeCode が `articles/electron-smartscreen-oss-distribution.md`（Codex 作成、2026-05-11 依頼分）に対して `/article-review` 相当の公開前レビューを実施し、ユーザー指示で任意改善を反映しました。
+
+レビュー結果サマリ:
+
+- フロントマター: title 33 字、emoji `🪟`、topics 5 個、`published: false` すべて適合
+- 文体ルール違反語: 0 件（「素晴らしい」「いかがでし」「ぜひ参考」「とされている」等の NG 語なし、`〜することで` 3 連鎖なし、AI 的締め文なし）
+- 必須要素: GitHub リンク（youtube-schedule、本文 2 箇所＋参考リンク）、コードブロック 7 個すべて言語指定あり（最大 16 行）、体験表現複数、本文約 4,200 字
+- 守秘義務: 過去勤務先・顧客名・支援機関・体調文脈すべて検出なし。token 値・証明書ファイル・内部パスの記載なし
+- レビュー観点別評価: 過度な断定なし／署名を目標に置く判断軸あり／Youtom 紹介は宣伝寄りでない／公式リンクの使い方は自然
+- ブロッカー: なし
+
+任意レベルの指摘 1 点とその反映状況:
+
+| 指摘 | 反映内容 |
+|------|---------|
+| 「署名後も SmartScreen がすぐ消えるとは限らない」読者誤解防止のため `:::message alert` で強調する | L198–200 の「特に、署名後も SmartScreen がすぐ消えるとは限らない点は重要です。」〜「『署名すれば初回から必ず警告ゼロ』とは書かない方が正確です。」を `:::message alert` で囲み、直後の理由補足段落は alert の外に残して読みやすさを維持 |
+
+`:::message alert` の追加箇所は 1 個に絞り、過剰に強調しない方針で反映しました（候補として L96 周辺「警告は無視してよい、と書かない」も挙がりましたが、これは筆者のセルフ判断記録として地の文に残し、読者向け注意喚起は L198–200 に集約）。
+
+公開ゲート4条件（`.claude/rules/cross-agent-review.md`）の状態:
+
+| 記事 | ①セルフ | ②相互レビュー記録 | ③重大指摘 | ④ユーザー指示 |
+|------|--------|----------------|-----------|--------------|
+| electron-smartscreen-oss-distribution | ✅ | ✅（本書） | 🟢 残なし | ❌ 未指示 |
+
+次アクション:
+
+- ユーザーの公開指示を待つ
+- 明示後に `published: true` へ変更してコミット & push
+- 公開後は `/article-publish` を実行（README 更新、Lapras 確認予約、職経書追記検討）
+
+## 2026-05-11 追記（Codex による electron-smartscreen-oss-distribution 初稿・ClaudeCodeレビュー依頼）
+
+Codex が候補I「未署名 Electron アプリの SmartScreen 問題と OSS 配布の現実」を記事化しました。
+
+- 対象記事: `articles/electron-smartscreen-oss-distribution.md`
+- 状態: `published: false`
+- 作成者: Codex
+- 主題: 個人開発 Electron アプリ Youtom を Windows 向けに配布するとき、未署名 installer で SmartScreen 警告が出る問題にどう向き合ったか
+- レビュー担当: ClaudeCode
+- 触ってよい範囲: 原則 `articles/electron-smartscreen-oss-distribution.md` のみ
+- `published: true` はユーザーが明示するまで変更しないこと
+
+Codex 側セルフチェック:
+
+- フロントマター: `type: tech`、topics 5個、`published: false`
+- 必須要素: GitHub リポジトリリンク、5行以上のコードブロック、体験・失敗例、参考リンクを含む
+- 文体NG語: `素晴らしい` / `驚くべき` / `いかがでしたでしょうか` / `ぜひ参考` などのスキャンで 0 件
+- 守秘・セキュリティ: secret 名は一般名・公開済み workflow 内のものに限定し、token 値・証明書ファイル・内部パスは記載なし
+
+レビュー観点:
+
+- SmartScreen / コード署名の説明が過度な断定や回避手順の推奨に見えないか
+- 「未署名で配布するしかない」ではなく「署名を目標に置きつつ未署名期間を説明する」判断軸が伝わるか
+- Youtom の紹介が宣伝寄りになりすぎず、配布設計の体験記事として成立しているか
+- Microsoft / Electron / GitHub Actions 公式リンクの使い方が自然か
+- 公開前に `/article-review` 相当の文体・必須要素・守秘義務チェックを通すこと
+
+## 2026-05-11 追記（ClaudeCode による phycock-schedule-entry-consolidation 公開前レビュー結果）
+
+ClaudeCode が `articles/phycock-schedule-entry-consolidation.md`（Codex 作成、2026-05-10 依頼分）に対して `/article-review` 相当の公開前レビューを実施し、ユーザー指示で修正を反映しました。
+
+レビュー結果サマリ:
+
+- 文体ルール違反語: 0 件（「素晴らしい」「いかがでしたでしょうか」等の NG 語なし、`〜することで` 3 連鎖なし）
+- 必須要素: GitHub リンク（DevNext）、コードブロック（最大 24 行）、体験表現、文字数（フロントマター込み 11,965 字）すべて充足
+- 守秘義務: Phycock 固有名・支援機関・体調・療養文脈は本文に一切出ていない（一般化済み）
+- ブロッカー: なし
+
+任意レベルの指摘 3 点とその反映状況:
+
+| 指摘 | 反映内容 |
+|------|---------|
+| タイトルに `ASP.NET Core MVC` を入れて検索性を上げる | `ASP.NET Core MVCでScheduleEntryに寄せた設計判断`（27 字）に変更済み |
+| 重要な注意点を `:::message alert` で強調する | 「業務アプリなら、ここは別判断になります」周辺を `:::message alert` で囲み、「テーブル削除は Entity を消すだけでは終わらない」観点も同ブロックに統合済み |
+| コードブロックにファイル名（` ```csharp:Xxx.cs `）を付ける | 9 個すべてのコードブロックに付与済み（`ScheduleEntryEntity.cs` / `ScheduleEntryFormViewModel.cs` / `ScheduleEntryService.cs` / `RemoveScheduleEventTables.cs` / `ApplicationDbContext.cs` / `ScheduleEntryValidation.cs` / `ScheduleEntryServiceTests.cs`） |
+
+公開ゲート4条件（`.claude/rules/cross-agent-review.md`）の状態:
+
+| 記事 | ①セルフ | ②相互レビュー記録 | ③重大指摘 | ④ユーザー指示 |
+|------|--------|----------------|-----------|--------------|
+| phycock-schedule-entry-consolidation | ✅ | ✅（本書） | 🟢 残なし | ❌ 未指示 |
+
+次アクション:
+
+- ユーザーの公開指示を待つ
+- 明示後に `published: true` へ変更してコミット & push
+- 公開後は `/article-publish` を実行（README更新、Lapras 確認予約、職経書追記検討）
 
 ## 2026-05-10 追記（候補Nの記事作成・ClaudeCodeレビュー依頼）
 
