@@ -1,5 +1,5 @@
 ---
-title: "ScheduleとScheduleEntryを分けるのをやめた理由"
+title: "ASP.NET Core MVCでScheduleEntryに寄せた設計判断"
 emoji: "🗂️"
 type: "tech"
 topics: ["aspnetcore", "csharp", "efcore", "mvc", "database"]
@@ -43,7 +43,7 @@ ASP.NET Core MVC で作っている個人開発アプリで、予定入力まわ
 
 以下は実コードを少し簡略化した例です。
 
-```csharp
+```csharp:ScheduleEntryEntity.cs
 [Table("ScheduleEntry")]
 public class ScheduleEntryEntity : PhycockEntityBase
 {
@@ -73,7 +73,7 @@ public class ScheduleEntryEntity : PhycockEntityBase
 
 フォーム側も同じ単位です。
 
-```csharp
+```csharp:ScheduleEntryFormViewModel.cs
 public class ScheduleEntryFormViewModel
 {
     public long Id { get; set; }
@@ -114,7 +114,7 @@ public class ScheduleEntryFormViewModel
 
 現在の Service では、作成・更新・カレンダー表示が `ScheduleEntry` 起点でまとまっています。
 
-```csharp
+```csharp:ScheduleEntryService.cs
 public void Create(
     ScheduleEntryFormViewModel model,
     string currentUserId,
@@ -149,7 +149,7 @@ public List<ScheduleEntryJsonDto> GetEventsForCalendar(
 
 実際には `ScheduleEvent`、`ScheduleEventHistory`、`ScheduleEventParticipant` を落としています。以下は migration の一部です。
 
-```csharp
+```csharp:RemoveScheduleEventTables.cs
 protected override void Up(MigrationBuilder migrationBuilder)
 {
     migrationBuilder.DropTable(
@@ -167,6 +167,7 @@ protected override void Up(MigrationBuilder migrationBuilder)
 
 もちろん、テーブルを落とす判断は軽くありません。既存データがある場合は、移行手順や退避、変換処理が必要です。今回は個人開発中の初期段階で、旧テーブルを使った運用データを前提にしていなかったため、削除を選びました。
 
+:::message alert
 業務アプリなら、ここは別判断になります。
 
 - 既存データを `ScheduleEntry` に移す migration が必要か
@@ -175,10 +176,11 @@ protected override void Up(MigrationBuilder migrationBuilder)
 - ロールバック時に復元できるか
 
 テーブル削除は、Entity クラスを消すだけでは終わりません。Controller、Service、Repository、View、テスト、seed data、migration の履歴まで見ます。
+:::
 
 今回も最終的な確認では、`DBContext` に残る予定系の `DbSet` が `ScheduleEntry` だけになっていることを見ました。
 
-```csharp
+```csharp:ApplicationDbContext.cs
 // 予定入力
 public DbSet<ScheduleEntryEntity> ScheduleEntry { get; set; }
 ```
@@ -191,7 +193,7 @@ public DbSet<ScheduleEntryEntity> ScheduleEntry { get; set; }
 
 FullCalendar に渡す DTO は `ScheduleEntryEntity` から作っています。
 
-```csharp
+```csharp:ScheduleEntryService.cs
 private static ScheduleEntryJsonDto ToJsonDto(ScheduleEntryEntity entity)
 {
     var start = CombineDateAndTime(entity.Date, entity.StartTime);
@@ -216,7 +218,7 @@ private static ScheduleEntryJsonDto ToJsonDto(ScheduleEntryEntity entity)
 
 また、入力検証も同じ単位で扱えます。
 
-```csharp
+```csharp:ScheduleEntryValidation.cs
 private void ValidateProgramType(ScheduleEntryFormViewModel model)
 {
     if (model.ActivityType == ActivityType.Program && !model.ProgramType.HasValue)
@@ -250,7 +252,7 @@ private void ValidateTimeRange(ScheduleEntryFormViewModel model)
 
 たとえば、作成時に投稿された `UserId` をそのまま信じないテストがあります。一般ユーザーの場合は、フォームに別の `UserId` が入っていても、現在のユーザー ID で保存します。
 
-```csharp
+```csharp:ScheduleEntryServiceTests.cs
 [Fact]
 public void Create_AsMember_IgnoresPostedUserId()
 {
@@ -278,7 +280,7 @@ public void Create_AsMember_IgnoresPostedUserId()
 
 ほかにも、初期フォームのプリセットや、カレンダー表示色を `ScheduleEntryService` のテストとして確認しています。
 
-```csharp
+```csharp:ScheduleEntryServiceTests.cs
 [Fact]
 public void BuildCreateForm_SetsAmTimePreset()
 {

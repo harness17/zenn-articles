@@ -232,3 +232,18 @@ SQL Server チューニングなど、体験より解説になりやすいテー
   - Phycock 固有のセンシティブな文脈が記事本文に出ていないか
   - 実コード引用が長すぎないか、Zenn 記事として読みやすいか
   - 公開前に `/article-review` 相当の文体・必須要素チェックを通すこと
+
+## 2026-05-11 Codex 追記: ScheduleEntry 集約記事レビュー完了
+
+- 対象: `articles/phycock-schedule-entry-consolidation.md`
+- 状態: `published: false`
+- レビュー状況: ユーザーより ClaudeCode レビュー終了の連絡あり
+- Codex 側確認:
+  - フロントマター、文体NG語、守秘義務キーワード、コードブロック言語指定を確認済み
+  - Phycock固有のセンシティブな文脈は本文で一般化済み
+- レビュー指摘への対応:
+  - タイトルに `ASP.NET Core MVC` を追加して検索性を改善
+  - テーブル削除時の注意点を `:::message alert` で強調
+  - コードブロックへファイル名を付与
+  - 見出し統合は任意指摘のため、現状の読みやすさを優先して未実施
+- 次: ユーザーが公開を明示したら `published: true` に変更し、公開後に `drafts/published-log.md` を更新する
