@@ -64,8 +64,16 @@ NG語リスト（@.claude/rules/writing-style.md と同期）:
 - 「はじめに」「まとめ」セクションがあるか
 - 見出しが3〜5個か
 - コードブロックに言語指定があるか（` ``` ` だけのブロックは検出）
+- JavaScript のコードブロックは `javascript` より `js` を優先し、実ファイル由来の例なら ` ```js:fetcher.js ` のようにファイル名を付ける
+- URL だけのコードブロックは `text` のまま放置せず、直前に「URL は次の形式」のような説明を置くか、`http` など意図が伝わる言語指定にする
 
-### 6. 相互レビューゲート
+### 6. Zenn記法チェック
+
+- 重要な注意点、制約、配布時のハードルは通常の箇条書きだけで流さず、必要に応じて `:::message` または `:::message alert` で強調する
+- 補足的な長い手順や背景説明は、本文の流れを止める場合に `:::details タイトル` で折りたたむことを検討する
+- ただし、Zenn記法は強調したい箇所に限定し、1記事内で多用しすぎない
+
+### 7. 相互レビューゲート
 
 - 作成者が Codex の場合、ClaudeCode へのレビュー依頼またはレビュー結果が `CLAUDE_CODE_HANDOFF.md` に残っているか
 - 作成者が ClaudeCode の場合、Codex へのレビュー依頼またはレビュー結果が `CLAUDE_CODE_HANDOFF.md` に残っているか
@@ -97,6 +105,10 @@ NG語リスト（@.claude/rules/writing-style.md と同期）:
 ### 構成
 ✅ はじめに / まとめ あり
 ⚠️ Line 60: コードブロックに言語指定なし → ` ```sql ` 推奨
+
+### Zenn記法
+✅ 重要な注意点は `:::message alert` で強調
+⚠️ Line 80: JavaScriptコードにファイル名なし → ` ```js:fetcher.js ` 推奨
 
 ### 相互レビュー
 ✅ ClaudeCode へのレビュー依頼あり（CLAUDE_CODE_HANDOFF.md）
