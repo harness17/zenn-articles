@@ -27,7 +27,7 @@ description: 記事公開後の連動アクションを順に実行するスキ�
 ```markdown
 ## YYYY-MM-DD 公開
 - タイトル: <記事タイトル>
-- URL: https://zenn.dev/harness17/articles/<slug>
+- URL: https://zenn.dev/harness/articles/<slug>
 - テーマ系統: SQL Server / ASP.NET Core 10 / 個人開発 のいずれか
 - 文字数: XXXX
 - 関連リポジトリ: DevNext / youtube-schedule / 等
@@ -41,7 +41,7 @@ CLAUDE.local.md の「個人開発リポジトリ」表で対応するリポジ�
 ```markdown
 ## 関連記事
 
-- [<記事タイトル>](https://zenn.dev/harness17/articles/<slug>) (YYYY-MM-DD)
+- [<記事タイトル>](https://zenn.dev/harness/articles/<slug>) (YYYY-MM-DD)
 ```
 
 実際の更新は別リポジトリで行うため、ユーザーに「DevNext リポを開いて貼ってください」と案内する。コミット・push までは本スキルでは行わない。

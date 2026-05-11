@@ -3,7 +3,7 @@ title: "YouTube Data API のクォータ枯渇を RSS で99%削減した話"
 emoji: "📉"
 type: "tech"
 topics: ["youtube", "googleapi", "electron", "nodejs", "rss"]
-published: false
+published: true
 ---
 
 ## はじめに
