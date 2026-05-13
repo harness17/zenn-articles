@@ -7,6 +7,26 @@
 - Zenn は 1 日に公開できる記事数が 2 本までのように見えるため、まとめて公開する場合も 2 本ずつ日を分ける。
 - Lapras 確認は、実際に Zenn 上で公開確認できた日から 3〜7 日後を目安にする。
 
+## 2026-05-13 公開確認
+
+### 1. 未署名Electronアプリを配布するとSmartScreenで止まる問題に向き合った話
+
+- URL: https://zenn.dev/harness/articles/electron-smartscreen-oss-distribution
+- テーマ系統: 個人開発 / Electron / Windows 配布
+- 文字数: 約7,700字
+- 関連リポジトリ: [youtube-schedule](https://github.com/harness17/youtube-schedule)
+- 想定読者: 個人開発 Electron アプリを Windows 向けに配布したい人
+- Lapras確認予定日: 2026-05-18
+
+### 2. 推しの配信予定を見逃さないために Youtom を作った
+
+- URL: https://zenn.dev/harness/articles/youtom-introduction
+- テーマ系統: 個人開発 / Electron / React / YouTube
+- 文字数: 約4,700字
+- 関連リポジトリ: [youtube-schedule](https://github.com/harness17/youtube-schedule)
+- 想定読者: YouTube の配信予定管理や個人開発デスクトップアプリに興味がある人
+- Lapras確認予定日: 2026-05-18
+
 ## 2026-05-11 公開確認
 
 ### 1. YouTube Data API のクォータ枯渇を RSS で99%削減した話
@@ -49,16 +69,9 @@
 
 ## ストック中（published: false）
 
-### Youtom 紹介記事
-
-- ファイル: `articles/youtom-introduction.md`
-- 関連リポジトリ: [youtube-schedule](https://github.com/harness17/youtube-schedule)
-- 保留理由: 第1記事と同じリポジトリ題材で重複感あり。技術深度の高い記事で評価を作ってから公開する想定
-- 改稿候補: 候補I（SmartScreen / OAuth配布）と統合する余地
-
 ### ScheduleEntry 集約記事（候補J）
 
 - ファイル: `articles/phycock-schedule-entry-consolidation.md`
 - 関連リポジトリ: [DevNext](https://github.com/harness17/DevNext)
-- 保留理由: Codex 初稿作成済み。ClaudeCode による公開前レビュー待ち
+- 保留理由: Phycock 関連のため公開保留
 - 位置づけ: ASP.NET Core MVC の予定入力モデル設計判断。Phycock 固有のセンシティブな文脈は一般化済み

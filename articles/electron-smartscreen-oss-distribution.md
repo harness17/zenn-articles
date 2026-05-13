@@ -3,7 +3,7 @@ title: "未署名Electronアプリを配布するとSmartScreenで止まる問�
 emoji: "🪟"
 type: "tech"
 topics: ["electron", "windows", "githubactions", "oss", "codesigning"]
-published: false
+published: true
 ---
 
 ## はじめに
