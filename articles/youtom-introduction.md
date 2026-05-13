@@ -3,7 +3,7 @@ title: "推しの配信予定を見逃さないために Youtom を作った"
 emoji: "📺"
 type: "tech"
 topics: ["electron", "react", "youtube", "nodejs", "indie"]
-published: false
+published: true
 ---
 
 ## はじめに
