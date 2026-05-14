@@ -80,6 +80,17 @@ NG語リスト（@.claude/rules/writing-style.md と同期）:
 - 継続作業に関わる場合、My-Skill-Graph の `ops/handoffs/` または `self/goals.md` に次アクションが残っているか
 - `published: true` への変更は、相互レビュー記録とユーザーの公開指示が揃うまで止める
 
+### 8. 中心主張の事実整合チェック（@.claude/rules/article-fact-check.md と同期）
+
+個人開発リポジトリの実コードに言及する記事は、以下を確認する：
+
+- 「A には X しかない」「A は Y 非依存」「A→B で新規追加」のような断言を含む記事は、`gh api` でファイル全体・依存リスト・コミット履歴を確認したか
+- 参考リンクの `blob/<branch>` 部分は、`gh api repos/<owner>/<repo> --jq '.default_branch'` で確認したブランチ名と一致するか
+- csproj / package.json / requirements.txt の `<PackageReference>` / `dependencies` を確認したか
+- 二世代比較記事は、両世代の実体を**両方とも全範囲で**確認したか（`head -60` で済ませない）
+
+M 記事執筆で 3 回連続の事実誤認を踏んだ反省から追加した観点。中心主張の事実誤認は公開後の修正コストが極めて高いため、機械チェックを優先する。
+
 ## 出力フォーマット
 
 ```

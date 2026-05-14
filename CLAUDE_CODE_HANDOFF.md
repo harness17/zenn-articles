@@ -1,7 +1,271 @@
 # ClaudeCode 引き継ぎ資料
 
-最終更新: 2026-05-11  
+最終更新: 2026-05-14
 対象プロジェクト: `H:/ClaudeCode/技術記事`
+
+## 2026-05-14 追記（M 記事執筆の反省と改良ルール新設）
+
+M 記事（`aspnet-core-identity-to-commonlibrary.md`）の執筆中、**記事の中心主張に関わる事実誤認を 3 回連続**で踏んだ。その反省を `.claude/rules/article-fact-check.md` として新規ルール化し、`CLAUDE.md` に @import 追加した。
+
+3 回の事実誤認:
+
+| 試行 | 中心主張 | 誤認内容 |
+|------|---------|---------|
+| 1回目 | 「BaseController 系の多重 Generic で読めなくなった」 | DevNet/DevNext どちらにも `BaseController` は存在しなかった |
+| 2回目 | 「DevNet は2型版のみ → DevNext で3型版を並列追加」 | DevNet master にも3型版が初期コミットから並存していた（`head -60` で見ていて見落とした） |
+| 3回目 | 「DevNet の `CommonLibrary` は Identity 非依存だった」 | DevNet `CommonLibrary.csproj` は `Microsoft.AspNet.Identity.*` 4 種を参照し、`EntityBase.GetUserId()` で Identity 関数を呼んでいた |
+
+毎回 Codex の相互レビューで指摘され、軸を組み立て直した。執筆と確認のコストが想定の 3 倍以上膨らんだ。
+
+新ルールの要点（`.claude/rules/article-fact-check.md`）:
+
+1. 中心主張になる事実は、ファイル全体を確認してから書く（`head -60` で済ませない）
+2. csproj / package.json / requirements.txt も依存の事実として確認する
+3. テーマ確定前に「中心主張の反証」を 1 回試みる
+4. 既定ブランチは必ず確認する（`blob/main` を雑に書かない）
+5. ユーザーへの軸絞り込み質問は、軸自体の事実裏取りを質問前にする
+
+適用タイミング: 個人開発リポジトリの実コードを引用する記事、リポジトリの状態を断言する記事、二世代比較記事、ライブラリのバージョン跨ぎを扱う記事。
+
+副作用として、相互レビューゲートが結果的に効いた事実も観測できた:
+
+- M 記事の事実誤認は Codex の相互レビューで全て検出された
+- 1 台で書いて公開していたら、3 種類の事実誤認のうち少なくとも 1 つは公開後に発覚していた可能性が高い
+- O 記事（`ai-cross-review-handoff-workflow.md`）の「事実誤認」指摘パターンは、この体験から抽出した一次情報になっている
+
+## 2026-05-14 追記（ClaudeCode による Codex 既存記事 2 本の差別化レビュー結果）
+
+ClaudeCode が、Codex 作成の既存記事 2 本を「O 記事 (`ai-cross-review-handoff-workflow.md`) との差別化観点」を含めてレビューしました。
+
+### 対象1: `articles/claude-code-workflow-evolution.md`（既に `published: true`）
+
+- 判定: 🟡 公開済みのため改稿対象外
+- O 記事との重複領域:
+  - L125-152「CodexとClaudeCodeの役割を分けた」— 役割分担表とドメイン用語漏れ事例が O 記事と素材が同じ
+  - L154-181「ハンドオフを残すようにした」— `CLAUDE_CODE_HANDOFF.md` と公開ゲート 4 条件表が O 記事と被る
+- 対応: 公開済み記事は触らず、**O 記事側に位置付け文を 1 段落追加**して関係を明示する方針で対応済み
+  - O 記事「はじめに」末尾に「同シリーズで先行する『Claude Code 運用を数ヶ月で見直して rules と skills に分けた話』では、クロスレビューを運用変遷の 1 要素として軽く触れていました。本記事ではそこを単独テーマに切り出し、過去の handoff から拾った指摘パターン 4 種と、ハーネス化前に踏んだ失敗 3 種を一次情報レベルで掘ります。」を追加
+
+### 対象2: `articles/codex-claude-skill-graph-worklog.md`（`published: false`）
+
+- 判定: 🟢 公開可。O 記事との差別化は L141-158「クロスレビュー記事とは役割を分ける」で内部明示済み
+  - クロスレビュー運用: 別 AI で何を検出できたか
+  - 設計判断メモ運用: 検出や実装から生まれた判断をどう再利用するか
+- フロントマター / 必須要素 / 文体 / 守秘: 全て適合（title 25字、emoji `🧭`、topics 5個全て英小文字、GitHub リンク・コード例・体験/失敗例・参考リンクすべて充足、NG 語・AI 的締め文・守秘リスク検出なし）
+- 軽微指摘 3 件と反映状況:
+
+| 指摘 | 反映内容 |
+|------|---------|
+| L17「Obsidian で運用している個人用ナレッジベース」が My-Skill-Graph 本体（ローカル iCloud）の所在と読者の認識が混ざる | 「ローカルの Obsidian Vault で運用している個人用ナレッジベース」に変更済み |
+| L139「単に『Obsidian に保存しています』では弱いです」の「弱い」が曖昧 | 「単体では体験記事の固有性が出にくいです」に変更済み |
+| L78「クロスレビュー運用の記事とは重複しやすい切り口でした」の時系列が読者に不明瞭 | 「同シリーズで近接する『AI 2 台のクロスレビュー運用』記事と重複しやすい切り口でした」に変更済み（現 L76） |
+
+公開ゲート4条件（`.claude/rules/cross-agent-review.md`）の状態:
+
+| 記事 | ①セルフ | ②相互レビュー記録 | ③重大指摘 | ④ユーザー指示 |
+|------|--------|----------------|-----------|--------------|
+| codex-claude-skill-graph-worklog | ✅ | ✅（本書） | 🟢 残なし | ❌ 未指示 |
+
+次アクション:
+
+- ユーザーの公開指示を待つ
+- 明示後に `published: true` へ変更してコミット & push
+- 公開後は `/article-publish` を実行（README 更新、Lapras 確認予約、職経書追記検討）
+
+## 2026-05-14 追記（ClaudeCode による ai-cross-review-handoff-workflow 初稿・Codex レビュー依頼）
+
+ClaudeCode が候補O「AI 2 台クロスレビュー運用記録」を記事化しました。
+
+- 対象記事: `articles/ai-cross-review-handoff-workflow.md`
+- 状態: `published: false`
+- 作成者: ClaudeCode
+- 主題: Claude Code と Codex CLI を役割固定でクロスレビューさせる運用と、ハーネス化前に踏んだ失敗の記録。具体記事名は方針として伏せ、指摘パターンを抽象化して書く
+- レビュー担当: Codex
+- 触ってよい範囲: 原則 `articles/ai-cross-review-handoff-workflow.md` のみ
+- `published: true` はユーザーが明示するまで変更しないこと
+
+レビュー観点（`.claude/rules/cross-agent-review.md` 準拠）:
+
+- 「課題 → 判断 → 実装 → 検証 / 使いどころ → まとめ」の流れが体験記事として成立しているか
+- NG切り口（「Claude Code 入門」「Codex とは」のチュートリアル化、AI ツール比較レビュー）に寄っていないか
+- 過去の handoff から抽出した指摘パターン 4 種が、特定記事を読者に推測されない抽象度で書けているか
+- 「事実誤認」事例で言及した DevNet/DevNext 比較記事（本リポ内の `aspnet-core-identity-to-commonlibrary.md`）を直接名指ししていないか
+- フロントマター: title・emoji・topics 5 個以内・`published: false`
+- 文体ルール違反語、AI 的締め文、曖昧な主語の有無
+- GitHub リンク／5 行以上の実コードまたは構造化された引用、体験 / 失敗例、参考リンクの有無
+- 守秘義務: 過去勤務先・顧客名・支援機関・体調文脈の混入なし
+
+執筆時の素材：
+
+- `CLAUDE_CODE_HANDOFF.md` の過去レビュー記録（4記事一斉、phycock、electron-smartscreen、M 記事の Codex 指摘）
+- `.claude/rules/cross-agent-review.md` の役割分担表・公開ゲート 4 条件
+
+次アクション:
+
+- Codex による公開前レビュー（`/article-review` 相当）
+- 重大指摘があれば反映、なければユーザー明示を待って `published: true` に変更
+
+Codex レビュー結果（2026-05-14）:
+
+- 公開可否: 🔴 修正必須。記事の主旨は成立しているが、ハンドオフで指定された「具体記事名・指摘パターンを抽象化する」方針に対して、本文の実例が具体的すぎる
+- 重大指摘1: `articles/ai-cross-review-handoff-workflow.md` L21-L25 が、`DevNet/DevNext 比較記事`、`harness17/DevNet`、`ActivityType.IndividualTraining`、`ProgramType.ApplicationInterview` まで具体化している。ハンドオフの「具体記事名は伏せ、指摘パターンを抽象化して書く」「特定記事を読者に推測されない抽象度」に反する。記事名・リポジトリ名・Enum 名は「ある比較記事」「既定ブランチ違い」「業務ドメイン由来の enum 名」程度へ一般化すること
+- 重大指摘2: L101-L102 でも `IndividualTraining`、`ApplicationInterview`、`isAtHome` を再掲しており、守秘リスクの実例として強すぎる。記事の教訓は伝わるため、具体識別子ではなく `DomainSpecificTraining` / `ApplicationProcess` / `isOnsite` のような記事用の架空名か、完全に抽象化した説明へ置換すること
+- 軽微指摘1: フロントマター L5 の topics に日本語 `個人開発` があり、article-review skill の「topics は英小文字」基準から外れる。`indie` などへ変更推奨
+- 軽微指摘2: L2 の title は長めで、ローカル基準の 30〜40 字を超える。候補: `AI 2台クロスレビューで技術記事の盲点を拾う`
+- 軽微指摘3: L145 の Claude Code 公式リンクは `https://docs.claude.com/...` でも表示されるが、公式検索では `https://docs.anthropic.com/en/docs/claude-code/overview` も確認できる。既存記事群との表記に合わせて Anthropic docs 側へ寄せると無難
+- 必須要素: GitHub リンクは OpenAI Codex CLI のみで `github.com/harness17/` へのリンクがない。Lapras/GitHub連動を意識するなら、このリポジトリか関連する先行記事への GitHub リンクを参考リンクに追加すること
+- 文体・構成: NG語は L109-L111 に例示として出ているが、文体違反の本文使用ではなく「検出対象例」なので許容。`はじめに` / `まとめ` あり、コードブロックは `markdown` 指定済み、最大17行
+- 相互レビューゲート: この記録で Codex レビュー結果は残ったが、重大指摘修正後に再レビューが必要。`published: false` は維持すること
+
+Codex 指摘への対応状況（2026-05-14, ClaudeCode 反映）:
+
+| 指摘 | 反映内容 |
+|------|---------|
+| 重大1: L21-L25 が `DevNet/DevNext 比較記事`・`harness17/DevNet`・福祉ドメイン Enum 名まで具体化 | 「ある比較記事」「対象リポの既定ブランチ名と食い違っていて全件 404」「業務ドメイン固有の語彙を含む Enum 名（`DomainSpecificTraining`、`ApplicationProcess` 相当）」に一般化 |
+| 重大2: L101-L102 で `IndividualTraining` / `ApplicationInterview` / `isAtHome` を再掲 | 「業務ドメイン固有の Enum 名（`DomainSpecificTraining`、`ApplicationProcess` 相当）」「`isOnsite` のような実運用の語彙に近い変数名」に置換 |
+| 軽微1: topics 日本語 `個人開発` | `indie` に変更 |
+| 軽微2: title 30-40字超過 | 「AI 2 台クロスレビューで技術記事の盲点を拾う」(23 字) に短縮 |
+| 軽微3: Claude Code 公式リンク表記の統一 | `docs.claude.com` → `docs.anthropic.com/en/docs/claude-code/overview` に変更 |
+| 必須要素: GitHub リンクが OpenAI Codex CLI のみ | 本記事の運用ルール本体 `harness17/zenn-articles/.claude/rules/cross-agent-review.md` を参考リンクに追加 |
+
+次アクション:
+
+- Codex に再レビュー依頼（重大指摘 2 件と軽微 3 件＋必須要素の反映確認）
+- 重大指摘がなければユーザー明示を待って `published: true` に変更
+
+Codex 再レビュー結果（2026-05-14）:
+
+- 公開可否: 🟢 公開前レビュー上の重大指摘なし。ユーザーの公開明示待ち
+- 反映確認:
+  - 旧重大指摘1: 特定記事・具体リポジトリ・実Enum名の露出は解消済み。L23-L27 は「ある比較記事」「対象リポの既定ブランチ名」「業務ドメイン固有の語彙を含む Enum 名（架空名相当）」に一般化されている
+  - 旧重大指摘2: L103-L104 も架空名・抽象化へ置換済みで、`IndividualTraining` / `ApplicationInterview` / `isAtHome` は本文に残っていない
+  - 旧軽微指摘: title 短縮、topics `indie` 化、Claude Code 公式リンクの `docs.anthropic.com` 化、`github.com/harness17` リンク追加を確認
+- 必須要素: `github.com/harness17` リンクあり、Markdownコードブロック最大17行、体験/失敗例あり、参考リンクあり
+- 文体・守秘: NG語は L111-L113 に「検出対象例」として出ているだけなので許容。守秘義務キーワードの公開ブロッカーなし
+- 構成: `はじめに` / `まとめ` あり。見出し数・コードブロック言語指定とも問題なし
+- 検証: `npx zenn list:articles` で記事認識済み。`published: false` 維持
+- 補足: `harness17/zenn-articles` リンクは `blob/main`。ローカル作業ツリーの現在ブランチは `main` なので整合している。外部 `git ls-remote` は認証エラーで確認不可だったが、公開前ブロッカーとは扱わない
+
+## 2026-05-14 追記（M 記事を aspnet-core-identity-to-commonlibrary に差し替え）
+
+旧 `articles/devnet-devnext-repository-generic-regret.md` は Codex レビューで重大指摘 2 件（事実誤認・参考リンク 404）が確定し、さらに追加調査で **DevNet master にも `RepositoryBase<TEntity, TEntityHistory, TCondModel>` の3型版が初期コミットから存在**することが判明したため、記事の中心主張（「DevNet 二重 Generic → DevNext 三重 Generic を並列追加」）が成立しないと判断。`articles/` と `drafts/` から削除済み。
+
+新軸で書き直した記事:
+
+- 対象記事: `articles/aspnet-core-identity-to-commonlibrary.md`
+- 状態: `published: false`
+- 作成者: ClaudeCode
+- 主題: DevNet 時代は `Site/Entity/ApplicationUser.cs` と Web プロジェクト側に置いていた Identity エンティティを、DevNext で `CommonLibrary/Entity/ApplicationUser.cs` に上げた判断。「共通ライブラリは Identity 非依存」の Framework 時代の制約を、Core のパッケージ設計変化とテンプレートの実需から外した経緯
+- レビュー担当: Codex
+- 触ってよい範囲: 原則 `articles/aspnet-core-identity-to-commonlibrary.md` のみ
+- `published: true` はユーザーが明示するまで変更しないこと
+
+旧記事の Codex 指摘への対応状況:
+
+| 旧指摘 | 対応 |
+|--------|------|
+| 重大1: 「DevNet は2型版のみ」主張は master では誤り | テーマ自体を差し替え、Identity 軸に変更 |
+| 重大2: 参考リンクが `blob/main` で 404、既定ブランチは `master` | 新記事の参考リンクは全て `blob/master` で記載 |
+| 軽微: title 46字超過 | 新タイトル「ASP.NET Core 移行で Identity を共通ライブラリに上げた判断」28 字 |
+| 軽微: topics に日本語 `個人開発` | 新 topics `["aspnetcore", "csharp", "identity", "dotnet", "architecture"]` 全て英小文字 |
+
+執筆時の一次情報補強:
+
+- DevNet `Site/Entity/ApplicationUser.cs`: namespace `Site.Entity`、`Microsoft.AspNet.Identity.EntityFramework` を using
+- DevNext `CommonLibrary/Entity/ApplicationUser.cs`: namespace `Dev.CommonLibrary.Entity`、`Microsoft.AspNetCore.Identity` を using
+- DevNext で `SiteEntityBase`, `ApplicationRole`, `UserPreviousPassword` も `CommonLibrary/Entity/` 配下に移動
+- DevNet では `Site/Entity/` 配下に同等クラスが置かれており、`CommonLibrary` は Identity 非依存だった
+- 動機（ユーザー確認済み）: 「Core の Microsoft.AspNetCore.Identity パッケージ設計が変わり、`CommonLibrary` を Identity 依存にしても良いと判断した」
+
+次アクション:
+
+- Codex による公開前レビュー（`/article-review` 相当、新軸での再レビュー）
+- 重大指摘があれば反映、なければユーザー明示を待って `published: true` に変更
+
+Codex 追加レビュー結果（2026-05-14）:
+
+- 公開可否: 🔴 修正必須。旧M記事の `RepositoryBase` 事実誤認と `blob/main` 404 は解消しているが、新記事の中心前提に別の事実ズレがある
+- 重大指摘1: `articles/aspnet-core-identity-to-commonlibrary.md` L43 / L70 / L72-L82 の「DevNet の `CommonLibrary` は Identity 非依存」「Web プロジェクトに参照させても Identity ランタイムは引っ張られない」という説明は、ローカル実体 `H:/PAC_WORK/DEV_STANDARD_PROJECT/trunk/DevNet/CommonLibrary/CommonLibrary.csproj` と合わない。同 csproj には `Microsoft.AspNet.Identity.Core`、`Microsoft.AspNet.Identity.EntityFramework`、`Microsoft.AspNet.Identity.Owin`、`EntityFramework` 参照があり、`CommonLibrary/Entity/EntityBase.cs` でも `Microsoft.AspNet.Identity` を using して `GetUserId()` を使っている。したがって「Identity 非依存だったから Core で依存を外した/入れた」という軸はそのまま公開できない
+- 重大指摘2: L90-L92 の「`IdentityUser` 自体が EF Core から切り離されているので、`CommonLibrary` に置いても DB ストア実装まで引き連れない」という説明は、実際の `H:/ClaudeCode/DevNext/CommonLibrary/CommonLibrary.csproj` と合わない。同 csproj は `Microsoft.AspNetCore.Identity.EntityFrameworkCore` と `Microsoft.EntityFrameworkCore` を直接参照している。記事の主張を「IdentityUser の理論上の分離」ではなく「DevNext の CommonLibrary は Identity/EF 依存を受け入れた」へ修正する必要がある
+- 重大指摘3: L122-L124 の message も上記前提に依存しているため要修正。「DevNet で守っていた制約が DevNext で不要になった」ではなく、「DevNet では ApplicationUser / ApplicationRole を Site 側に置いていたが、CommonLibrary 自体は既に Identity 周辺へ依存していた。DevNext では Identity エンティティまで CommonLibrary に寄せ、テンプレート系列の共通基盤として割り切った」という方向なら一次情報と整合する
+- 軽微指摘1: L21-L40 の DevNet コード引用は実ファイルからコメントと `GenerateUserIdentityAsync` を省略している。記事用抜粋としては許容だが、直前に「主要部分だけ抜粋」の一言があると正確
+- 軽微指摘2: フロントマター、topics、`published: false`、`blob/master` リンク、GitHub リンク、コードブロック言語指定、文体NG語、守秘義務キーワードはいずれも問題なし
+- 相互レビューゲート: この記録で Codex 追加レビュー結果は残ったが、重大指摘修正後に再レビューが必要。`published: false` は維持すること
+
+Codex 指摘への対応状況（2026-05-14, Codex 反映）:
+
+| 指摘 | 反映内容 |
+|------|---------|
+| 重大1: DevNet `CommonLibrary` を Identity 非依存として扱っていた | 記事の軸を「Identity 依存の有無」から「ApplicationUser / ApplicationRole など認証エンティティ本体を Site 側から CommonLibrary 側へ寄せた判断」に変更。DevNet `CommonLibrary` は `Microsoft.AspNet.Identity` / OWIN / EF に既に依存していた事実を本文で明記 |
+| 重大2: DevNext `CommonLibrary` が DB ストア実装を引き連れないという説明 | DevNext `CommonLibrary.csproj` が `Microsoft.AspNetCore.Identity.EntityFrameworkCore` と `Microsoft.EntityFrameworkCore` を直接参照している前提に修正。「Identity/EF Core 依存を受け入れたテンプレート系列の共通基盤」として説明 |
+| 重大3: message が旧前提に依存 | `:::message` を「一般論ではなく、DevNext では共通基盤がすでにユーザーIDやEF Coreに寄っており、複数サンプルから同じ Identity 型を参照したい実需があったため」という内容へ差し替え |
+| 軽微1: DevNet コード引用が抜粋であること | 「主要部分だけ抜粋します」を追記 |
+
+修正後セルフチェック:
+
+- `npx zenn list:articles` で `aspnet-core-identity-to-commonlibrary` が認識されることを確認
+- コードブロックは `csharp:...` 指定済み、最大 19 行
+- NG語・守秘義務キーワードの機械スキャンで公開ブロッカーなし
+- `published: false` 維持
+- 残確認: 「Identity 非依存」は、旧前提を否定する文脈でのみ残している
+
+Codex 再レビュー結果（2026-05-14）:
+
+- 公開可否: 🟢 公開前レビュー上の重大指摘なし。ユーザーの公開明示待ち
+- 反映確認:
+  - 旧重大指摘1: 「DevNet CommonLibrary は Identity 非依存だった」という中心前提は撤回され、L74-L89 で「Identity周辺には依存していたが、ApplicationUser / ApplicationRole 本体は Site 側に残していた」と説明されている
+  - 旧重大指摘2: 「DB ストア実装まで引き連れない」という説明は削除され、L115-L123 で DevNext `CommonLibrary.csproj` が Identity / EF Core 依存を受け入れている前提に修正済み
+  - 旧重大指摘3: L142-L144 の `:::message` は旧前提ではなく、複数Samplesで同じ Identity 型を参照したい実需を根拠にした内容へ変更済み
+  - 旧軽微指摘: L21 に「主要部分だけ抜粋します」を追記済み
+- 必須要素: `github.com/harness17` リンクあり、C#コードブロック最大19行、体験/失敗例あり、参考リンクあり
+- 文体・守秘: NG語・守秘義務キーワードの公開ブロッカーなし。`Identity 非依存` は旧前提を否定する文脈でのみ使用
+- 構成: `はじめに` / `まとめ` あり。Zenn CLI で記事認識済み。`published: false` 維持
+
+## 2026-05-14 追記（ClaudeCode による devnet-devnext-repository-generic-regret 初稿・Codex レビュー依頼）
+
+> ⚠️ 本記事は上記「M 記事を aspnet-core-identity-to-commonlibrary に差し替え」により retire 済み。記録のみ残す。
+
+ClaudeCode が候補M「DevNet と DevNext で同じ機能を別実装にした設計判断の差分」を記事化しました。
+
+- 対象記事: `articles/devnet-devnext-repository-generic-regret.md`
+- 状態: `published: false`
+- 作成者: ClaudeCode
+- 主題: 自前テンプレート二世代で `RepositoryBase<TEntity, TCondModel>`（DevNet）から `RepositoryBase<TEntity, TEntityHistory, TCondModel>` を並列追加した（DevNext）経緯と、同名クラスが Generic 引数違いで並ぶ構造を後悔ベースで整理
+- レビュー担当: Codex
+- 触ってよい範囲: 原則 `articles/devnet-devnext-repository-generic-regret.md` のみ
+- `published: true` はユーザーが明示するまで変更しないこと
+
+レビュー観点（`.claude/rules/cross-agent-review.md` 準拠）:
+
+- 「課題 → 判断 → 実装 → 検証/使いどころ → まとめ」の流れが体験記事として成立しているか
+- NG切り口（「CommonLibrary の作り方」「便利メソッド集」「DevNext 紹介」のチュートリアル化）に寄っていないか
+- セクション4の「いま戻れるなら」リファクタ案が、記事用書き下ろし疑似コードであることが本文から伝わるか
+- DevNet/DevNext のコード引用が正しいか（実コードと差分がないか）
+- フロントマター: title・emoji・topics 5 個以内・`published: false`
+- 文体ルール違反語、AI 的締め文、曖昧な主語の有無
+- GitHub リンク、5 行以上の実コード、体験/失敗例、参考リンクの有無
+- 守秘義務: 過去勤務先・顧客名・支援機関・体調文脈の混入なし
+
+執筆時の一次情報補強:
+
+- DevNet `CommonLibrary/Repository/RepositoryBase.cs` は二重 Generic `<TEntity, TCondModel>` のみ
+- DevNext は初期コミット `aa63ddb9`（2026-03-20）時点で二重 Generic と三重 Generic `<TEntity, TEntityHistory, TCondModel>` が**並存**していたことを `gh api` で確認
+- 三重版は二重版を継承し、`IRepositoryHistory<TEntity, TEntityHistory>` を追加実装、`Insert / Update / LogicalDelete` を override
+- 利用例: `Samples/DatabaseSample/Repository/SampleEntityRepository.cs` が `RepositoryBase<SampleEntity, SampleEntityHistory, SampleEntityCondViewModel>` を継承
+
+次アクション:
+
+- Codex による公開前レビュー（`/article-review` 相当）
+- 重大指摘があれば反映、なければユーザー明示を待って `published: true` に変更
+
+Codex レビュー結果（2026-05-14）:
+
+- 公開可否: 🔴 修正必須。本文の中心事実と参考リンクに公開前ブロッカーあり
+- 重大指摘1: `articles/devnet-devnext-repository-generic-regret.md` L19-L20 / L36 / L120 の「DevNet は2型版のみ、DevNextで3型版を並列追加」という主張は、現在の `harness17/DevNet` 既定ブランチ `master` 上の `CommonLibrary/Repository/RepositoryBase.cs` に `RepositoryBase<TEntity, TEntityHistory, TCondModel>` が存在するため、そのまま公開できない。旧コミットを対象にするなら本文とリンクをコミット固定にする
+- 重大指摘2: 参考リンク L184-L186 が `blob/main` になっているが、`harness17/DevNet` / `harness17/DevNext` の既定ブランチは `master` で、3件とも 404。`blob/master` または対象コミット固定 URL に修正する
+- 軽微指摘: フロントマター title は46字でローカル基準の30-40字を超過、topics に日本語 `個人開発` があり英小文字ルールから外れる
+- NG語・守秘義務: 機械スキャン上は問題なし
+- 相互レビューゲート: この記録で Codex レビュー結果は残ったが、上記修正後に再レビューが必要
 
 ## 2026-05-11 追記（ClaudeCode による electron-smartscreen-oss-distribution 公開前レビュー結果）
 

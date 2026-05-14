@@ -34,8 +34,11 @@ GitHub: harness17の Zenn 技術記事執筆プロジェクト。コードリポ
 @.claude/rules/privacy.md
 @.claude/rules/writing-process.md
 @.claude/rules/cross-agent-review.md
+@.claude/rules/article-fact-check.md
 
 **最重要**：テーマ選定方針は `topic-policy.md`。**「課題解決力ベース・体験記事優先」** が軸。SQL Server チューニング等の知見深度が必要な解説記事は書かない。詰まった→解決した体験を優先する。
+
+**事実確認**：個人開発リポジトリの実コードに言及する記事は、`article-fact-check.md` のチェックリストを必ず通す。M 記事の執筆では中心主張の事実誤認を 3 回連続で踏んだ反省から作ったルール。
 
 ## 作業の流れ（要約）
 
