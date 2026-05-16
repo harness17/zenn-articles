@@ -7,6 +7,17 @@
 - Zenn は 1 日に公開できる記事数が 2 本までのように見えるため、まとめて公開する場合も 2 本ずつ日を分ける。
 - Lapras 確認は、実際に Zenn 上で公開確認できた日から 3〜7 日後を目安にする。
 
+## 2026-05-16 公開確認
+
+### 1. ASP.NET Core MVCでScheduleEntryに寄せた設計判断
+
+- URL: https://zenn.dev/harness/articles/phycock-schedule-entry-consolidation
+- テーマ系統: ASP.NET Core 10 / MVC / データモデル設計
+- 文字数: 約9,900字
+- 関連リポジトリ: [DevNext](https://github.com/harness17/DevNext)
+- 想定読者: ASP.NET Core MVC で入力モデルとテーブル設計の粒度に迷っている人
+- Lapras確認予定日: 2026-05-21
+
 ## 2026-05-13 公開確認
 
 ### 1. 未署名Electronアプリを配布するとSmartScreenで止まる問題に向き合った話
@@ -66,12 +77,3 @@
 - 関連リポジトリ: [DevNext](https://github.com/harness17/DevNext)
 - 想定読者: FullCalendar で色表示や eventContent カスタマイズに詰まった人
 - Lapras確認予定日: 2026-05-16
-
-## ストック中（published: false）
-
-### ScheduleEntry 集約記事（候補J）
-
-- ファイル: `articles/phycock-schedule-entry-consolidation.md`
-- 関連リポジトリ: [DevNext](https://github.com/harness17/DevNext)
-- 保留理由: Phycock 関連のため公開保留
-- 位置づけ: ASP.NET Core MVC の予定入力モデル設計判断。Phycock 固有のセンシティブな文脈は一般化済み
