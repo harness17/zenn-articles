@@ -66,11 +66,11 @@ GitHub: harness17の Zenn 技術記事執筆プロジェクト。コードリポ
 
 ## Git 規約
 
-Claude 側 `.claude/rules/git-ops.md` と同等のルールを Codex 側にも適用する。
+このリポジトリは記事原稿管理用で、`main` への push が Zenn 公開トリガーになる。
 
 - `git add -A` / `git add .` は使用しない。個別ファイル指定に統一する
-- 開発は `feature/xxx` ブランチで行う
-- **`main` への直接コミット禁止**。マージは Pull Request または `git merge --no-ff`
+- このプロジェクトでは、ユーザー指示がある場合は `main` ブランチへ直接コミットしてよい
+- 公開作業は `published: true` の変更を `main` にコミットし、`origin/main` へ push して Zenn に反映する
 - `--no-verify` で pre-commit hook をスキップしない（hook が落ちたら原因を直す）
 - 既存コミットへの `--amend` より新規コミットを優先する
 

@@ -59,6 +59,16 @@ GitHub: harness17の Zenn 技術記事執筆プロジェクト。コードリポ
 
 `articles/*.md` を保存すると、文体ルール違反語（「素晴らしい」「驚くべき」など）を警告する PostToolUse hook が走る。詳細は `.claude/settings.json`。
 
+## Git 規約
+
+このリポジトリは記事原稿管理用で、`main` への push が Zenn 公開トリガーになる。
+
+- `git add -A` / `git add .` は使用しない。個別ファイル指定に統一する
+- このプロジェクトでは、ユーザー指示がある場合は `main` ブランチへ直接コミットしてよい
+- 公開作業は `published: true` の変更を `main` にコミットし、`origin/main` へ push して Zenn に反映する
+- `--no-verify` で pre-commit hook をスキップしない（hook が落ちたら原因を直す）
+- 既存コミットへの `--amend` より新規コミットを優先する
+
 ## 親プロジェクトとの関係
 
 - 親：`F:/Dropbox/Job-hunting/`（職務経歴書、応募管理、Gmail分析）
