@@ -3,7 +3,7 @@ title: "ASP.NET Core移行でIdentityエンティティを共通化した判断"
 emoji: "🪪"
 type: "tech"
 topics: ["aspnetcore", "csharp", "identity", "dotnet", "architecture"]
-published: false
+published: true
 ---
 
 ## はじめに
@@ -21,6 +21,7 @@ published: false
 DevNet 側です。主要部分だけ抜粋します。
 
 ```csharp:DevNet/Site/Entity/ApplicationUser.cs
+using System.Collections.Generic;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -43,6 +44,7 @@ namespace Site.Entity
 ```
 
 namespace は `Site.Entity`。`ApplicationUser` は Web プロジェクト側にあります。
+`String` は DevNet 側の当時の表記のまま載せています。
 
 DevNext 側はこうです。
 
@@ -121,6 +123,7 @@ DevNext の `CommonLibrary.csproj` は、実際に `Microsoft.AspNetCore.Identit
 ここを曖昧にすると、設計判断がぶれます。
 
 「将来どこかで Identity を使わないかもしれない」という想定のために `ApplicationUser` だけを外へ置くより、現在のテンプレートで何度も使う型を共通化する方を選びました。
+起きていない要求のために境界を複雑にするより、実際に複数回出ている参照関係を単純にする判断です。
 
 ## 共通化して何が変わったか
 

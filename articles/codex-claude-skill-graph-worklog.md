@@ -3,7 +3,7 @@ title: "AIとの設計判断をMy-Skill-Graphに残して再利用する"
 emoji: "🧭"
 type: "tech"
 topics: ["ai", "codex", "claude", "obsidian", "workflow"]
-published: false
+published: true
 ---
 
 ## はじめに
