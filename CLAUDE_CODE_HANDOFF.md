@@ -1,7 +1,22 @@
 # ClaudeCode 引き継ぎ資料
 
-最終更新: 2026-05-14
+最終更新: 2026-05-16
 対象プロジェクト: `H:/ClaudeCode/技術記事`
+
+## 2026-05-16 追記（article-review skill のコメント対応モードを mirror 同期）
+
+Codex 側 `.agents/skills/article-review/SKILL.md` に入っていた「レビューコメント対応モード」を、ClaudeCode 側 mirror の `.claude/skills/article-review/SKILL.md` にも反映した。
+
+反映内容:
+
+- description に「レビューコメント対応」「相互レビューゲート」を追加
+- 起動条件に「レビュー対応」「コメント対応」「指摘を直して」を追加
+- コメント分類、一次情報確認、コード例修正、NG語例示の丸め、修正後確認の手順を追加
+
+意図:
+
+- Codex と ClaudeCode のどちらで `/article-review` 相当を使っても、レビューのみの依頼では自動修正せず、ユーザーが「対応して」と明示した場合だけ最小修正する運用に揃える
+- コメント対応後に、対象箇所・文体NG語・`git diff -- <対象記事>` を必ず確認する
 
 ## 2026-05-14 追記（M 記事執筆の反省と改良ルール新設）
 
