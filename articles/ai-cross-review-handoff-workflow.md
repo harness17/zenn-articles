@@ -3,12 +3,14 @@ title: "AI 2 台クロスレビューで技術記事の盲点を拾う"
 emoji: "🔁"
 type: "tech"
 topics: ["claudecode", "codex", "ai", "writing", "indie"]
-published: false
+published: true
 ---
 
 ## はじめに
 
 個人で Zenn に技術記事を書くとき、Claude Code と Codex CLI を**役割固定でクロスレビュー**させる運用を回しています。本記事は、その運用で実際に拾った指摘パターンと、ハーネス化前に踏んだ失敗の記録です。
+
+ここでいう Codex CLI は、旧 Codex 言語モデルではなく、OpenAI の `openai/codex` リポジトリで公開されているローカル実行のコーディングエージェントを指します。
 
 1 台の AI に書かせるだけで公開していた頃、公開後に「ここ事実誤認だった」「締め方が AI 的だった」と気づくことが続きました。同じ AI に「あなたが書いたこの記事をレビューして」と頼んでも、直前のコンテキストに引きずられて自然と判定してしまいます。作成側と別の AI に通すゲートを公開前に必ず置く形に変えたら、自分の盲点が言語化されて残るようになりました。
 
@@ -108,16 +110,18 @@ handoff に積む副作用として、後日記事を書くときの素材が手
 
 ### 3. AI 的締め文
 
+AI 固有というより、こたつ記事的な紋切型表現を AI が再生してしまうパターンです。
+
 - 「クォータ削減のヒントになれば。」
-- 「ぜひ参考にしてみてください」
-- 「いかがでしたでしょうか」
+- 「参考にしてみてください」系の締め
+- 「いかがでした...」系の問いかけ
 
 書いた AI は「読者に語りかける自然な締め」と判定しますが、別 AI に通すと AI 的紋切型として弾かれます。記事末尾は特にこのパターンが出やすい箇所です。
 
 ### 4. 検索性とコードブロックの体裁
 
 - タイトルに技術スタック名（`ASP.NET Core MVC` 等）が入っておらず検索性が低い
-- コードブロックにファイル名 (` ```csharp:Xxx.cs `) が付いていない
+- コードブロックに Zenn の `言語:ファイル名` 指定（例: `csharp:Xxx.cs`）が付いていない
 - `:::message alert` の使いどころが多すぎる、または足りない
 
 これは「公開してから読みにくさで気づく」タイプの指摘です。別 AI のレビューを公開前に挟むと、タイトル設計・コードブロックのファイル名付与・強調の量を整える機会が増えます。
@@ -145,6 +149,6 @@ handoff に積む副作用として、後日記事を書くときの素材が手
 ## 参考リンク
 
 - [Claude Code 公式ドキュメント](https://docs.anthropic.com/en/docs/claude-code/overview)
-- [OpenAI Codex CLI](https://github.com/openai/codex)
+- [OpenAI Codex CLI / Codex coding agent](https://github.com/openai/codex)
 - 本記事の運用ルール本体: [harness17/zenn-articles `.claude/rules/cross-agent-review.md`](https://github.com/harness17/zenn-articles/blob/main/.claude/rules/cross-agent-review.md)
 - 関連記事: 同シリーズの Claude Code 運用変遷記事（同じプロジェクトで先行公開）
