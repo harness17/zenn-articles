@@ -35,13 +35,16 @@ ClaudeCode が `articles/cross-agent-harness-introduction.md`（Codex 作成）�
 
 | 記事 | ①セルフ | ②相互レビュー記録 | ③重大指摘 | ④ユーザー指示 |
 |------|--------|----------------|-----------|--------------|
-| cross-agent-harness-introduction | ✅ | ✅（本書） | 🟢 残なし | ❌ 未指示 |
+| cross-agent-harness-introduction | ✅ | ✅（本書） | 🟢 残なし | ✅ 2026-05-17 公開指示 |
 
-次アクション:
+レビューコメント対応（2026-05-17, ClaudeCode）:
 
-- ユーザーの公開指示を待つ
-- 明示後に `published: true` へ変更してコミット & push
-- 公開後は `/article-publish` を実行（README更新、Lapras確認予約、職経書追記検討）
+- Zenn AI レビューのコメント3件に対応。Codex とは何かの1文補足追加、L18 のリスト表記を実タイトル「AI 2 台クロスレビューで技術記事の盲点を拾った話」に統一。`install.ps1` の `[System.IO.File]` 注釈は任意改善のため未対応
+
+公開（2026-05-17, ClaudeCode）:
+
+- 公開ゲート4条件を満たしたため `published: true` に変更してコミット & push 済み
+- 次アクション: `/article-publish` を実行（README更新、Lapras確認予約、職経書追記検討）
 
 ## 2026-05-17 追記（Codex による cross-agent-harness 紹介記事初稿・ClaudeCodeレビュー依頼）
 

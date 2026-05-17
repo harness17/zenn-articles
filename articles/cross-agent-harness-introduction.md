@@ -3,19 +3,21 @@ title: "CodexとClaude Codeの共同作業をcross-agent-harnessに切り出し�
 emoji: "🧩"
 type: "tech"
 topics: ["ai", "codex", "claude", "workflow", "oss"]
-published: false
+published: true
 ---
 
 ## はじめに
 
 Claude Code と Codex を同じリポジトリで使っていると、モデルの性能とは別のところで詰まります。
 
+ここでの Codex は OpenAI の Codex CLI、Claude Code は Anthropic の Claude Code を指します。どちらもターミナルで動くコーディングエージェントで、この記事は両者を同じリポジトリで併用する前提です。
+
 どちらが何を触ってよいのか。レビュー結果をどこに残すのか。merge や publish の前に何を確認するのか。片方の AI が作った変更を、もう片方が知らずに巻き戻さないためにはどうするのか。
 
 これまでは、プロジェクトごとの `AGENTS.md`、`CLAUDE.md`、`CLAUDE_CODE_HANDOFF.md` にその場でルールを書き足していました。Zenn でも、その運用をいくつか記事にしています。
 
 - Claude Code の運用を `rules` と `skills` に分けた話
-- Codex と Claude Code をクロスレビューさせた話
+- AI 2 台クロスレビューで技術記事の盲点を拾った話
 - AI との設計判断を My-Skill-Graph に残して再利用した話
 
 ただ、複数プロジェクトで同じことを繰り返しているうちに、これは各リポジトリに手作業で書き散らすより、移植できるキットにした方がよいと感じました。
