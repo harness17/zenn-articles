@@ -1,7 +1,77 @@
 # ClaudeCode 引き継ぎ資料
 
-最終更新: 2026-05-16
+最終更新: 2026-05-17
 対象プロジェクト: `H:/ClaudeCode/技術記事`
+
+## 2026-05-17 追記（ClaudeCode による cross-agent-harness-introduction 公開前レビュー結果）
+
+ClaudeCode が `articles/cross-agent-harness-introduction.md`（Codex 作成）に対して `/article-review` 相当の公開前レビューを実施しました。修正は未実施。
+
+レビュー結果サマリ:
+
+- フロントマター: emoji `🧩`、type `tech`、topics 5個（英小文字）、`published: false` すべて適合
+- 文体ルール違反語: 0 件（NG語・`〜することで` 3連鎖・AI的締め文なし）
+- 必須要素: GitHub リンク（cross-agent-harness / zenn-articles）、コードブロック最大8〜9行、体験・失敗例あり、約4,000字すべて充足
+- 守秘義務: 過去勤務先・顧客名・実名・体調文脈の混入なし
+- 構成: 「はじめに」「まとめ」あり、コードブロックすべて言語指定・ファイル名付き
+
+中心主張の事実整合チェック（実リポジトリ `H:/ClaudeCode/共同開発ハーネス/cross-agent-harness` と照合）:
+
+- 共通ルール（cross-agent-harness.md / handoff-protocol.md）、skill 3種（codex-handoff / cross-review / implement-task）の実体を確認、一致
+- install.ps1 引用（記事 L82-89）は実 `install.ps1` L69-74 と一致
+- profile 担当境界テーブル、handoff 完成条件、implement-task 開始時の引用はすべて実テンプレートと一致
+- 導入実績テーブルの verify は README L103-108 と一致
+- 参考リンクの先行記事3本（claude-code-workflow-evolution / ai-cross-review-handoff-workflow / codex-claude-skill-graph-worklog）はすべて `published: true`、リンク切れなし
+- 事実誤認・リンク404は検出されず
+
+任意レベルの指摘 2 件（公開ブロッカーではない）:
+
+| 指摘 | 内容 |
+|------|------|
+| title が約48字 | ローカル基準30〜40字を超過。`cross-agent-harness` が検索キーワードのため許容範囲。短縮は任意 |
+| H2見出しが10個 | スキル推奨3〜5個を超えるが、既存公開記事も同粒度。読みやすさは保たれている |
+
+公開ゲート4条件（`.claude/rules/cross-agent-review.md`）の状態:
+
+| 記事 | ①セルフ | ②相互レビュー記録 | ③重大指摘 | ④ユーザー指示 |
+|------|--------|----------------|-----------|--------------|
+| cross-agent-harness-introduction | ✅ | ✅（本書） | 🟢 残なし | ❌ 未指示 |
+
+次アクション:
+
+- ユーザーの公開指示を待つ
+- 明示後に `published: true` へ変更してコミット & push
+- 公開後は `/article-publish` を実行（README更新、Lapras確認予約、職経書追記検討）
+
+## 2026-05-17 追記（Codex による cross-agent-harness 紹介記事初稿・ClaudeCodeレビュー依頼）
+
+- 対象記事: `articles/cross-agent-harness-introduction.md`
+- 状態: `published: false`
+- 作成者: Codex
+- 主題: `harness17/cross-agent-harness` を、Codex と Claude Code の共同開発ハーネスとして紹介し、既存の AI 協調開発記事（rules/skills 分割、クロスレビュー、My-Skill-Graph）と接続する
+- レビュー担当: ClaudeCode
+- 触ってよい範囲: 原則 `articles/cross-agent-harness-introduction.md` のみ
+- 触ってはいけない範囲: `published: true` 変更、既存公開記事の無関係な改稿、`H:/ClaudeCode/共同開発ハーネス/cross-agent-harness` 側の実装変更
+
+レビュー観点:
+
+- `H:/ClaudeCode/共同開発ハーネス/cross-agent-harness/README.md`、`install.ps1`、テンプレート、skills の実態と本文の記述が一致しているか
+- 既存記事 `claude-code-workflow-evolution.md`、`ai-cross-review-handoff-workflow.md`、`codex-claude-skill-graph-worklog.md` との接続が自然で、重複しすぎていないか
+- 記事が「汎用 AI ツール紹介」ではなく、「共同開発ハーネスを切り出した体験記事」として成立しているか
+- GitHub リンク、5行以上のコードブロック、体験・失敗例、参考リンクが揃っているか
+- 文体ルール違反語、守秘義務リスク、未確認の断定がないか
+
+Codex 側セルフチェック:
+
+- 対象リポジトリ実体確認: `README.md`、`install.ps1`、`project-collaboration-profile.template.md`、`CLAUDE_CODE_HANDOFF.template.md`、`.claude/rules/*`、`.claude/skills/*`、`.agents/skills/implement-task/SKILL.md`、`examples/*` を確認
+- GitHub 公開状態: ユーザー確認により `https://github.com/harness17/cross-agent-harness` は公開済み
+- 文体NG語スキャン: 問題なし
+- Zenn CLI 読み込み: `npx zenn list:articles` で記事一覧に表示されることを確認
+- 公開状態: `published: false` のまま
+
+次アクション:
+
+- ClaudeCode が `/article-review` 相当で公開前レビューし、必要なら最小修正または指摘をこの handoff に追記する
 
 ## 2026-05-16 追記（article-review skill のコメント対応モードを mirror 同期）
 
