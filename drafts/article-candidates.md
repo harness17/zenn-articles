@@ -27,7 +27,7 @@
 | 2026-05-11 | `claude-code-workflow-evolution` | Claude Code運用を数ヶ月で見直してrulesとskillsに分けた話 | 候補N | 200 / 公開確認 | Claude Code / AI協調開発 |
 | 2026-05-13 | `electron-smartscreen-oss-distribution` | 未署名Electronアプリを配布するとSmartScreenで止まる問題に向き合った話 | 候補I | 200 / 公開確認 | Electron / Windows 配布 |
 | 2026-05-13 | `youtom-introduction` | 推しの配信予定を見逃さないために Youtom を作った | 派生記事 | 200 / 公開確認 | Electron / React / YouTube |
-| 2026-05-16 | `phycock-schedule-entry-consolidation` | ASP.NET Core MVCでScheduleEntryに寄せた設計判断 | 候補J | 403 / 実公開未確認 | ASP.NET Core / データモデル設計 |
+| 2026-05-16 → 保留 | `phycock-schedule-entry-consolidation` | ASP.NET Core MVCでScheduleEntryに寄せた設計判断 | 候補J | 下書き / 公開保留 | ASP.NET Core / データモデル設計 |
 | 2026-05-16 | `codex-claude-skill-graph-worklog` | AIとの設計判断をMy-Skill-Graphに残して再利用する | 候補O | 403 / 実公開未確認 | AI協調開発 / ナレッジ管理 |
 | 2026-05-17 | `cross-agent-harness-introduction` | CodexとClaude Codeの共同作業をcross-agent-harnessに切り出した | 派生記事 | 403 / 実公開未確認 | AI協調開発 / OSS |
 | 公開ログ未記録 | `aspnet-core-identity-to-commonlibrary` | ASP.NET Core移行でIdentityエンティティを共通化した判断 | 候補M | 200 / 公開確認 | ASP.NET Core / Identity |
@@ -39,7 +39,7 @@
 | --- | --- | --- | --- | --- |
 | H | YouTube Data API のクォータ枯渇と戦った話 | 公開済み | `articles/youtube-data-api-rss-quota-reduction.md` | 追加で書くなら別切り口にする |
 | I | 未署名 Electron アプリの SmartScreen 問題と OSS 配布の現実 | 公開済み | `articles/electron-smartscreen-oss-distribution.md` | 公開後運用は候補Rへ分離 |
-| J | Phycock で Schedule を削除して ScheduleEntry に集約した設計判断 | 公開指定済み / Zenn未確認 | `articles/phycock-schedule-entry-consolidation.md` | Zenn実サイトで 200 になるか確認してから LAPRAS 反映確認 |
+| J | Phycock で Schedule を削除して ScheduleEntry に集約した設計判断 | 公開保留（下書き） | `articles/phycock-schedule-entry-consolidation.md` | リタリコ確認が取れたら published: true に戻して公開する |
 | K | Chrome 拡張 Manifest V3 移行で遭遇した実装課題 | 未着手 | なし | 実装記憶の掘り起こしが必要 |
 | L | うつ病療養中のエンジニアが Claude Code で個人開発を続ける方法 | 未着手 | なし | 障害情報リスクがあるため慎重に扱う |
 | M | DevNet と DevNext で同じ機能を別実装にした設計判断の差分 | 公開済み | `articles/aspnet-core-identity-to-commonlibrary.md` | 事実確認ルールの反省込みで完了扱い |

@@ -30,6 +30,10 @@
 
 次アクション: Zenn ダッシュボードのデプロイ履歴または翌日の直接アクセスで再確認する。実公開確認できるまで Lapras 確認予定日の起算点にしない。
 
+2026-05-17 追記: 未push の chore コミット 2 件を `origin/main` へ push し Zenn の GitHub 同期を再トリガー。Zenn ダッシュボードのデプロイ結果で原因が確定 —「投稿数の上限に達したためデプロイされませんでした」（対象: codex-claude-skill-graph-worklog / cross-agent-harness-introduction / phycock-schedule-entry-consolidation。https://zenn.dev/faq#rate-limit ）。再 push しても上限ウィンドウが空くまで拒否されるため push は止め、上限解除後に再確認する。
+
+2026-05-17 追記2: `phycock-schedule-entry-consolidation` はリタリコ確認が取れるまで公開保留のため `published: false` に戻した（commit 48ba35e）。rate limit 解除後も自動公開されない。残る公開待ちは `codex-claude-skill-graph-worklog` / `cross-agent-harness-introduction` の 2 本。
+
 ## 2026-05-17 公開確認
 
 ### 1. CodexとClaude Codeの共同作業をcross-agent-harnessに切り出した
