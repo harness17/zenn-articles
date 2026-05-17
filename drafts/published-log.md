@@ -7,6 +7,17 @@
 - Zenn は 1 日に公開できる記事数が 2 本までのように見えるため、まとめて公開する場合も 2 本ずつ日を分ける。
 - Lapras 確認は、実際に Zenn 上で公開確認できた日から 3〜7 日後を目安にする。
 
+## 2026-05-17 公開確認
+
+### 1. CodexとClaude Codeの共同作業をcross-agent-harnessに切り出した
+
+- URL: https://zenn.dev/harness/articles/cross-agent-harness-introduction
+- テーマ系統: AI 協調開発 / Codex・Claude Code 運用 / OSS
+- 文字数: 約5,000字（本文）
+- 関連リポジトリ: [cross-agent-harness](https://github.com/harness17/cross-agent-harness) / [zenn-articles](https://github.com/harness17/zenn-articles)
+- 想定読者: Codex と Claude Code を同じリポジトリで併用し、担当境界や handoff 運用に迷っている人
+- Lapras確認予定日: 2026-05-22
+
 ## 2026-05-16 公開確認
 
 ### 1. ASP.NET Core MVCでScheduleEntryに寄せた設計判断
