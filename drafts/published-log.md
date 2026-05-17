@@ -29,6 +29,15 @@
 - 想定読者: ASP.NET Core MVC で入力モデルとテーブル設計の粒度に迷っている人
 - Lapras確認予定日: 2026-05-21
 
+### 2. AIとの設計判断をMy-Skill-Graphに残して再利用する
+
+- URL: https://zenn.dev/harness/articles/codex-claude-skill-graph-worklog
+- テーマ系統: AI 協調開発 / ナレッジ管理 / Obsidian
+- 文字数: 約4,000字
+- 関連リポジトリ: [zenn-articles](https://github.com/harness17/zenn-articles)
+- 想定読者: AI コーディングエージェントで設計判断が会話ログに散らばることに困っている個人開発者
+- Lapras確認予定日: 2026-05-21
+
 ## 2026-05-13 公開確認
 
 ### 1. 未署名Electronアプリを配布するとSmartScreenで止まる問題に向き合った話
