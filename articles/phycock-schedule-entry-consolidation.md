@@ -3,7 +3,7 @@ title: "ASP.NET Core MVCでScheduleEntryに寄せた設計判断"
 emoji: "🗂️"
 type: "tech"
 topics: ["aspnetcore", "csharp", "efcore", "mvc", "database"]
-published: true
+published: false
 ---
 
 ## はじめに
