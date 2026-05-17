@@ -6,6 +6,29 @@
 
 - Zenn は 1 日に公開できる記事数が 2 本までのように見えるため、まとめて公開する場合も 2 本ずつ日を分ける。
 - Lapras 確認は、実際に Zenn 上で公開確認できた日から 3〜7 日後を目安にする。
+- ローカルの `published: true` と Zenn 実サイトの公開状態は分けて扱う。公開後は `https://zenn.dev/harness/articles/<slug>` に直接アクセスし、HTTP 200 とタイトル一致を確認する。
+- 403 / 404 / タイトル不一致の場合は、レートリミットやデプロイ遅延の可能性があるため `実公開未確認` として再確認対象に残す。
+
+## 2026-05-17 Zenn 実公開状態の突き合わせ
+
+### Zenn 実サイトで 200 確認
+
+- `devnext-mvc-helper-extensions`
+- `fullcalendar-event-color-rendering`
+- `youtube-data-api-rss-quota-reduction`
+- `claude-code-workflow-evolution`
+- `electron-smartscreen-oss-distribution`
+- `youtom-introduction`
+- `aspnet-core-identity-to-commonlibrary`
+- `ai-cross-review-handoff-workflow`
+
+### ローカルは published: true だが Zenn 実サイトは 403
+
+- `phycock-schedule-entry-consolidation`
+- `codex-claude-skill-graph-worklog`
+- `cross-agent-harness-introduction`
+
+次アクション: Zenn ダッシュボードのデプロイ履歴または翌日の直接アクセスで再確認する。実公開確認できるまで Lapras 確認予定日の起算点にしない。
 
 ## 2026-05-17 公開確認
 
