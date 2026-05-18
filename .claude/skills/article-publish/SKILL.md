@@ -71,6 +71,13 @@ CLAUDE.local.md の「個人開発リポジトリ」表で対応するリポジ�
 
 スクリーンショットを残すよう推奨（職経書の自己PRエビデンスになる）。
 
+LAPRAS AI レビューが表示された場合は、スコアだけで終わらせずレビュー本文を取り込む。
+
+- 総合評価、論理性、実用性、読みやすさ、独自性、明確性の点数を `drafts/published-log.md` または handoff に残す
+- 改善コメントを `article-review` のレビューコメント対応モードへ渡す
+- 反映後は Codex/ClaudeCode の `/article-review` 相当で再チェックし、`CLAUDE_CODE_HANDOFF.md` に結果を残す
+- よく出る指摘（対象読者、用語定義、セクション接続、図表、導入後トラブルシューティング）は次の記事構成へフィードバックする
+
 ### 5. 親プロジェクト連携の案内
 
 `F:/Dropbox/Job-hunting/CLAUDE_CODE_HANDOFF.md` の自己研鑽セクションに以下を追記する案を提示：
