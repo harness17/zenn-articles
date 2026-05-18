@@ -12,13 +12,15 @@ published: true
 
 二世代のテンプレートで、`ApplicationUser` の置き場所を変えました。DevNet では `Site/Entity/ApplicationUser.cs` と Web プロジェクト側に置いていたのが、DevNext では `CommonLibrary/Entity/ApplicationUser.cs` と共通ライブラリ側に寄せました。
 
+ASP.NET Core Identity は、ログイン、ロール、パスワード、ユーザー管理を扱うための標準的な認証・認可基盤です。`ApplicationUser` は、そのユーザー情報をアプリ側で拡張するための型です。この記事で扱うのは Identity の導入手順ではなく、その型を Web プロジェクトに置くか、共通ライブラリに置くかという境界の判断です。
+
 最初は「共通ライブラリを Identity から完全に切り離した」という話として書こうとしていました。しかし実ファイルを確認すると、DevNet の `CommonLibrary` も `Microsoft.AspNet.Identity` や OWIN にすでに依存していました。
 
 そのため、本記事の論点は「Identity 依存を入れたかどうか」ではありません。**監査カラムや補助処理は共通基盤に含めていた状態から、`ApplicationUser` や `ApplicationRole` という認証エンティティ本体まで共通化した判断**の記録です。
 
 ## 二世代の `ApplicationUser` を並べる
 
-DevNet 側です。主要部分だけ抜粋します。
+まず、二世代で `ApplicationUser` の場所がどう変わったかを並べます。DevNet 側です。主要部分だけ抜粋します。
 
 ```csharp:DevNet/Site/Entity/ApplicationUser.cs
 using System.Collections.Generic;
@@ -73,22 +75,20 @@ namespace は `Dev.CommonLibrary.Entity`。`ApplicationUser` だけでなく、`
 
 この差は、単なるファイル移動ではありません。`UserManager<ApplicationUser>`、`IdentityDbContext<ApplicationUser, ApplicationRole, string>`、サンプルプロジェクトの `AddIdentity<ApplicationUser, ApplicationRole>()` が、すべて `Dev.CommonLibrary.Entity` の型を前提にできます。
 
-## DevNetでもCommonLibraryはIdentity周辺に依存していた
+## DevNetのCommonLibraryは純粋共通ではなかった
 
 ここは一度、間違えた前提で書きかけました。
 
-DevNet の `ApplicationUser` は `Site` 側にありました。そのため「DevNet の `CommonLibrary` は Identity 非依存だった」と捉えたくなります。しかし実際には違います。
-
-DevNet の `CommonLibrary.csproj` には、次の参照が入っています。
+DevNet の `ApplicationUser` は `Site` 側にありました。そのため「DevNet の `CommonLibrary` は Identity 非依存だった」と捉えたくなります。しかし実際には、`CommonLibrary.csproj` には次の参照が入っています。
 
 - `Microsoft.AspNet.Identity.Core`
 - `Microsoft.AspNet.Identity.EntityFramework`
 - `Microsoft.AspNet.Identity.Owin`
 - `EntityFramework`
 
-さらに `CommonLibrary/Entity/EntityBase.cs` では、更新者・登録者を入れるために `Microsoft.AspNet.Identity` を using し、`GetUserId()` を呼んでいます。
+さらに `CommonLibrary/Entity/EntityBase.cs` では、更新者・登録者を入れるために `Microsoft.AspNet.Identity` を using し、`GetUserId()` を呼んでいます。つまり DevNet の `CommonLibrary` は、Identity と無関係な純粋ライブラリではありませんでした。
 
-つまり DevNet の `CommonLibrary` は、Identity と無関係な純粋ライブラリではありませんでした。正確には、**監査カラムや共通処理では Identity 周辺に依存していたが、`ApplicationUser` / `ApplicationRole` という認証モデル本体は `Site` 側に残していた**、という状態です。
+正確には、**監査カラムや共通処理では Identity 周辺に依存していたが、`ApplicationUser` / `ApplicationRole` という認証モデル本体は `Site` 側に残していた**、という状態です。
 
 この境界を、DevNext で見直しました。
 

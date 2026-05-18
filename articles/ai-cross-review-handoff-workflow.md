@@ -10,9 +10,13 @@ published: true
 
 個人で Zenn に技術記事を書くとき、Claude Code と Codex CLI を**役割固定でクロスレビュー**させる運用を回しています。本記事は、その運用で実際に拾った指摘パターンと、ハーネス化前に踏んだ失敗の記録です。
 
+対象読者は、AI に記事やコードを書かせているが、公開前レビュー、守秘確認、事実確認を毎回会話だけで済ませていて不安が残る人です。Zenn 記事を例にしていますが、README、技術ブログ、ポートフォリオ説明のレビューにも同じ考え方を使えます。
+
 ここでいう Codex CLI は、旧 Codex 言語モデルではなく、OpenAI の `openai/codex` リポジトリで公開されているローカル実行のコーディングエージェントを指します。
 
 1 台の AI に書かせるだけで公開していた頃、公開後に「ここ事実誤認だった」「締め方が AI 的だった」と気づくことが続きました。同じ AI に「あなたが書いたこの記事をレビューして」と頼んでも、直前のコンテキストに引きずられて自然と判定してしまいます。作成側と別の AI に通すゲートを公開前に必ず置く形に変えたら、自分の盲点が言語化されて残るようになりました。
+
+この記事でいう handoff ファイルは、AI 同士の作業依頼、レビュー結果、未確認事項を時系列で残す共有メモです。ハーネス化は、その handoff、レビュー観点、公開ゲートを毎回の会話ではなくリポジトリ内のルールとテンプレートに固定することを指します。
 
 なお、同シリーズで先行する「Claude Code 運用を数ヶ月で見直して rules と skills に分けた話」では、クロスレビューを**運用変遷の 1 要素**として軽く触れていました。本記事ではそこを単独テーマに切り出し、過去の handoff から拾った指摘パターン 4 種と、ハーネス化前に踏んだ失敗 3 種を一次情報レベルで掘ります。
 
@@ -92,6 +96,8 @@ handoff に積む副作用として、後日記事を書くときの素材が手
 
 ハーネス化してから引っかかった指摘を 4 種に分類します。
 
+分類基準は、指摘が防いだ失敗の種類です。本文の主張が間違うものを「事実誤認」、公開してはいけない固有情報が残るものを「守秘リスク」、読者への見え方を損なう定型表現を「AI 的締め文」、Zenn 上での読みやすさや検索性を落とすものを「検索性とコードブロックの体裁」として分けました。
+
 ### 1. 事実誤認
 
 - 「Aには X しかない」と書いたが、現在の既定ブランチでは X' も並存していた
@@ -148,7 +154,7 @@ AI 固有というより、こたつ記事的な紋切型表現を AI が再生�
 
 ## 参考リンク
 
-- [Claude Code 公式ドキュメント](https://docs.anthropic.com/en/docs/claude-code/overview)
-- [OpenAI Codex CLI / Codex coding agent](https://github.com/openai/codex)
-- 本記事の運用ルール本体: [harness17/zenn-articles `.claude/rules/cross-agent-review.md`](https://github.com/harness17/zenn-articles/blob/main/.claude/rules/cross-agent-review.md)
-- 関連記事: 同シリーズの Claude Code 運用変遷記事（同じプロジェクトで先行公開）
+- [Claude Code 公式ドキュメント](https://docs.anthropic.com/en/docs/claude-code/overview) — レビュー側に使っている Claude Code の概要
+- [OpenAI Codex CLI / Codex coding agent](https://github.com/openai/codex) — Codex CLI の公開リポジトリ
+- 本記事の運用ルール本体: [harness17/zenn-articles `.claude/rules/cross-agent-review.md`](https://github.com/harness17/zenn-articles/blob/main/.claude/rules/cross-agent-review.md) — 役割分担と公開前ゲートを置いている実ファイル
+- 関連記事: [Claude Code運用を数ヶ月で見直してrulesとskillsに分けた話](https://zenn.dev/harness/articles/claude-code-workflow-evolution) — 本記事の前段となる運用変遷
