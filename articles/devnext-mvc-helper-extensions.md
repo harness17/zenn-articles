@@ -12,7 +12,9 @@ ASP.NET Core MVC で作っているテンプレート [DevNext](https://github.c
 
 移植したのは、改行表示、Enum のラジオボタン化、選択リストのチェックボックス化、ページャー、部分ビュー用の `PartialFor` などです。最初は「同じ HTML を出せればよい」と考えがちですが、実際に移してみると、HTML 文字列を作るだけでは足りませんでした。
 
-Razor のエンコード、`name` / `id` の生成、`label` との関連付け、POST 時の model binding まで含めて移植する必要がありました。この記事では、そのときに見たポイントをまとめます。
+Razor のエンコード、`name` / `id` の生成、`label` との関連付け、POST 時の model binding まで含めて移植する必要がありました。
+
+この記事を通したテーマは「画面に表示するだけでなく、POST で値が正しくサーバーへ戻る“フォームの契約”を Helper 側で守る」ことです。以降の各セクションは、戻り値・選択部品・ページャー・部分ビューという別々の話に見えますが、いずれもこの契約を崩さないための移植作業として読めます。
 
 ## Helperの戻り値をIHtmlContentに寄せる
 
@@ -51,7 +53,7 @@ public static IHtmlContent FormatNewLines(this IHtmlHelper helper, string? text)
 
 このあたりまで見ないと、「表示はできるがフォームとしては弱い Helper」になります。
 
-DevNext のチェックボックス Helper では、式からプロパティ名を取り出し、`TemplateInfo.GetFullHtmlFieldName` で Razor 側の命名規則に合わせています。
+DevNext のチェックボックス Helper では、式からプロパティ名を取り出し、`TemplateInfo.GetFullHtmlFieldName` で Razor 側の命名規則に合わせています。`TemplateInfo` は Razor が View 内で input の `name` / `id` をどう組み立てるかを保持する情報で、`GetFullHtmlFieldName` はプロパティ名を、実際に出力される完全な `name` 属性（親モデルの prefix を含んだ形）へ変換します。標準の `Html.CheckBoxFor` などが内部で行っている命名を、自作 Helper でも同じ規則で再現するために必要です。
 
 ```csharp
 var name = GetExpressionText(htmlHelper, expression);
@@ -214,8 +216,8 @@ DevNext では、旧 MVC の資産をそのまま残すのではなく、Razor �
 
 ## 参考リンク
 
-- [DevNext](https://github.com/harness17/DevNext)
-- [ASP.NET Core のフォーム Tag Helpers](https://learn.microsoft.com/aspnet/core/mvc/views/working-with-forms)
-- [ASP.NET Core の Partial views](https://learn.microsoft.com/aspnet/core/mvc/views/partial)
-- [IHtmlContent Interface](https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.html.ihtmlcontent)
-- [TagBuilder Class](https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.rendering.tagbuilder)
+- [DevNext](https://github.com/harness17/DevNext) - 本記事で扱った ASP.NET Core MVC テンプレート
+- [ASP.NET Core のフォーム Tag Helpers](https://learn.microsoft.com/aspnet/core/mvc/views/working-with-forms) - `name` / `id` / model binding の標準挙動を確認する資料
+- [ASP.NET Core の Partial views](https://learn.microsoft.com/aspnet/core/mvc/views/partial) - 部分ビューの扱いと `PartialFor` 移植時の前提を確認する資料
+- [IHtmlContent Interface](https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.html.ihtmlcontent) - Helper の戻り値を HTML として扱うための型
+- [TagBuilder Class](https://learn.microsoft.com/dotnet/api/microsoft.aspnetcore.mvc.rendering.tagbuilder) - input や pager の HTML 要素を組み立てるために使った型

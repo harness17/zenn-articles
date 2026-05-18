@@ -3,417 +3,285 @@
 最終更新: 2026-05-17
 対象プロジェクト: `H:/ClaudeCode/技術記事`
 
-## 2026-05-17 追記（ClaudeCode による cross-agent-harness-introduction 公開前レビュー結果）
+## 2026-05-18 追記（ClaudeCode への LAPRAS レビュー対応・スキル反映レビュー依頼）
 
-ClaudeCode が `articles/cross-agent-harness-introduction.md`（Codex 作成）に対して `/article-review` 相当の公開前レビューを実施しました。修正は未実施。
+依頼者: Codex
 
-レビュー結果サマリ:
+レビュー担当: ClaudeCode
 
-- フロントマター: emoji `🧩`、type `tech`、topics 5個（英小文字）、`published: false` すべて適合
-- 文体ルール違反語: 0 件（NG語・`〜することで` 3連鎖・AI的締め文なし）
-- 必須要素: GitHub リンク（cross-agent-harness / zenn-articles）、コードブロック最大8〜9行、体験・失敗例あり、約4,000字すべて充足
-- 守秘義務: 過去勤務先・顧客名・実名・体調文脈の混入なし
-- 構成: 「はじめに」「まとめ」あり、コードブロックすべて言語指定・ファイル名付き
+対象:
 
-中心主張の事実整合チェック（実リポジトリ `H:/ClaudeCode/共同開発ハーネス/cross-agent-harness` と照合）:
+- LAPRAS AI レビュー対応済み記事
+  - `articles/cross-agent-harness-introduction.md`
+  - `articles/codex-claude-skill-graph-worklog.md`
+  - `articles/aspnet-core-identity-to-commonlibrary.md`
+  - `articles/ai-cross-review-handoff-workflow.md`
+  - `articles/youtom-introduction.md`
+- LAPRAS 指摘を反映したスキル / ルール
+  - `.agents/skills/article-plan/SKILL.md`
+  - `.agents/skills/article-review/SKILL.md`
+  - `.agents/skills/article-publish/SKILL.md`
+  - `.claude/skills/article-plan/SKILL.md`
+  - `.claude/skills/article-review/SKILL.md`
+  - `.claude/skills/article-publish/SKILL.md`
+  - `.claude/rules/cross-agent-review.md`
+  - `.claude/rules/zenn-workflow.md`
 
-- 共通ルール（cross-agent-harness.md / handoff-protocol.md）、skill 3種（codex-handoff / cross-review / implement-task）の実体を確認、一致
-- install.ps1 引用（記事 L82-89）は実 `install.ps1` L69-74 と一致
-- profile 担当境界テーブル、handoff 完成条件、implement-task 開始時の引用はすべて実テンプレートと一致
-- 導入実績テーブルの verify は README L103-108 と一致
-- 参考リンクの先行記事3本（claude-code-workflow-evolution / ai-cross-review-handoff-workflow / codex-claude-skill-graph-worklog）はすべて `published: true`、リンク切れなし
-- 事実誤認・リンク404は検出されず
+触ってよい範囲:
 
-任意レベルの指摘 2 件（公開ブロッカーではない）:
+- 原則、上記ファイルへのレビューコメント追記のみ
+- 明らかな誤字・リンクミス・ルール不整合は、対象ファイル内の最小修正なら可
+- `published: true` の変更、記事主旨の大幅変更、対象外記事の改稿、親プロジェクト更新、push / commit は行わない
+
+レビュー観点:
+
+- LAPRAS AI レビューの改善点（対象読者、用語定義、セクション接続、図表、導入後トラブルシューティング、参考リンク説明）が、各記事で過不足なく反映されているか
+- 記事への追記が説明過多になり、体験記事としての流れを壊していないか
+- `.agents/skills/*` と `.claude/skills/*` のミラーが実質的に同期しているか
+- `article-plan` / `article-review` / `article-publish` の追加ルールが運用可能な粒度で、次の記事作成時に過剰な負担にならないか
+- `CLAUDE_CODE_HANDOFF.md` の記録が長くなりすぎていないか。圧縮や別 handoff 化が必要なら指摘する
+- 未コミット差分のうち、`articles/devnext-mvc-helper-extensions.md` は別件の既存差分として扱い、今回レビュー対象から外す
+
+Codex 側の確認済み事項:
+
+- 各記事の文体NG語スキャン: ヒットなし
+- `npx zenn list:articles`: 成功
+- `git diff --check`: 問題なし
+- LAPRAS AI レビュー対応後の Codex 再レビュー結果は、本 handoff の各記事セクションに追記済み
+- My-Skill-Graph の `self/goals.md` と判断記録 `[[外部レビュー後にCodex再レビューを挟むのは記事改善を公開ゲートに戻すため]]` を更新済み
+
+レビュー結果の記録先:
+
+- この `CLAUDE_CODE_HANDOFF.md` の本セクション直下に `ClaudeCode レビュー結果（2026-05-18）` として追記
+- 継続作業が必要な場合は、My-Skill-Graph の `ops/handoffs/` にも要約を残す
+
+公開 / commit ゲート:
+
+- 重大指摘が残っている間は commit / push しない
+- commit する場合は、対象ファイルを明示して個別 stage する
+- Zenn 公開反映は既存の `published: true` と main push に依存するため、レビュー完了後にユーザーの明示を待つ
+
+### ClaudeCode レビュー結果（2026-05-18）
+
+レビュー担当: ClaudeCode / 修正は未実施（レビューのみ）
+
+**記事5本（LAPRAS 風レビュー対応差分）**
+
+| 観点 | 結果 |
+|------|------|
+| 文体NG語 | 5本すべてヒットなし。`ai-cross-review-handoff-workflow.md` L123 の `「いかがでした…」系の問いかけ` は NG パターンを `…` 付きで言い換えた既存表記で、今回差分外。スキャンを壊さないため許容 |
+| 守秘義務 | 業務固有名詞・顧客名・実名の追加なし |
+| 追記の粒度 | 各記事 1〜2 段落＋表/Mermaid 1 点ずつ。体験記事の流れを崩す説明過多はなし。LAPRAS 指摘（対象読者・用語定義・セクション接続・図表）に正対している |
+| `codex-claude-skill-graph-worklog.md` Mermaid | ` ```mermaid ` 指定で Zenn 表示可。decisions/strategies の関係図として論理性指摘に有効 |
+| `youtom-introduction.md` RSS/API 比較表 | Markdown テーブル正常。実用性指摘に有効 |
+
+**任意レベルの指摘（公開ブロッカーではない）**
 
 | 指摘 | 内容 |
 |------|------|
-| title が約48字 | ローカル基準30〜40字を超過。`cross-agent-harness` が検索キーワードのため許容範囲。短縮は任意 |
-| H2見出しが10個 | スキル推奨3〜5個を超えるが、既存公開記事も同粒度。読みやすさは保たれている |
+| `cross-agent-harness-introduction.md` の H2 増加 | 新規 H2「導入後に詰まったときに見るところ」追加で H2 が 11 個に。2026-05-17 レビューで 10 個を許容済みのため範囲内だが、以後の追記では小見出し（H3）への寄せを検討 |
+| `aspnet-core-identity-to-commonlibrary.md` の見出しリネーム | `DevNetでもCommonLibraryはIdentity周辺に依存していた` → `DevNetのCommonLibraryは純粋共通ではなかった`。Zenn のアンカー ID が変わる。他記事から旧アンカーへのリンクは見当たらず実害なしと判断 |
 
-公開ゲート4条件（`.claude/rules/cross-agent-review.md`）の状態:
+**スキル / ルール**
 
-| 記事 | ①セルフ | ②相互レビュー記録 | ③重大指摘 | ④ユーザー指示 |
-|------|--------|----------------|-----------|--------------|
-| cross-agent-harness-introduction | ✅ | ✅（本書） | 🟢 残なし | ✅ 2026-05-17 公開指示 |
+| 観点 | 結果 |
+|------|------|
+| `.agents/skills/*` と `.claude/skills/*` のミラー同期 | article-plan / article-review / article-publish の 3 ペアとも、差分は意図的なパス読み替え（`.Codex/`↔`.claude/`、`Codex.local.md`↔`CLAUDE.local.md`）のみ。実質同期済み |
+| `article-plan` 追加（2.5 読者前提・図表予定欄） | 構成段階のチェック粒度として運用可能。テンプレ欄追加も過剰負担ではない |
+| `article-review` 追加（構成チェック・対応モード分類） | LAPRAS 指摘パターンを観点化できており妥当 |
+| `article-publish` 追加（LAPRAS レビュー本文の取り込み） | スコア止まりを防ぐ流れとして妥当 |
+| `cross-agent-review.md` / `zenn-workflow.md` 外部レビュー対応フロー | 既存の公開前フローと重複せず追加できている |
 
-レビューコメント対応（2026-05-17, ClaudeCode）:
+**スキル側の軽微な指摘**
 
-- Zenn AI レビューのコメント3件に対応。Codex とは何かの1文補足追加、L18 のリスト表記を実タイトル「AI 2 台クロスレビューで技術記事の盲点を拾った話」に統一。`install.ps1` の `[System.IO.File]` 注釈は任意改善のため未対応
+- `article-review` 対応モード手順 6 が参照する `append-codex-review-request.sh` は `.claude/skills/article-review/scripts/` 配下に未追跡（`?? `）状態。スキル本文がこのスクリプトに依存するため、スキル変更を commit する際は scripts ディレクトリも同時に stage するか、追跡しない方針なら SKILL.md に明記する
+- `.agents`（Codex）ミラーの手順 6 もスクリプトパスを `.claude/skills/...` と書いている。スクリプト実体が `.claude` 側のみのため動作上は正しいが、ミラー規約上はパス読み替え対象外であることを意識する
 
-公開（2026-05-17, ClaudeCode）:
+**CLAUDE_CODE_HANDOFF.md の長さ**
 
-- 公開ゲート4条件を満たしたため `published: true` に変更してコミット & push 済み
-- 次アクション: `/article-publish` を実行（README更新、Lapras確認予約、職経書追記検討）
+- 現在 955 行・`## ` セクション約 30 個。`handoff-archive.md` の閾値（セクション 10 超）を大きく超過。最古セクションは 2026-05-10 で 30 日未満だが、セクション数基準で `/handoff-cleanup` 実行対象。2026-05-14 以前のセクションを `handoffs/archive/2026-Q2.md` へ切り出すことを推奨
 
-## 2026-05-17 追記（Codex による cross-agent-harness 紹介記事初稿・ClaudeCodeレビュー依頼）
+**公開可否判断**: 🟢 重大指摘なし。記事5本は公開済み記事の改善差分として問題なし。スキル/ルール差分も commit 可能な品質。commit 時は対象ファイルを個別 stage し、scripts ディレクトリの扱いを確定させること。再 push・公開反映はユーザーの明示を待つ。
 
-- 対象記事: `articles/cross-agent-harness-introduction.md`
-- 状態: `published: false`
-- 作成者: Codex
-- 主題: `harness17/cross-agent-harness` を、Codex と Claude Code の共同開発ハーネスとして紹介し、既存の AI 協調開発記事（rules/skills 分割、クロスレビュー、My-Skill-Graph）と接続する
-- レビュー担当: ClaudeCode
-- 触ってよい範囲: 原則 `articles/cross-agent-harness-introduction.md` のみ
-- 触ってはいけない範囲: `published: true` 変更、既存公開記事の無関係な改稿、`H:/ClaudeCode/共同開発ハーネス/cross-agent-harness` 側の実装変更
+## 2026-05-18 追記（LAPRAS AIレビュー指摘のスキル反映）
 
-レビュー観点:
+対象:
 
-- `H:/ClaudeCode/共同開発ハーネス/cross-agent-harness/README.md`、`install.ps1`、テンプレート、skills の実態と本文の記述が一致しているか
-- 既存記事 `claude-code-workflow-evolution.md`、`ai-cross-review-handoff-workflow.md`、`codex-claude-skill-graph-worklog.md` との接続が自然で、重複しすぎていないか
-- 記事が「汎用 AI ツール紹介」ではなく、「共同開発ハーネスを切り出した体験記事」として成立しているか
-- GitHub リンク、5行以上のコードブロック、体験・失敗例、参考リンクが揃っているか
-- 文体ルール違反語、守秘義務リスク、未確認の断定がないか
+- `.agents/skills/article-plan/SKILL.md`
+- `.claude/skills/article-plan/SKILL.md`
+- `.agents/skills/article-review/SKILL.md`
+- `.claude/skills/article-review/SKILL.md`
+- `.agents/skills/article-publish/SKILL.md`
+- `.claude/skills/article-publish/SKILL.md`
 
-Codex 側セルフチェック:
+反映した指摘パターン:
 
-- 対象リポジトリ実体確認: `README.md`、`install.ps1`、`project-collaboration-profile.template.md`、`CLAUDE_CODE_HANDOFF.template.md`、`.claude/rules/*`、`.claude/skills/*`、`.agents/skills/implement-task/SKILL.md`、`examples/*` を確認
-- GitHub 公開状態: ユーザー確認により `https://github.com/harness17/cross-agent-harness` は公開済み
-- 文体NG語スキャン: 問題なし
-- Zenn CLI 読み込み: `npx zenn list:articles` で記事一覧に表示されることを確認
-- 公開状態: `published: false` のまま
-
-次アクション:
-
-- ClaudeCode が `/article-review` 相当で公開前レビューし、必要なら最小修正または指摘をこの handoff に追記する
-
-## 2026-05-16 追記（article-review skill のコメント対応モードを mirror 同期）
-
-Codex 側 `.agents/skills/article-review/SKILL.md` に入っていた「レビューコメント対応モード」を、ClaudeCode 側 mirror の `.claude/skills/article-review/SKILL.md` にも反映した。
+- 対象読者の明示不足
+- 初出の重要用語説明不足（OAuth / RSS / YouTube Data API / Identity / handoff / ハーネス化）
+- セクション間の接続不足
+- `decisions` / `strategies` や RSS / API のような関係・比較の図表不足
+- 導入後トラブルシューティングや負の定義不足
+- 参考リンクの説明不足
+- LAPRAS AI レビュー結果をスコア確認で終わらせていたこと
 
 反映内容:
 
-- description に「レビューコメント対応」「相互レビューゲート」を追加
-- 起動条件に「レビュー対応」「コメント対応」「指摘を直して」を追加
-- コメント分類、一次情報確認、コード例修正、NG語例示の丸め、修正後確認の手順を追加
+- `article-plan`: 構成段階で「読者前提と補足する用語」を決めるステップを追加。見出し案に橋渡し文の必要性、図表・比較表・トラブルシューティング小セクションの検討を追加
+- `article-review`: 構成チェックに対象読者、初出用語、セクション接続、図表、負の定義、参考リンク説明を追加。レビューコメント対応モードに明確性・実用性・論理性別の反映方針を追加
+- `article-publish`: LAPRAS AI レビューが表示された場合に、点数と本文を記録し、`article-review` のレビューコメント対応モードへ戻す流れを追加
 
-意図:
+検証:
 
-- Codex と ClaudeCode のどちらで `/article-review` 相当を使っても、レビューのみの依頼では自動修正せず、ユーザーが「対応して」と明示した場合だけ最小修正する運用に揃える
-- コメント対応後に、対象箇所・文体NG語・`git diff -- <対象記事>` を必ず確認する
+- Codex / ClaudeCode 側 skill mirror に同等の追記が入っていることを `rg` と `git diff` で確認
+- `git diff --check` 問題なし
 
-## 2026-05-14 追記（M 記事執筆の反省と改良ルール新設）
+注意:
 
-M 記事（`aspnet-core-identity-to-commonlibrary.md`）の執筆中、**記事の中心主張に関わる事実誤認を 3 回連続**で踏んだ。その反省を `.claude/rules/article-fact-check.md` として新規ルール化し、`CLAUDE.md` に @import 追加した。
+- prompt / harness 変更の第二視点検証は、現行ルール上サブエージェント利用にユーザーの明示的委任が必要なため未実施。ClaudeCode 側レビューが必要なら、この handoff を起点に依頼する
 
-3 回の事実誤認:
+## 2026-05-18 追記（Codex による youtom-introduction LAPRAS 風レビュー対応）
 
-| 試行 | 中心主張 | 誤認内容 |
-|------|---------|---------|
-| 1回目 | 「BaseController 系の多重 Generic で読めなくなった」 | DevNet/DevNext どちらにも `BaseController` は存在しなかった |
-| 2回目 | 「DevNet は2型版のみ → DevNext で3型版を並列追加」 | DevNet master にも3型版が初期コミットから並存していた（`head -60` で見ていて見落とした） |
-| 3回目 | 「DevNet の `CommonLibrary` は Identity 非依存だった」 | DevNet `CommonLibrary.csproj` は `Microsoft.AspNet.Identity.*` 4 種を参照し、`EntityBase.GetUserId()` で Identity 関数を呼んでいた |
+対象記事: `articles/youtom-introduction.md`
 
-毎回 Codex の相互レビューで指摘され、軸を組み立て直した。執筆と確認のコストが想定の 3 倍以上膨らんだ。
+ユーザーが貼り付けた LAPRAS 風レビューでは、総合3.9、論理性4.0、実用性4.0、読みやすさ3.5、独自性4.5、明確性3.5。主な改善点は、技術用語の補足、RSS と YouTube Data API の機能差の明確化、実装セクションから配布課題セクションへの遷移補強。
 
-新ルールの要点（`.claude/rules/article-fact-check.md`）:
+Codex が反映した差分:
 
-1. 中心主張になる事実は、ファイル全体を確認してから書く（`head -60` で済ませない）
-2. csproj / package.json / requirements.txt も依存の事実として確認する
-3. テーマ確定前に「中心主張の反証」を 1 回試みる
-4. 既定ブランチは必ず確認する（`blob/main` を雑に書かない）
-5. ユーザーへの軸絞り込み質問は、軸自体の事実裏取りを質問前にする
+- YouTube Data API の前提として出てくる OAuth と `credentials.json` を、配布アプリの初回体験に関係する用語として短く説明
+- RSS と YouTube Data API で取れる情報・苦手なことを表で追加
+- 実装判断から配布課題へ移る前に、取得方式だけでなく認証ファイル、署名、クォータも体験に直結するという橋渡し文を追加
 
-適用タイミング: 個人開発リポジトリの実コードを引用する記事、リポジトリの状態を断言する記事、二世代比較記事、ライブラリのバージョン跨ぎを扱う記事。
+Codex レビュー結果:
 
-副作用として、相互レビューゲートが結果的に効いた事実も観測できた:
+- 文体ルール違反語: 0件
+- フロントマター: title / emoji / type / topics / published は維持。既に公開済みのため `published: true`
+- 必須要素: GitHub リンク、5行以上のコードブロック、体験ベースの問題設定、参考リンクを維持
+- 構成: 簡易/フルモードの判断前に用語補足とRSS/API差分を追加し、配布課題への接続も補強。LAPRAS 指摘の読みやすさ・明確性に対する追記として妥当
+- 守秘義務: 業務固有名詞・顧客名・実名の追加なし
+- Zenn CLI: `npx zenn list:articles` 成功
+- 公開可否: 公開済み記事の改善差分として問題なし。再 push はユーザー指示または通常の公開運用に従う
 
-- M 記事の事実誤認は Codex の相互レビューで全て検出された
-- 1 台で書いて公開していたら、3 種類の事実誤認のうち少なくとも 1 つは公開後に発覚していた可能性が高い
-- O 記事（`ai-cross-review-handoff-workflow.md`）の「事実誤認」指摘パターンは、この体験から抽出した一次情報になっている
+## 2026-05-18 追記（Codex による ai-cross-review-handoff-workflow LAPRAS 風レビュー対応）
 
-## 2026-05-14 追記（ClaudeCode による Codex 既存記事 2 本の差別化レビュー結果）
+対象記事: `articles/ai-cross-review-handoff-workflow.md`
 
-ClaudeCode が、Codex 作成の既存記事 2 本を「O 記事 (`ai-cross-review-handoff-workflow.md`) との差別化観点」を含めてレビューしました。
+ユーザーが貼り付けた LAPRAS 風レビューでは、総合3.9、論理性4.0、実用性4.0、読みやすさ4.0、独自性4.0、明確性3.5。主な改善点は、対象読者の明示、`handoff ファイル` と `ハーネス化` の定義、指摘パターンの分類基準、参考リンク説明の補足。
 
-### 対象1: `articles/claude-code-workflow-evolution.md`（既に `published: true`）
+Codex が反映した差分:
 
-- 判定: 🟡 公開済みのため改稿対象外
-- O 記事との重複領域:
-  - L125-152「CodexとClaudeCodeの役割を分けた」— 役割分担表とドメイン用語漏れ事例が O 記事と素材が同じ
-  - L154-181「ハンドオフを残すようにした」— `CLAUDE_CODE_HANDOFF.md` と公開ゲート 4 条件表が O 記事と被る
-- 対応: 公開済み記事は触らず、**O 記事側に位置付け文を 1 段落追加**して関係を明示する方針で対応済み
-  - O 記事「はじめに」末尾に「同シリーズで先行する『Claude Code 運用を数ヶ月で見直して rules と skills に分けた話』では、クロスレビューを運用変遷の 1 要素として軽く触れていました。本記事ではそこを単独テーマに切り出し、過去の handoff から拾った指摘パターン 4 種と、ハーネス化前に踏んだ失敗 3 種を一次情報レベルで掘ります。」を追加
+- `はじめに` に、AIで記事やコードを書かせているが公開前レビュー・守秘確認・事実確認を会話だけで済ませることに不安がある読者向けの記事だと明示
+- Zenn記事以外にも README、技術ブログ、ポートフォリオ説明のレビューに転用できることを補足
+- `handoff ファイル` を AI 同士の作業依頼、レビュー結果、未確認事項を時系列で残す共有メモとして定義
+- `ハーネス化` を handoff、レビュー観点、公開ゲートをリポジトリ内のルールとテンプレートに固定することとして定義
+- `実際に拾われた指摘パターン` に、4分類の基準を追加
+- 参考リンクそれぞれに役割説明を追加し、関連する Claude Code 運用変遷記事は実リンクへ変更
 
-### 対象2: `articles/codex-claude-skill-graph-worklog.md`（`published: false`）
+Codex レビュー結果:
 
-- 判定: 🟢 公開可。O 記事との差別化は L141-158「クロスレビュー記事とは役割を分ける」で内部明示済み
-  - クロスレビュー運用: 別 AI で何を検出できたか
-  - 設計判断メモ運用: 検出や実装から生まれた判断をどう再利用するか
-- フロントマター / 必須要素 / 文体 / 守秘: 全て適合（title 25字、emoji `🧭`、topics 5個全て英小文字、GitHub リンク・コード例・体験/失敗例・参考リンクすべて充足、NG 語・AI 的締め文・守秘リスク検出なし）
-- 軽微指摘 3 件と反映状況:
+- 文体ルール違反語: 0件
+- フロントマター: title / emoji / type / topics / published は維持。既に公開済みのため `published: true`
+- 必須要素: GitHub リンク、5行以上のコードブロック、実例、参考リンクを維持
+- 構成: 対象読者と用語定義を冒頭に置き、指摘パターン分類の基準を本文内に明示。LAPRAS 指摘の明確性に対する追記として妥当
+- 守秘義務: 業務固有名詞・顧客名・実名の追加なし
+- Zenn CLI: `npx zenn list:articles` 成功
+- 公開可否: 公開済み記事の改善差分として問題なし。再 push はユーザー指示または通常の公開運用に従う
 
-| 指摘 | 反映内容 |
-|------|---------|
-| L17「Obsidian で運用している個人用ナレッジベース」が My-Skill-Graph 本体（ローカル iCloud）の所在と読者の認識が混ざる | 「ローカルの Obsidian Vault で運用している個人用ナレッジベース」に変更済み |
-| L139「単に『Obsidian に保存しています』では弱いです」の「弱い」が曖昧 | 「単体では体験記事の固有性が出にくいです」に変更済み |
-| L78「クロスレビュー運用の記事とは重複しやすい切り口でした」の時系列が読者に不明瞭 | 「同シリーズで近接する『AI 2 台のクロスレビュー運用』記事と重複しやすい切り口でした」に変更済み（現 L76） |
+## 2026-05-18 追記（Codex による aspnet-core-identity-to-commonlibrary LAPRAS 風レビュー対応）
 
-公開ゲート4条件（`.claude/rules/cross-agent-review.md`）の状態:
+対象記事: `articles/aspnet-core-identity-to-commonlibrary.md`
 
-| 記事 | ①セルフ | ②相互レビュー記録 | ③重大指摘 | ④ユーザー指示 |
-|------|--------|----------------|-----------|--------------|
-| codex-claude-skill-graph-worklog | ✅ | ✅（本書） | 🟢 残なし | ❌ 未指示 |
+ユーザーが貼り付けた LAPRAS 風レビューでは、総合4.2、論理性4.5、実用性4.0、読みやすさ4.0、独自性4.5、明確性4.0。主な改善点は、Identity フレームワークの基礎知識がない読者向けの簡潔な補足と、`DevNetでもCommonLibraryはIdentity周辺に依存していた` セクションの冗長感の軽減。
 
-次アクション:
+Codex が反映した差分:
 
-- ユーザーの公開指示を待つ
-- 明示後に `published: true` へ変更してコミット & push
-- 公開後は `/article-publish` を実行（README 更新、Lapras 確認予約、職経書追記検討）
+- `はじめに` に、ASP.NET Core Identity と `ApplicationUser` の役割を短く補足
+- 記事の対象は Identity 導入手順ではなく、Identity 型を Web プロジェクトと共通ライブラリのどちらに置くかという境界判断であることを明示
+- `二世代の ApplicationUser を並べる` の導入文を補い、コード比較へ入る流れを少し明確化
+- `DevNetでもCommonLibraryはIdentity周辺に依存していた` を `DevNetのCommonLibraryは純粋共通ではなかった` に改め、重複していた説明を圧縮
 
-## 2026-05-14 追記（ClaudeCode による ai-cross-review-handoff-workflow 初稿・Codex レビュー依頼）
+Codex レビュー結果:
 
-ClaudeCode が候補O「AI 2 台クロスレビュー運用記録」を記事化しました。
+- 文体ルール違反語: 0件
+- フロントマター: title / emoji / type / topics / published は維持。既に公開済みのため `published: true`
+- 必須要素: GitHub リンク、5行以上のコードブロック、実体験としての前提修正、参考リンクを維持
+- 構成: Identity基礎補足 → 二世代比較 → 誤前提の訂正 → 判断軸 → コスト → 将来分割の流れ。LAPRAS 指摘の明確性・読みやすさに対する追記として妥当
+- 守秘義務: 業務固有名詞・顧客名・実名の追加なし
+- Zenn CLI: `npx zenn list:articles` 成功
+- 公開可否: 公開済み記事の改善差分として問題なし。再 push はユーザー指示または通常の公開運用に従う
 
-- 対象記事: `articles/ai-cross-review-handoff-workflow.md`
-- 状態: `published: false`
-- 作成者: ClaudeCode
-- 主題: Claude Code と Codex CLI を役割固定でクロスレビューさせる運用と、ハーネス化前に踏んだ失敗の記録。具体記事名は方針として伏せ、指摘パターンを抽象化して書く
-- レビュー担当: Codex
-- 触ってよい範囲: 原則 `articles/ai-cross-review-handoff-workflow.md` のみ
-- `published: true` はユーザーが明示するまで変更しないこと
+## 2026-05-18 追記（Codex による codex-claude-skill-graph-worklog LAPRAS 風レビュー対応）
 
-レビュー観点（`.claude/rules/cross-agent-review.md` 準拠）:
+対象記事: `articles/codex-claude-skill-graph-worklog.md`
 
-- 「課題 → 判断 → 実装 → 検証 / 使いどころ → まとめ」の流れが体験記事として成立しているか
-- NG切り口（「Claude Code 入門」「Codex とは」のチュートリアル化、AI ツール比較レビュー）に寄っていないか
-- 過去の handoff から抽出した指摘パターン 4 種が、特定記事を読者に推測されない抽象度で書けているか
-- 「事実誤認」事例で言及した DevNet/DevNext 比較記事（本リポ内の `aspnet-core-identity-to-commonlibrary.md`）を直接名指ししていないか
-- フロントマター: title・emoji・topics 5 個以内・`published: false`
-- 文体ルール違反語、AI 的締め文、曖昧な主語の有無
-- GitHub リンク／5 行以上の実コードまたは構造化された引用、体験 / 失敗例、参考リンクの有無
-- 守秘義務: 過去勤務先・顧客名・支援機関・体調文脈の混入なし
+ユーザーが貼り付けた LAPRAS 風レビューでは、総合4、論理性3.5、実用性4.0、読みやすさ4.0、独自性4.5、明確性4.0。主な改善点は、セクション間の論理接続、`decisions` と `strategies` の相互関係の図解、クロスレビュー記事との役割分けへの遷移、Obsidian 未経験者向けの導入ハードル補足。
 
-執筆時の素材：
+Codex が反映した差分:
 
-- `CLAUDE_CODE_HANDOFF.md` の過去レビュー記録（4記事一斉、phycock、electron-smartscreen、M 記事の Codex 指摘）
-- `.claude/rules/cross-agent-review.md` の役割分担表・公開ゲート 4 条件
+- `はじめに` に、Obsidian 固有機能ではなく Markdown ファイルを `decisions/` と `strategies/` に分ける運用であり、通常の Git 管理メモでも試せることを追記
+- `decisions` セクション末尾に、技術判断を外向きの価値へつなげるため `strategies` が必要になる橋渡し文を追記
+- `strategies` セクションに Mermaid 図を追加し、AI 作業から `decisions/`、再利用、`strategies/`、Zenn記事・ポートフォリオ説明へつながる流れを明示
+- `クロスレビュー記事とは役割を分ける` の冒頭に、ここまでの論点から隣接テーマ整理へ移る橋渡し文を追記
 
-次アクション:
+Codex レビュー結果:
 
-- Codex による公開前レビュー（`/article-review` 相当）
-- 重大指摘があれば反映、なければユーザー明示を待って `published: true` に変更
+- 文体ルール違反語: 0件
+- フロントマター: title / emoji / type / topics / published は維持。既に公開済みのため `published: true`
+- 必須要素: GitHub リンク、5行以上のコードブロック、体験ベースの問題設定、参考リンクを維持
+- 構成: `decisions` → `strategies` → 記録条件 → 記事候補 → クロスレビューとの差分の接続を補強。LAPRAS 指摘の論理性に対する追記として妥当
+- 守秘義務: 業務固有名詞・顧客名・実名の追加なし
+- Zenn CLI: `npx zenn list:articles` 成功
+- 公開可否: 公開済み記事の改善差分として問題なし。再 push はユーザー指示または通常の公開運用に従う
 
-Codex レビュー結果（2026-05-14）:
+## 2026-05-18 追記（Codex による LAPRAS 風レビュー対応後チェックと自動化ルール追加）
 
-- 公開可否: 🔴 修正必須。記事の主旨は成立しているが、ハンドオフで指定された「具体記事名・指摘パターンを抽象化する」方針に対して、本文の実例が具体的すぎる
-- 重大指摘1: `articles/ai-cross-review-handoff-workflow.md` L21-L25 が、`DevNet/DevNext 比較記事`、`harness17/DevNet`、`ActivityType.IndividualTraining`、`ProgramType.ApplicationInterview` まで具体化している。ハンドオフの「具体記事名は伏せ、指摘パターンを抽象化して書く」「特定記事を読者に推測されない抽象度」に反する。記事名・リポジトリ名・Enum 名は「ある比較記事」「既定ブランチ違い」「業務ドメイン由来の enum 名」程度へ一般化すること
-- 重大指摘2: L101-L102 でも `IndividualTraining`、`ApplicationInterview`、`isAtHome` を再掲しており、守秘リスクの実例として強すぎる。記事の教訓は伝わるため、具体識別子ではなく `DomainSpecificTraining` / `ApplicationProcess` / `isOnsite` のような記事用の架空名か、完全に抽象化した説明へ置換すること
-- 軽微指摘1: フロントマター L5 の topics に日本語 `個人開発` があり、article-review skill の「topics は英小文字」基準から外れる。`indie` などへ変更推奨
-- 軽微指摘2: L2 の title は長めで、ローカル基準の 30〜40 字を超える。候補: `AI 2台クロスレビューで技術記事の盲点を拾う`
-- 軽微指摘3: L145 の Claude Code 公式リンクは `https://docs.claude.com/...` でも表示されるが、公式検索では `https://docs.anthropic.com/en/docs/claude-code/overview` も確認できる。既存記事群との表記に合わせて Anthropic docs 側へ寄せると無難
-- 必須要素: GitHub リンクは OpenAI Codex CLI のみで `github.com/harness17/` へのリンクがない。Lapras/GitHub連動を意識するなら、このリポジトリか関連する先行記事への GitHub リンクを参考リンクに追加すること
-- 文体・構成: NG語は L109-L111 に例示として出ているが、文体違反の本文使用ではなく「検出対象例」なので許容。`はじめに` / `まとめ` あり、コードブロックは `markdown` 指定済み、最大17行
-- 相互レビューゲート: この記録で Codex レビュー結果は残ったが、重大指摘修正後に再レビューが必要。`published: false` は維持すること
+対象記事: `articles/cross-agent-harness-introduction.md`
 
-Codex 指摘への対応状況（2026-05-14, ClaudeCode 反映）:
+ユーザーが貼り付けた LAPRAS 風レビューでは、総合4、論理性4.0、実用性4.0、読みやすさ4.0、独自性4.5、明確性3.5。主な改善点は、AI エージェント運用の初心者向け問題設定と、導入後のトラブルシューティング追加。
 
-| 指摘 | 反映内容 |
-|------|---------|
-| 重大1: L21-L25 が `DevNet/DevNext 比較記事`・`harness17/DevNet`・福祉ドメイン Enum 名まで具体化 | 「ある比較記事」「対象リポの既定ブランチ名と食い違っていて全件 404」「業務ドメイン固有の語彙を含む Enum 名（`DomainSpecificTraining`、`ApplicationProcess` 相当）」に一般化 |
-| 重大2: L101-L102 で `IndividualTraining` / `ApplicationInterview` / `isAtHome` を再掲 | 「業務ドメイン固有の Enum 名（`DomainSpecificTraining`、`ApplicationProcess` 相当）」「`isOnsite` のような実運用の語彙に近い変数名」に置換 |
-| 軽微1: topics 日本語 `個人開発` | `indie` に変更 |
-| 軽微2: title 30-40字超過 | 「AI 2 台クロスレビューで技術記事の盲点を拾う」(23 字) に短縮 |
-| 軽微3: Claude Code 公式リンク表記の統一 | `docs.claude.com` → `docs.anthropic.com/en/docs/claude-code/overview` に変更 |
-| 必須要素: GitHub リンクが OpenAI Codex CLI のみ | 本記事の運用ルール本体 `harness17/zenn-articles/.claude/rules/cross-agent-review.md` を参考リンクに追加 |
+Codex が反映した差分:
 
-次アクション:
+- `はじめに` に、複数 AI エージェント運用では作業範囲、レビュー結果、検証状況、公開判断が会話ごとに分散するという問題設定を追記
+- インストール後の流れとして、対象プロジェクトごとの判断を profile と handoff に寄せる橋渡し文を追記
+- `導入後に詰まったときに見るところ` セクションを追加し、`project-collaboration-profile.md`、`CLAUDE_CODE_HANDOFF.md`、既存 profile / handoff がある場合の `-Force` 前確認を説明
 
-- Codex に再レビュー依頼（重大指摘 2 件と軽微 3 件＋必須要素の反映確認）
-- 重大指摘がなければユーザー明示を待って `published: true` に変更
+Codex レビュー結果:
 
-Codex 再レビュー結果（2026-05-14）:
+- 文体ルール違反語: 0件
+- フロントマター: title / emoji / type / topics / published は維持。既に公開済みのため `published: true`
+- 必須要素: GitHub リンク、5行以上のコードブロック、体験ベースの問題設定、参考リンクを維持
+- 構成: `はじめに`、問題設定、導入、profile、handoff、skills、導入実績、トラブルシューティング、まとめの流れ。LAPRAS 指摘の明確性・実用性に対する追記として妥当
+- 守秘義務: 業務固有名詞・顧客名・実名の追加なし
+- Zenn CLI: `npx zenn list:articles` 成功
+- 公開可否: 公開済み記事の改善差分として問題なし。再 push はユーザー指示または通常の公開運用に従う
 
-- 公開可否: 🟢 公開前レビュー上の重大指摘なし。ユーザーの公開明示待ち
-- 反映確認:
-  - 旧重大指摘1: 特定記事・具体リポジトリ・実Enum名の露出は解消済み。L23-L27 は「ある比較記事」「対象リポの既定ブランチ名」「業務ドメイン固有の語彙を含む Enum 名（架空名相当）」に一般化されている
-  - 旧重大指摘2: L103-L104 も架空名・抽象化へ置換済みで、`IndividualTraining` / `ApplicationInterview` / `isAtHome` は本文に残っていない
-  - 旧軽微指摘: title 短縮、topics `indie` 化、Claude Code 公式リンクの `docs.anthropic.com` 化、`github.com/harness17` リンク追加を確認
-- 必須要素: `github.com/harness17` リンクあり、Markdownコードブロック最大17行、体験/失敗例あり、参考リンクあり
-- 文体・守秘: NG語は L111-L113 に「検出対象例」として出ているだけなので許容。守秘義務キーワードの公開ブロッカーなし
-- 構成: `はじめに` / `まとめ` あり。見出し数・コードブロック言語指定とも問題なし
-- 検証: `npx zenn list:articles` で記事認識済み。`published: false` 維持
-- 補足: `harness17/zenn-articles` リンクは `blob/main`。ローカル作業ツリーの現在ブランチは `main` なので整合している。外部 `git ls-remote` は認証エラーで確認不可だったが、公開前ブロッカーとは扱わない
+自動化ルール追加:
 
-## 2026-05-14 追記（M 記事を aspnet-core-identity-to-commonlibrary に差し替え）
-
-旧 `articles/devnet-devnext-repository-generic-regret.md` は Codex レビューで重大指摘 2 件（事実誤認・参考リンク 404）が確定し、さらに追加調査で **DevNet master にも `RepositoryBase<TEntity, TEntityHistory, TCondModel>` の3型版が初期コミットから存在**することが判明したため、記事の中心主張（「DevNet 二重 Generic → DevNext 三重 Generic を並列追加」）が成立しないと判断。`articles/` と `drafts/` から削除済み。
-
-新軸で書き直した記事:
-
-- 対象記事: `articles/aspnet-core-identity-to-commonlibrary.md`
-- 状態: `published: false`
-- 作成者: ClaudeCode
-- 主題: DevNet 時代は `Site/Entity/ApplicationUser.cs` と Web プロジェクト側に置いていた Identity エンティティを、DevNext で `CommonLibrary/Entity/ApplicationUser.cs` に上げた判断。「共通ライブラリは Identity 非依存」の Framework 時代の制約を、Core のパッケージ設計変化とテンプレートの実需から外した経緯
-- レビュー担当: Codex
-- 触ってよい範囲: 原則 `articles/aspnet-core-identity-to-commonlibrary.md` のみ
-- `published: true` はユーザーが明示するまで変更しないこと
-
-旧記事の Codex 指摘への対応状況:
-
-| 旧指摘 | 対応 |
-|--------|------|
-| 重大1: 「DevNet は2型版のみ」主張は master では誤り | テーマ自体を差し替え、Identity 軸に変更 |
-| 重大2: 参考リンクが `blob/main` で 404、既定ブランチは `master` | 新記事の参考リンクは全て `blob/master` で記載 |
-| 軽微: title 46字超過 | 新タイトル「ASP.NET Core 移行で Identity を共通ライブラリに上げた判断」28 字 |
-| 軽微: topics に日本語 `個人開発` | 新 topics `["aspnetcore", "csharp", "identity", "dotnet", "architecture"]` 全て英小文字 |
-
-執筆時の一次情報補強:
-
-- DevNet `Site/Entity/ApplicationUser.cs`: namespace `Site.Entity`、`Microsoft.AspNet.Identity.EntityFramework` を using
-- DevNext `CommonLibrary/Entity/ApplicationUser.cs`: namespace `Dev.CommonLibrary.Entity`、`Microsoft.AspNetCore.Identity` を using
-- DevNext で `SiteEntityBase`, `ApplicationRole`, `UserPreviousPassword` も `CommonLibrary/Entity/` 配下に移動
-- DevNet では `Site/Entity/` 配下に同等クラスが置かれており、`CommonLibrary` は Identity 非依存だった
-- 動機（ユーザー確認済み）: 「Core の Microsoft.AspNetCore.Identity パッケージ設計が変わり、`CommonLibrary` を Identity 依存にしても良いと判断した」
+- `.claude/rules/cross-agent-review.md` に、LAPRAS / Zenn AI レビュー / ユーザーコメント対応後は `/article-review` 相当で再チェックし、`CLAUDE_CODE_HANDOFF.md` に残すルールを追加
+- `.claude/rules/zenn-workflow.md` に、外部レビューコメント対応フローを追加
+- `.agents/skills/article-review/SKILL.md` と `.claude/skills/article-review/SKILL.md` に、レビューコメント対応後の Codex/ClaudeCode レビュー記録手順を同期
 
 次アクション:
 
-- Codex による公開前レビュー（`/article-review` 相当、新軸での再レビュー）
-- 重大指摘があれば反映、なければユーザー明示を待って `published: true` に変更
+- この記事を main に反映する場合は、対象ファイルとルール/skill の差分を確認してから個別 stage する
+- Zenn 実サイトで 200 を確認できた日を LAPRAS 確認の起算点にする
 
-Codex 追加レビュー結果（2026-05-14）:
+## アーカイブ済み（2026-Q2）
 
-- 公開可否: 🔴 修正必須。旧M記事の `RepositoryBase` 事実誤認と `blob/main` 404 は解消しているが、新記事の中心前提に別の事実ズレがある
-- 重大指摘1: `articles/aspnet-core-identity-to-commonlibrary.md` L43 / L70 / L72-L82 の「DevNet の `CommonLibrary` は Identity 非依存」「Web プロジェクトに参照させても Identity ランタイムは引っ張られない」という説明は、ローカル実体 `H:/PAC_WORK/DEV_STANDARD_PROJECT/trunk/DevNet/CommonLibrary/CommonLibrary.csproj` と合わない。同 csproj には `Microsoft.AspNet.Identity.Core`、`Microsoft.AspNet.Identity.EntityFramework`、`Microsoft.AspNet.Identity.Owin`、`EntityFramework` 参照があり、`CommonLibrary/Entity/EntityBase.cs` でも `Microsoft.AspNet.Identity` を using して `GetUserId()` を使っている。したがって「Identity 非依存だったから Core で依存を外した/入れた」という軸はそのまま公開できない
-- 重大指摘2: L90-L92 の「`IdentityUser` 自体が EF Core から切り離されているので、`CommonLibrary` に置いても DB ストア実装まで引き連れない」という説明は、実際の `H:/ClaudeCode/DevNext/CommonLibrary/CommonLibrary.csproj` と合わない。同 csproj は `Microsoft.AspNetCore.Identity.EntityFrameworkCore` と `Microsoft.EntityFrameworkCore` を直接参照している。記事の主張を「IdentityUser の理論上の分離」ではなく「DevNext の CommonLibrary は Identity/EF 依存を受け入れた」へ修正する必要がある
-- 重大指摘3: L122-L124 の message も上記前提に依存しているため要修正。「DevNet で守っていた制約が DevNext で不要になった」ではなく、「DevNet では ApplicationUser / ApplicationRole を Site 側に置いていたが、CommonLibrary 自体は既に Identity 周辺へ依存していた。DevNext では Identity エンティティまで CommonLibrary に寄せ、テンプレート系列の共通基盤として割り切った」という方向なら一次情報と整合する
-- 軽微指摘1: L21-L40 の DevNet コード引用は実ファイルからコメントと `GenerateUserIdentityAsync` を省略している。記事用抜粋としては許容だが、直前に「主要部分だけ抜粋」の一言があると正確
-- 軽微指摘2: フロントマター、topics、`published: false`、`blob/master` リンク、GitHub リンク、コードブロック言語指定、文体NG語、守秘義務キーワードはいずれも問題なし
-- 相互レビューゲート: この記録で Codex 追加レビュー結果は残ったが、重大指摘修正後に再レビューが必要。`published: false` は維持すること
+完了済みハンドオフは [handoffs/archive/2026-Q2.md](handoffs/archive/2026-Q2.md) に切り出し済み。
 
-Codex 指摘への対応状況（2026-05-14, Codex 反映）:
-
-| 指摘 | 反映内容 |
-|------|---------|
-| 重大1: DevNet `CommonLibrary` を Identity 非依存として扱っていた | 記事の軸を「Identity 依存の有無」から「ApplicationUser / ApplicationRole など認証エンティティ本体を Site 側から CommonLibrary 側へ寄せた判断」に変更。DevNet `CommonLibrary` は `Microsoft.AspNet.Identity` / OWIN / EF に既に依存していた事実を本文で明記 |
-| 重大2: DevNext `CommonLibrary` が DB ストア実装を引き連れないという説明 | DevNext `CommonLibrary.csproj` が `Microsoft.AspNetCore.Identity.EntityFrameworkCore` と `Microsoft.EntityFrameworkCore` を直接参照している前提に修正。「Identity/EF Core 依存を受け入れたテンプレート系列の共通基盤」として説明 |
-| 重大3: message が旧前提に依存 | `:::message` を「一般論ではなく、DevNext では共通基盤がすでにユーザーIDやEF Coreに寄っており、複数サンプルから同じ Identity 型を参照したい実需があったため」という内容へ差し替え |
-| 軽微1: DevNet コード引用が抜粋であること | 「主要部分だけ抜粋します」を追記 |
-
-修正後セルフチェック:
-
-- `npx zenn list:articles` で `aspnet-core-identity-to-commonlibrary` が認識されることを確認
-- コードブロックは `csharp:...` 指定済み、最大 19 行
-- NG語・守秘義務キーワードの機械スキャンで公開ブロッカーなし
-- `published: false` 維持
-- 残確認: 「Identity 非依存」は、旧前提を否定する文脈でのみ残している
-
-Codex 再レビュー結果（2026-05-14）:
-
-- 公開可否: 🟢 公開前レビュー上の重大指摘なし。ユーザーの公開明示待ち
-- 反映確認:
-  - 旧重大指摘1: 「DevNet CommonLibrary は Identity 非依存だった」という中心前提は撤回され、L74-L89 で「Identity周辺には依存していたが、ApplicationUser / ApplicationRole 本体は Site 側に残していた」と説明されている
-  - 旧重大指摘2: 「DB ストア実装まで引き連れない」という説明は削除され、L115-L123 で DevNext `CommonLibrary.csproj` が Identity / EF Core 依存を受け入れている前提に修正済み
-  - 旧重大指摘3: L142-L144 の `:::message` は旧前提ではなく、複数Samplesで同じ Identity 型を参照したい実需を根拠にした内容へ変更済み
-  - 旧軽微指摘: L21 に「主要部分だけ抜粋します」を追記済み
-- 必須要素: `github.com/harness17` リンクあり、C#コードブロック最大19行、体験/失敗例あり、参考リンクあり
-- 文体・守秘: NG語・守秘義務キーワードの公開ブロッカーなし。`Identity 非依存` は旧前提を否定する文脈でのみ使用
-- 構成: `はじめに` / `まとめ` あり。Zenn CLI で記事認識済み。`published: false` 維持
-
-## 2026-05-14 追記（ClaudeCode による devnet-devnext-repository-generic-regret 初稿・Codex レビュー依頼）
-
-> ⚠️ 本記事は上記「M 記事を aspnet-core-identity-to-commonlibrary に差し替え」により retire 済み。記録のみ残す。
-
-ClaudeCode が候補M「DevNet と DevNext で同じ機能を別実装にした設計判断の差分」を記事化しました。
-
-- 対象記事: `articles/devnet-devnext-repository-generic-regret.md`
-- 状態: `published: false`
-- 作成者: ClaudeCode
-- 主題: 自前テンプレート二世代で `RepositoryBase<TEntity, TCondModel>`（DevNet）から `RepositoryBase<TEntity, TEntityHistory, TCondModel>` を並列追加した（DevNext）経緯と、同名クラスが Generic 引数違いで並ぶ構造を後悔ベースで整理
-- レビュー担当: Codex
-- 触ってよい範囲: 原則 `articles/devnet-devnext-repository-generic-regret.md` のみ
-- `published: true` はユーザーが明示するまで変更しないこと
-
-レビュー観点（`.claude/rules/cross-agent-review.md` 準拠）:
-
-- 「課題 → 判断 → 実装 → 検証/使いどころ → まとめ」の流れが体験記事として成立しているか
-- NG切り口（「CommonLibrary の作り方」「便利メソッド集」「DevNext 紹介」のチュートリアル化）に寄っていないか
-- セクション4の「いま戻れるなら」リファクタ案が、記事用書き下ろし疑似コードであることが本文から伝わるか
-- DevNet/DevNext のコード引用が正しいか（実コードと差分がないか）
-- フロントマター: title・emoji・topics 5 個以内・`published: false`
-- 文体ルール違反語、AI 的締め文、曖昧な主語の有無
-- GitHub リンク、5 行以上の実コード、体験/失敗例、参考リンクの有無
-- 守秘義務: 過去勤務先・顧客名・支援機関・体調文脈の混入なし
-
-執筆時の一次情報補強:
-
-- DevNet `CommonLibrary/Repository/RepositoryBase.cs` は二重 Generic `<TEntity, TCondModel>` のみ
-- DevNext は初期コミット `aa63ddb9`（2026-03-20）時点で二重 Generic と三重 Generic `<TEntity, TEntityHistory, TCondModel>` が**並存**していたことを `gh api` で確認
-- 三重版は二重版を継承し、`IRepositoryHistory<TEntity, TEntityHistory>` を追加実装、`Insert / Update / LogicalDelete` を override
-- 利用例: `Samples/DatabaseSample/Repository/SampleEntityRepository.cs` が `RepositoryBase<SampleEntity, SampleEntityHistory, SampleEntityCondViewModel>` を継承
-
-次アクション:
-
-- Codex による公開前レビュー（`/article-review` 相当）
-- 重大指摘があれば反映、なければユーザー明示を待って `published: true` に変更
-
-Codex レビュー結果（2026-05-14）:
-
-- 公開可否: 🔴 修正必須。本文の中心事実と参考リンクに公開前ブロッカーあり
-- 重大指摘1: `articles/devnet-devnext-repository-generic-regret.md` L19-L20 / L36 / L120 の「DevNet は2型版のみ、DevNextで3型版を並列追加」という主張は、現在の `harness17/DevNet` 既定ブランチ `master` 上の `CommonLibrary/Repository/RepositoryBase.cs` に `RepositoryBase<TEntity, TEntityHistory, TCondModel>` が存在するため、そのまま公開できない。旧コミットを対象にするなら本文とリンクをコミット固定にする
-- 重大指摘2: 参考リンク L184-L186 が `blob/main` になっているが、`harness17/DevNet` / `harness17/DevNext` の既定ブランチは `master` で、3件とも 404。`blob/master` または対象コミット固定 URL に修正する
-- 軽微指摘: フロントマター title は46字でローカル基準の30-40字を超過、topics に日本語 `個人開発` があり英小文字ルールから外れる
-- NG語・守秘義務: 機械スキャン上は問題なし
-- 相互レビューゲート: この記録で Codex レビュー結果は残ったが、上記修正後に再レビューが必要
-
-## 2026-05-11 追記（ClaudeCode による electron-smartscreen-oss-distribution 公開前レビュー結果）
-
-ClaudeCode が `articles/electron-smartscreen-oss-distribution.md`（Codex 作成、2026-05-11 依頼分）に対して `/article-review` 相当の公開前レビューを実施し、ユーザー指示で任意改善を反映しました。
-
-レビュー結果サマリ:
-
-- フロントマター: title 33 字、emoji `🪟`、topics 5 個、`published: false` すべて適合
-- 文体ルール違反語: 0 件（「素晴らしい」「いかがでし」「ぜひ参考」「とされている」等の NG 語なし、`〜することで` 3 連鎖なし、AI 的締め文なし）
-- 必須要素: GitHub リンク（youtube-schedule、本文 2 箇所＋参考リンク）、コードブロック 7 個すべて言語指定あり（最大 16 行）、体験表現複数、本文約 4,200 字
-- 守秘義務: 過去勤務先・顧客名・支援機関・体調文脈すべて検出なし。token 値・証明書ファイル・内部パスの記載なし
-- レビュー観点別評価: 過度な断定なし／署名を目標に置く判断軸あり／Youtom 紹介は宣伝寄りでない／公式リンクの使い方は自然
-- ブロッカー: なし
-
-任意レベルの指摘 1 点とその反映状況:
-
-| 指摘 | 反映内容 |
-|------|---------|
-| 「署名後も SmartScreen がすぐ消えるとは限らない」読者誤解防止のため `:::message alert` で強調する | L198–200 の「特に、署名後も SmartScreen がすぐ消えるとは限らない点は重要です。」〜「『署名すれば初回から必ず警告ゼロ』とは書かない方が正確です。」を `:::message alert` で囲み、直後の理由補足段落は alert の外に残して読みやすさを維持 |
-
-`:::message alert` の追加箇所は 1 個に絞り、過剰に強調しない方針で反映しました（候補として L96 周辺「警告は無視してよい、と書かない」も挙がりましたが、これは筆者のセルフ判断記録として地の文に残し、読者向け注意喚起は L198–200 に集約）。
-
-公開ゲート4条件（`.claude/rules/cross-agent-review.md`）の状態:
-
-| 記事 | ①セルフ | ②相互レビュー記録 | ③重大指摘 | ④ユーザー指示 |
-|------|--------|----------------|-----------|--------------|
-| electron-smartscreen-oss-distribution | ✅ | ✅（本書） | 🟢 残なし | ❌ 未指示 |
-
-次アクション:
-
-- ユーザーの公開指示を待つ
-- 明示後に `published: true` へ変更してコミット & push
-- 公開後は `/article-publish` を実行（README 更新、Lapras 確認予約、職経書追記検討）
-
-## 2026-05-11 追記（Codex による electron-smartscreen-oss-distribution 初稿・ClaudeCodeレビュー依頼）
-
-Codex が候補I「未署名 Electron アプリの SmartScreen 問題と OSS 配布の現実」を記事化しました。
-
-- 対象記事: `articles/electron-smartscreen-oss-distribution.md`
-- 状態: `published: false`
-- 作成者: Codex
-- 主題: 個人開発 Electron アプリ Youtom を Windows 向けに配布するとき、未署名 installer で SmartScreen 警告が出る問題にどう向き合ったか
-- レビュー担当: ClaudeCode
-- 触ってよい範囲: 原則 `articles/electron-smartscreen-oss-distribution.md` のみ
-- `published: true` はユーザーが明示するまで変更しないこと
-
-Codex 側セルフチェック:
-
-- フロントマター: `type: tech`、topics 5個、`published: false`
-- 必須要素: GitHub リポジトリリンク、5行以上のコードブロック、体験・失敗例、参考リンクを含む
-- 文体NG語: `素晴らしい` / `驚くべき` / `いかがでしたでしょうか` / `ぜひ参考` などのスキャンで 0 件
-- 守秘・セキュリティ: secret 名は一般名・公開済み workflow 内のものに限定し、token 値・証明書ファイル・内部パスは記載なし
-
-レビュー観点:
-
-- SmartScreen / コード署名の説明が過度な断定や回避手順の推奨に見えないか
-- 「未署名で配布するしかない」ではなく「署名を目標に置きつつ未署名期間を説明する」判断軸が伝わるか
-- Youtom の紹介が宣伝寄りになりすぎず、配布設計の体験記事として成立しているか
-- Microsoft / Electron / GitHub Actions 公式リンクの使い方が自然か
-- 公開前に `/article-review` 相当の文体・必須要素・守秘義務チェックを通すこと
+- 2026-05-17 cross-agent-harness-introduction 公開前レビュー結果（記事公開済み）
+- 2026-05-17 cross-agent-harness 紹介記事初稿・ClaudeCodeレビュー依頼
+- 2026-05-16 article-review skill コメント対応モードの mirror 同期
+- 2026-05-14 M記事執筆の反省と article-fact-check ルール新設
+- 2026-05-14 Codex既存記事2本の差別化レビュー結果
+- 2026-05-14 ai-cross-review-handoff-workflow 初稿・Codexレビュー（記事公開済み）
+- 2026-05-14 M記事を aspnet-core-identity-to-commonlibrary に差し替え（記事公開済み）
+- 2026-05-14 devnet-devnext-repository-generic-regret 初稿（retire済み）
+- 2026-05-11 electron-smartscreen-oss-distribution 公開前レビュー結果（記事公開済み）
+- 2026-05-11 electron-smartscreen-oss-distribution 初稿・ClaudeCodeレビュー依頼
+- 2026-05-10 候補N claude-code-workflow-evolution 初稿・レビュー依頼（記事公開済み）
+- 2026-05-10 既存4記事の相互レビュー実施（全記事公開済み）
+- 2026-05-10 記事相互レビュー運用のハーネス化（cross-agent-review ルール新設）
 
 ## 2026-05-11 追記（ClaudeCode による phycock-schedule-entry-consolidation 公開前レビュー結果）
 
@@ -445,95 +313,6 @@ ClaudeCode が `articles/phycock-schedule-entry-consolidation.md`（Codex 作成
 - ユーザーの公開指示を待つ
 - 明示後に `published: true` へ変更してコミット & push
 - 公開後は `/article-publish` を実行（README更新、Lapras 確認予約、職経書追記検討）
-
-## 2026-05-10 追記（候補Nの記事作成・ClaudeCodeレビュー依頼）
-
-Codex が候補N「Claude Code 導入から数ヶ月の運用変遷」を記事化しました。
-
-- 対象記事: `articles/claude-code-workflow-evolution.md`
-- 状態: `published: false`
-- 作成者: Codex
-- 主題: Claude Code 運用を、単一 `CLAUDE.md` から `rules/`・project rules・skills・handoff・Skill Graph へ分けていった変遷
-- レビュー担当: ClaudeCode
-- 触ってよい範囲: 原則 `articles/claude-code-workflow-evolution.md` のみ
-- `published: true` はユーザーが明示するまで変更しないこと
-
-レビュー観点:
-
-- 「導入直後 → 詰まり → 分割/skill化 → Codex併用 → handoff/Skill Graph」の時系列が自然か
-- 公式ドキュメント焼き直しではなく、体験ベースの記事として成立しているか
-- Claude Code / Codex / Opus の記述が宣伝調または断定過剰になっていないか
-- `.claude` や `settings.json` 由来の機密・個人情報・ローカル事情が出すぎていないか
-- GitHubリンク、5行以上のコード例、文体ルール、topics、`published: false` を満たしているか
-
-## 2026-05-10 追記（ClaudeCode による相互レビュー実施）
-
-ClaudeCode が `articles/` 配下の4記事に対して `/article-review` 相当の公開前レビューを実施しました。
-
-対象記事と作成者（ユーザー確認済み）:
-
-- `articles/youtube-data-api-rss-quota-reduction.md` — Codex 作成
-- `articles/fullcalendar-event-color-rendering.md` — Codex 作成
-- `articles/youtom-introduction.md` — Codex 作成
-- `articles/devnext-mvc-helper-extensions.md` — Codex 作成
-
-レビュー結果と修正対応:
-
-- **fullcalendar-event-color-rendering.md**: 福祉ドメイン用語（`ActivityType.IndividualTraining` / `ProgramType.ApplicationInterview` 等）が透けるリスクを ClaudeCode が指摘。汎用業務カレンダー名（`EventCategory.Work` / `EventCategory.Meeting` / `EventCategory.Training` / `WorkType.Conference` / `WorkType.Focused` / `WorkType.Other` 等）に置換済み。`isAtHome` → `isRemote` も合わせて変更。
-- **youtom-introduction.md**: `topics` の日本語タグ `個人開発` を `indie` に変更。簡易/フルモードのファーストタッチ所要時間の比較を1行追加（検証証跡の補強）。
-- **youtube-data-api-rss-quota-reduction.md**: 末尾の締め文を「クォータ削減のヒントになれば。」から、自分の手癖が変わった体験ベースの締めに修正。
-- **devnext-mvc-helper-extensions.md**: 文体・必須要素・守秘義務の重大指摘なし。
-
-公開ゲート4条件（`.claude/rules/cross-agent-review.md`）の状態:
-
-| 記事 | ①セルフ | ②相互レビュー記録 | ③重大指摘 | ④ユーザー指示 |
-|------|--------|----------------|-----------|--------------|
-| youtube-data-api-rss-quota-reduction | ✅ | ✅（本書） | 🟢 残なし | ❌ 未指示 |
-| fullcalendar-event-color-rendering | ✅ | ✅（本書） | 🟢 残なし | ❌ 未指示 |
-| youtom-introduction | ✅ | ✅（本書） | 🟢 残なし | ❌ 未指示 |
-| devnext-mvc-helper-extensions | ✅ | ✅（本書） | 🟢 残なし | ❌ 未指示 |
-
-次アクション:
-
-- ユーザーの公開順決定を待つ（推奨順は `ops/handoffs/2026-05-10-zenn-article-candidates-codex.md` の Article Draft Progress を参照）
-- ユーザーの明示後に `published: true` へ変更してコミット&push
-- 公開後は `/article-publish` を実行
-
-## 2026-05-10 追記
-
-Codex が記事作成後の相互レビュー運用をハーネス化しました。
-
-- 追加ルール: `.claude/rules/cross-agent-review.md`
-- 更新箇所:
-  - `AGENTS.md`
-  - `CLAUDE.md`
-  - `.claude/rules/zenn-workflow.md`
-  - `.claude/rules/writing-process.md`
-  - `.agents/skills/article-review/SKILL.md`
-  - `.claude/skills/article-review/SKILL.md`
-- 今後の標準運用:
-  - Codex が記事を作成したら、ClaudeCode へのレビュー依頼を handoff に残す
-  - ClaudeCode が記事を作成したら、Codex へのレビュー依頼を handoff に残す
-  - `/article-review` では相互レビュー記録の有無も確認する
-  - `published: true` は、相互レビュー記録・重大指摘なし・ユーザーの公開指示が揃うまで変更しない
-
-Codex が FullCalendar 系候補を記事化しました。
-
-- 記事: `articles/fullcalendar-event-color-rendering.md`
-- 状態: `published: false`
-- 次: `/article-review` 相当で文体・必須要素・守秘義務を確認し、必要ならタイトルと導入を調整する
-
-Codex が Youtom 紹介記事も作成しました。
-
-- 記事: `articles/youtom-introduction.md`
-- 状態: `published: false`
-- 次: ClaudeCode で公開前レビューに回す
-- レビュー観点:
-  - 紹介記事として宣伝寄りになりすぎていないか
-  - 「課題 → 判断 → 実装 → 使いどころ」の流れが自然か
-  - 簡易モード（RSS）とフルモード（YouTube Data API）の説明に誤解がないか
-  - 実コード例・GitHub リンク・体験/判断軸・参考リンクが Zenn 記事要件を満たしているか
-  - `published: true` はユーザーが明示するまで変更しない
 
 ## 目的
 
@@ -690,3 +469,46 @@ SQL Server チューニングなど、体験より解説になりやすいテー
   - コードブロックへファイル名を付与
   - 見出し統合は任意指摘のため、現状の読みやすさを優先して未実施
 - 次: ユーザーが公開を明示したら `published: true` に変更し、公開後に `drafts/published-log.md` を更新する
+
+## 2026-05-18 ClaudeCode 追記: MVC Helper移植記事 LAPRASレビュー対応
+
+- 対象: `articles/devnext-mvc-helper-extensions.md`（`published: true`、公開済み）
+- 元コメント: LAPRAS レビュー（総合3.9 / 論理性3.5 / 実用性4.0 / 読みやすさ4.0 / 独自性4.5 / 明確性3.5）
+- 元コメント要点:
+  - 論理性: 各セクション間の関連性が薄く独立した問題解決として読まれる。統一テーマがほしい
+  - 明確性/読みやすさ: TemplateInfo / GetFullHtmlFieldName など内部の仕組みの必要性が簡潔すぎ
+  - 実用性: Helperのテスト方法・複雑シナリオの注意点があると良い（任意改善）
+- 反映した差分:
+  - 「はじめに」に統一テーマ（POST で値が戻る「フォームの契約」を Helper 側で守る）を1段落追加
+  - チェックボックス Helper 節に TemplateInfo / GetFullHtmlFieldName の役割補足を1文追加
+- 反映しなかった指摘と理由:
+  - テスト方法の追記: コード大幅増となり体験記事の軸がぶれるため見送り
+  - 独自性・総合の称賛: 講評のため本文非反映
+- 修正後チェック: 文体NG語スキャン（ヒットなし）、`git diff` でコメント対応範囲内（4 insertions / 2 deletions、コード変更なし）を確認
+- 次: 公開済み記事のため、再 push はユーザーの公開指示を待つ
+
+## 2026-05-18 ClaudeCode 追記: MVC Helper移植記事 Codex レビュー依頼
+
+- 対象ファイル: `articles/devnext-mvc-helper-extensions.md`
+- 状態: `published: true`（公開済み・LAPRASレビューコメント対応後、未 push）
+- 主編集者: ClaudeCode（LAPRASレビュー対応の本文修正）
+- レビュー担当: Codex
+- レビュー観点（外部レビューコメント対応後の再レビュー）:
+  - 元コメント要点: LAPRAS レビュー（論理性3.5=セクション間の関連性が薄い／明確性3.5=TemplateInfo等の必要性が簡潔すぎ）
+  - 反映差分: 「はじめに」に統一テーマ1段落、チェックボックス節に TemplateInfo/GetFullHtmlFieldName 補足1文
+  - 未反映: テスト方法の追記（体験記事の軸がぶれるため見送り）
+- 確認したいこと: 追記がコメント対応の範囲に収まり本文の流れを崩していないか／統一テーマの説明が各セクションと整合しているか／文体NG語・守秘・事実整合に問題がないか
+- 触ってよい範囲: 対象記事のみ
+- `published: true` は既に公開済み。再 push はユーザー指示に従う（ClaudeCode 側で勝手に push しない）
+
+## 2026-05-18 Codex 追記: MVC Helper移植記事 ClaudeCode更新レビュー
+
+- 対象: `articles/devnext-mvc-helper-extensions.md`
+- レビュー結果:
+  - ClaudeCode 追記の「フォームの契約」テーマは、Helper の戻り値、選択部品、`PartialFor`、まとめの流れと整合している
+  - `TemplateInfo.GetFullHtmlFieldName` の補足は、LAPRAS コメントの明確性指摘に対して有効。ただし1文が長いため、読みやすさをさらに上げるなら2文に分けてもよい
+  - 文体NG語、守秘義務キーワード、コードブロック言語指定、文字数、GitHubリンク、はじめに/まとめを確認し、重大な問題なし
+- 軽微な残課題への対応:
+  - 参考リンクに、リンク先が何を補う資料かの短い説明を追記済み
+- 公開可否判断: 🟢 ClaudeCode のコメント対応差分と Codex の小修正を再 push 可能
+- 次: ユーザーが再 push を指示する場合、通常の公開済み記事更新として進める
