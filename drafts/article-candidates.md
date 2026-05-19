@@ -30,6 +30,7 @@
 | 2026-05-16 → 保留 | `phycock-schedule-entry-consolidation` | ASP.NET Core MVCでScheduleEntryに寄せた設計判断 | 候補J | 下書き / 公開保留 | ASP.NET Core / データモデル設計 |
 | 2026-05-16 | `codex-claude-skill-graph-worklog` | AIとの設計判断をMy-Skill-Graphに残して再利用する | 候補O | 403 / 実公開未確認 | AI協調開発 / ナレッジ管理 |
 | 2026-05-17 | `cross-agent-harness-introduction` | CodexとClaude Codeの共同作業をcross-agent-harnessに切り出した | 派生記事 | 403 / 実公開未確認 | AI協調開発 / OSS |
+| 下書き | `cross-agent-harness-automation` | CodexとClaude Codeを相互呼び出しするハーネスを組んだ | 派生記事 | 下書き | AI協調開発 / 自動化 |
 | 公開ログ未記録 | `aspnet-core-identity-to-commonlibrary` | ASP.NET Core移行でIdentityエンティティを共通化した判断 | 候補M | 200 / 公開確認 | ASP.NET Core / Identity |
 | 公開ログ未記録 | `ai-cross-review-handoff-workflow` | AI 2 台クロスレビューで技術記事の盲点を拾う | 派生記事 | 200 / 公開確認 | AI協調開発 / 記事レビュー |
 
@@ -47,6 +48,7 @@
 | O | My-Skill-Graph で設計判断を再利用する運用 | 公開指定済み / Zenn未確認 | `articles/codex-claude-skill-graph-worklog.md` | Zenn実サイトで 200 になるか確認する |
 | P | ASP.NET Core MVC で入力フォームの責務を ViewModel に寄せた話 | 未着手 | なし | DevNext / Phycock の実コード確認が必要 |
 | Q | Zenn 記事をリポジトリ管理して公開前レビューまで自動化した話 | 下書きあり | `drafts/zenn-article-repo-workflow.md` | 次に本文化する候補 |
+| 派生 | Codex / Claude Code 相互呼び出しハーネス | 下書きあり | `articles/cross-agent-harness-automation.md` / `drafts/cross-agent-harness-automation.md` | 公開前レビュー後に公開判断 |
 | R | Electron 個人開発アプリを公開した後に必要だった運用メモ | 一部カバー | `articles/electron-smartscreen-oss-distribution.md` / `articles/youtom-introduction.md` | README / Releases / 署名方針の運用に絞れば別記事化可能 |
 
 ## 保留候補
