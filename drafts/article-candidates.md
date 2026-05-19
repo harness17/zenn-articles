@@ -30,7 +30,7 @@
 | 2026-05-16 → 保留 | `phycock-schedule-entry-consolidation` | ASP.NET Core MVCでScheduleEntryに寄せた設計判断 | 候補J | 下書き / 公開保留 | ASP.NET Core / データモデル設計 |
 | 2026-05-16 | `codex-claude-skill-graph-worklog` | AIとの設計判断をMy-Skill-Graphに残して再利用する | 候補O | 403 / 実公開未確認 | AI協調開発 / ナレッジ管理 |
 | 2026-05-17 | `cross-agent-harness-introduction` | CodexとClaude Codeの共同作業をcross-agent-harnessに切り出した | 派生記事 | 403 / 実公開未確認 | AI協調開発 / OSS |
-| 下書き | `cross-agent-harness-automation` | CodexとClaude Codeを相互呼び出しするハーネスを組んだ | 派生記事 | 下書き | AI協調開発 / 自動化 |
+| 2026-05-19 | `cross-agent-harness-automation` | CodexとClaude Codeを相互呼び出しするハーネスを組んだ | 派生記事 | 200 / 公開確認 | AI協調開発 / 自動化 |
 | 公開ログ未記録 | `aspnet-core-identity-to-commonlibrary` | ASP.NET Core移行でIdentityエンティティを共通化した判断 | 候補M | 200 / 公開確認 | ASP.NET Core / Identity |
 | 公開ログ未記録 | `ai-cross-review-handoff-workflow` | AI 2 台クロスレビューで技術記事の盲点を拾う | 派生記事 | 200 / 公開確認 | AI協調開発 / 記事レビュー |
 

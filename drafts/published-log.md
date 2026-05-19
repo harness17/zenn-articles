@@ -9,6 +9,19 @@
 - ローカルの `published: true` と Zenn 実サイトの公開状態は分けて扱う。公開後は `https://zenn.dev/harness/articles/<slug>` に直接アクセスし、HTTP 200 とタイトル一致を確認する。
 - 403 / 404 / タイトル不一致の場合は、レートリミットやデプロイ遅延の可能性があるため `実公開未確認` として再確認対象に残す。
 
+## 2026-05-19 公開
+
+### CodexとClaude Codeを相互呼び出しするハーネスを組んだ
+
+- URL: https://zenn.dev/harness/articles/cross-agent-harness-automation
+- テーマ系統: AI 協調開発 / Codex・Claude Code 運用 / 自動化
+- 文字数: 約4,000字
+- 関連リポジトリ: [cross-agent-harness](https://github.com/harness17/cross-agent-harness) / [zenn-articles](https://github.com/harness17/zenn-articles)
+- 想定読者: Codex と Claude Code を併用する個人開発者
+- Zenn実サイト: 200 / 公開確認（2026-05-19、タイトル一致確認済み）
+- レビュー: ClaudeCode 公開前レビュー + Codex 相互レビュー（codex MCP 経由）、重大指摘なし
+- Lapras確認予定日: 2026-05-24（公開から5日後）
+
 ## 2026-05-17 Zenn 実公開状態の突き合わせ
 
 ### Zenn 実サイトで 200 確認
