@@ -26,6 +26,18 @@
 - `drafts/article-candidates.md` の最終突き合わせを 2026-05-20 に更新。
 - 公開済み候補は「選定対象外」と明記し、次に選ぶ候補ショートリストを追加。
 
+## 2026-05-24 Zenn 公開指定
+
+### 1. AI同士のhandoffを多層契約チェックリストにした
+
+- URL: https://zenn.dev/harness/articles/ai-handoff-multi-layer-contract-checklist
+- 管理ファイル: `articles/ai-handoff-multi-layer-contract-checklist.md`
+- テーマ系統: AI協調開発 / handoff / 作業契約
+- 関連リポジトリ: [zenn-articles](https://github.com/harness17/zenn-articles) / [cross-agent-harness](https://github.com/harness17/cross-agent-harness)
+- レビュー: Codex 初稿、ClaudeCode review-only 公開前レビュー済み、軽微指摘反映済み
+- 公開状態: Zenn 公開確認済み（2026-05-24、ユーザー確認）
+- Lapras確認予定日: 2026-05-29 〜 2026-05-31
+
 ## 2026-05-24 Qiita 公開（Chrome拡張系 独立記事3本）
 
 ### 1. Chrome拡張でYouTubeのSPA遷移後にcontent scriptが効かない問題を直した
