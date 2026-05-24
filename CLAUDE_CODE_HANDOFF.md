@@ -3,6 +3,46 @@
 最終更新: 2026-05-24
 対象プロジェクト: `H:/ClaudeCode/技術記事`
 
+## 2026-05-24 追記（Qiita AIエージェント/AI駆動系2記事の公開作業）
+
+依頼者: ユーザー
+作成者: ClaudeCode
+レビュー担当: Codex（3回ラウンドで重大指摘0達成）
+
+対象:
+
+- `qiita/public/claude-md-import-split-rules.md` → 公開済み: https://qiita.com/harnesswinner/items/6678320489deec25113a
+- `qiita/public/ai-edit-surgical-changes-rule.md` → **公開保留**（Qiita レート制限により push 失敗。ユーザー指示で再試行可）
+
+ワークフロー:
+
+1. `drafts/qiita-article-candidates.md` に優先度 A/B/C 基準を明文化、AIエージェント/AI駆動系/開発運用系/開発系を追加
+2. Phycock 関連候補（10件）を「公開許可待ち」として一括 C 化、新基準違反候補を B/C 降格
+3. 上記から AIエージェント運用系 1 件・AI駆動系 1 件を選定し執筆
+4. Codex レビュー: 初回 A 重大 2 件（`@` import 仕様の事実誤認 / 参考リンク欠落） → 公式 docs https://docs.anthropic.com/en/docs/claude-code/memory で裏取り後訂正 → 再レビューで「重大指摘なし」 → C 対応（`paths:` 併用注意 + GitHub リポリンク） → 最終「両記事とも公開ゲート通過」
+
+Codex レビュー観点クリア:
+
+- writing-style.md（NG 語）: ヒット 0
+- privacy.md（守秘）: Phycock や案件名を含まず、抽象化済み
+- article-requirements.md（GitHub リポリンク）: 記事1は DevNext `.claude/rules` を、記事2は `forrestchang/andrej-karpathy-skills` を参照
+- article-fact-check.md（中心主張）: 記事1は `~/.claude/CLAUDE.md` 38行 + `rules/` 17ファイル 929行 を `wc -l` で実測、`@import` 仕様は公式 docs で照合
+- cross-agent-review.md（相互レビュー）: Codex thread 019e57ad / 019e589e / 019e58a2 で 3 ラウンド完了
+
+レート制限メモ:
+
+- 2026-05-24 同日に Chrome 拡張系 3 件公開済み（午前）
+- 同日 15:22 に記事1（claude-md-import-split-rules）公開成功
+- 同日 15:23 に記事2（ai-edit-surgical-changes-rule）公開試行 → `QiitaRateLimitError` で失敗
+- Qiita 側の rate limit 解除を待って `npm run qiita:publish -- ai-edit-surgical-changes-rule` を再実行する。`ignorePublish: false` のまま push せず保留中
+
+次アクション:
+
+- レート制限解除後（目安: 翌日以降）に記事2 を再 publish
+- 公開後、`drafts/qiita-article-candidates.md` の保留行を実 URL に書き換え
+- 両記事公開反映後、`drafts/published-log.md` に追記し、`README.md` の関連記事リンクを更新するか判断
+- Lapras 技術力スコアを数日後に確認
+
 ## 2026-05-24 追記（Qiita Chrome拡張系3記事レビュー依頼）
 
 依頼者: ClaudeCode
