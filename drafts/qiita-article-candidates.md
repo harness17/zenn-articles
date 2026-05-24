@@ -24,11 +24,8 @@ Zenn 記事の再投稿ではなく、Qiita 向けに独立して書ける「1�
 
 | 優先 | 候補 | Zenn との差分 | 想定 slug | 次の扱い |
 | --- | --- | --- | --- | --- |
-| A | Chrome拡張でYouTubeのSPA遷移後にcontent scriptが効かない問題を直した | 拡張紹介ではなく、`matches` と SPA 遷移の1点解決 | `youtube-spa-content-script-matches` | 最初に構成化する候補 |
 | A | PlaywrightでChart.jsの描画完了を待ってからPDF化する | ASP.NET Core PDF 化全体ではなく、JSグラフ待機に絞る | `playwright-wait-chartjs-before-pdf` | Phycock 実コード確認後 |
 | A | ASP.NET CoreのログインCookieをサーバー側Playwrightに渡す実装 | PDF出力の認証問題だけを切り出す | `aspnet-core-playwright-auth-cookie-pdf` | Phycock 実コード確認後 |
-| A | Chrome拡張でDOMを並び替えた後にMutationObserverが再発火する問題への対処 | 投稿日順ソート拡張の中から監視ループ回避だけ扱う | `chrome-extension-mutationobserver-rerender-loop` | YouTube Sorter 実装確認後 |
-| A | YouTubeプレイリストのDOM順を一度保存して通常順に戻す実装 | 拡張紹介ではなく、DOM順復元の実装に絞る | `youtube-playlist-restore-dom-order` | YouTube Sorter 実装確認後 |
 | A | ElectronアプリでSmartScreen警告が出たときに確認したこと | SmartScreen記事の再投稿ではなく、確認手順と判断材料に絞る | `electron-smartscreen-checklist` | 既存記事との差分を整理 |
 | A | AIエージェントの長期記憶を軽くするためにsession-briefを作った | Skill Graph体験記事ではなく、起動時コンテキスト圧縮の運用メモ | `ai-agent-session-brief-memory` | ローカルパス・個人情報を伏せて構成化 |
 
@@ -36,10 +33,7 @@ Zenn 記事の再投稿ではなく、Qiita 向けに独立して書ける「1�
 
 | 優先 | 候補 | Zenn との差分 | 想定 slug | 次の扱い |
 | --- | --- | --- | --- | --- |
-| A | Chrome拡張でYouTubeのSPA遷移後にcontent scriptが効かない問題を直した | `matches` と SPA 遷移元での注入問題に絞る | `youtube-spa-content-script-matches` | 最優先 |
 | A | Manifest V3でYouTubeページのURL変更を検知する実装メモ | MV3一般論ではなく、YouTubeのSPAでのURL監視に絞る | `manifest-v3-youtube-url-change-detection` | 実装確認後 |
-| A | YouTubeプレイリストのDOM順を一度保存して通常順に戻す実装 | 並び替え復元だけを扱う | `youtube-playlist-restore-dom-order` | 実装確認後 |
-| A | Chrome拡張でDOMを並び替えた後にMutationObserverが再発火する問題への対処 | バッジ差分更新・監視ループ回避に絞る | `chrome-extension-mutationobserver-rerender-loop` | 実装確認後 |
 | A | YouTubeの動画カードに投稿日バッジを後付けするときに見たDOM構造 | DOM解析・セレクタ設計のメモ | `youtube-video-card-date-badge-dom` | 実装確認後 |
 | A | YouTube Data APIを使わずに投稿日順ソートした理由と限界 | APIキー不要設計の技術メモ | `youtube-sort-without-data-api` | Zenn下書きとの差分整理 |
 | A | Chrome拡張のcontent scriptを広く注入して処理側でURL判定する | 権限変更の注意点とガード条件に絞る | `chrome-extension-wide-matches-url-guard` | 実装確認後 |
@@ -99,13 +93,12 @@ Zenn 記事の再投稿ではなく、Qiita 向けに独立して書ける「1�
 
 ## 執筆順の案
 
-1. `youtube-spa-content-script-matches`
-2. `chrome-extension-mutationobserver-rerender-loop`
-3. `youtube-playlist-restore-dom-order`
-4. `playwright-wait-chartjs-before-pdf`
-5. `aspnet-core-playwright-auth-cookie-pdf`
-6. `electron-smartscreen-checklist`
-7. `ai-agent-session-brief-memory`
+1. `playwright-wait-chartjs-before-pdf`
+2. `aspnet-core-playwright-auth-cookie-pdf`
+3. `electron-smartscreen-checklist`
+4. `ai-agent-session-brief-memory`
+
+（2026-05-24 に Chrome拡張系 3 件 `youtube-spa-content-script-matches` / `chrome-extension-mutationobserver-rerender-loop` / `youtube-playlist-restore-dom-order` を公開済み。既存 Qiita 公開記事テーブル参照）
 
 ## 更新ルール
 

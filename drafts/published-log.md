@@ -9,6 +9,79 @@
 - ローカルの `published: true` と Zenn 実サイトの公開状態は分けて扱う。公開後は `https://zenn.dev/harness/articles/<slug>` に直接アクセスし、HTTP 200 とタイトル一致を確認する。
 - 403 / 404 / タイトル不一致の場合は、レートリミットやデプロイ遅延の可能性があるため `実公開未確認` として再確認対象に残す。
 
+## 2026-05-20 公開状態の再確認
+
+2026-05-17 時点で 403 だった公開指定記事のうち、次の 2 本は Zenn 実サイトで 200 / タイトル一致を確認した。
+
+- `codex-claude-skill-graph-worklog`: 200 / 公開確認（2026-05-20 再確認、Zenn 表示上は 2026-05-17 公開）
+- `cross-agent-harness-introduction`: 200 / 公開確認（2026-05-20 再確認、Zenn 表示上は 2026-05-17 公開）
+
+現在の未公開・公開保留:
+
+- `phycock-schedule-entry-consolidation`: `published: false`。リタリコ確認が取れるまで公開保留。
+- `zenn-article-repo-workflow`: `published: false`。公開前レビューと相互レビュー後に公開判断。
+
+候補表のメンテナンス:
+
+- `drafts/article-candidates.md` の最終突き合わせを 2026-05-20 に更新。
+- 公開済み候補は「選定対象外」と明記し、次に選ぶ候補ショートリストを追加。
+
+## 2026-05-24 Qiita 公開（Chrome拡張系 独立記事3本）
+
+### 1. Chrome拡張でYouTubeのSPA遷移後にcontent scriptが効かない問題を直した
+
+- URL: https://qiita.com/harnesswinner/items/3bac40961a0b5ff20dee
+- 管理ファイル: `qiita/public/youtube-spa-content-script-matches.md`
+- テーマ系統: Chrome拡張 / Manifest V3 / SPA / YouTube
+- 関連リポジトリ: ローカル `H:/ClaudeCode/GoogleChrome/youtube-playlist-date-sorter`（公開リポジトリ未push）
+- レビュー: ClaudeCode 初稿、Codex 相互レビュー済み（codex MCP 経由、重大指摘なし）
+- 公開状態: Qiita 公開確認済み（2026-05-24、Qiita CLI `Posted` 応答）
+- Lapras確認予定日: 2026-05-29 〜 2026-05-31
+
+### 2. Chrome拡張でDOMを並び替えた後にMutationObserverが再発火する問題への対処
+
+- URL: https://qiita.com/harnesswinner/items/5429f56b3a8e23675703
+- 管理ファイル: `qiita/public/chrome-extension-mutationobserver-rerender-loop.md`
+- テーマ系統: Chrome拡張 / MutationObserver / DOM
+- 関連リポジトリ: ローカル `H:/ClaudeCode/GoogleChrome/youtube-playlist-date-sorter`（公開リポジトリ未push）
+- レビュー: ClaudeCode 初稿、Codex 相互レビュー済み（codex MCP 経由、重大指摘なし）
+- 公開状態: Qiita 公開確認済み（2026-05-24、Qiita CLI `Posted` 応答）
+- Lapras確認予定日: 2026-05-29 〜 2026-05-31
+
+### 3. YouTubeプレイリストのDOM順を一度保存して通常順に戻す実装
+
+- URL: https://qiita.com/harnesswinner/items/fa3a124e5fa50229a887
+- 管理ファイル: `qiita/public/youtube-playlist-restore-dom-order.md`
+- テーマ系統: Chrome拡張 / DOM / YouTube
+- 関連リポジトリ: ローカル `H:/ClaudeCode/GoogleChrome/youtube-playlist-date-sorter`（公開リポジトリ未push）
+- レビュー: ClaudeCode 初稿、Codex 相互レビュー済み（codex MCP 経由、軽微指摘1点を反映）
+- 公開状態: Qiita 公開確認済み（2026-05-24、Qiita CLI `Posted` 応答）
+- Lapras確認予定日: 2026-05-29 〜 2026-05-31
+- 連動更新候補: `youtube-playlist-date-sorter` を `harness17/google-chrome-extensions` に push する際、READMEに3記事リンク追加
+
+## 2026-05-20 Qiita 公開
+
+### 1. YouTube Data API のクォータ枯渇を RSS で避ける設計にした話
+
+- URL: https://qiita.com/harnesswinner/items/e2d5dba192540222d8d5
+- 元記事: https://zenn.dev/harness17/articles/youtube-data-api-rss-quota-reduction
+- 管理ファイル: `qiita/public/youtube-data-api-rss-quota-reduction.md`
+- テーマ系統: YouTube Data API / API クォータ / RSS
+- 関連リポジトリ: [youtube-schedule](https://github.com/harness17/youtube-schedule)
+- レビュー: Codex 初稿、ClaudeCode review-only `REVIEWED_OK`
+- 公開状態: Qiita 公開確認済み（2026-05-20、Qiita CLI `published=true` / URL確認）
+
+### 2. YouTubeの配信予定を追うWindowsアプリ Youtom を作った
+
+- URL: https://qiita.com/harnesswinner/items/52c94119fed2aba20f7e
+- 元記事: https://zenn.dev/harness17/articles/youtom-introduction
+- 管理ファイル: `qiita/public/youtom-introduction.md`
+- テーマ系統: Electron / React / YouTube / 個人開発
+- 関連リポジトリ: [youtube-schedule](https://github.com/harness17/youtube-schedule)
+- レビュー: Codex 初稿、ClaudeCode review-only `REVIEWED_OK`
+- 公開状態: Qiita 公開確認済み（2026-05-20、Qiita CLI `published=true` / URL確認）
+- 連動更新: Youtom repo `docs/signpath-readiness.md` に Qiita 外部言及 2件として追記済み
+
 ## 2026-05-19 公開
 
 ### CodexとClaude Codeを相互呼び出しするハーネスを組んだ
@@ -35,17 +108,19 @@
 - `aspnet-core-identity-to-commonlibrary`
 - `ai-cross-review-handoff-workflow`
 
-### ローカルは published: true だが Zenn 実サイトは 403
+### ローカルは published: true だが Zenn 実サイトは 403（当時）
 
 - `phycock-schedule-entry-consolidation`
 - `codex-claude-skill-graph-worklog`
 - `cross-agent-harness-introduction`
 
-次アクション: Zenn ダッシュボードのデプロイ履歴または翌日の直接アクセスで再確認する。実公開確認できるまで Lapras 確認予定日の起算点にしない。
+次アクション（当時）: Zenn ダッシュボードのデプロイ履歴または翌日の直接アクセスで再確認する。実公開確認できるまで Lapras 確認予定日の起算点にしない。
 
 2026-05-17 追記: 未push の chore コミット 2 件を `origin/main` へ push し Zenn の GitHub 同期を再トリガー。Zenn ダッシュボードのデプロイ結果で原因が確定 —「投稿数の上限に達したためデプロイされませんでした」（対象: codex-claude-skill-graph-worklog / cross-agent-harness-introduction / phycock-schedule-entry-consolidation。https://zenn.dev/faq#rate-limit ）。再 push しても上限ウィンドウが空くまで拒否されるため push は止め、上限解除後に再確認する。
 
 2026-05-17 追記2: `phycock-schedule-entry-consolidation` はリタリコ確認が取れるまで公開保留のため `published: false` に戻した（commit 48ba35e）。rate limit 解除後も自動公開されない。残る公開待ちは `codex-claude-skill-graph-worklog` / `cross-agent-harness-introduction` の 2 本。
+
+2026-05-20 追記: `codex-claude-skill-graph-worklog` / `cross-agent-harness-introduction` は Zenn 実サイトで 200 / タイトル一致を確認済み。未公開で残すのは `phycock-schedule-entry-consolidation` のみ。
 
 ## 2026-05-17 公開確認
 
@@ -67,7 +142,8 @@
 - 文字数: 約9,900字
 - 関連リポジトリ: [DevNext](https://github.com/harness17/DevNext)
 - 想定読者: ASP.NET Core MVC で入力モデルとテーブル設計の粒度に迷っている人
-- Lapras確認予定日: 2026-05-21
+- 現在の扱い: 2026-05-17 に `published: false` へ戻し、リタリコ確認が取れるまで公開保留
+- Lapras確認予定日: 公開確認後に再設定
 
 ### 2. AIとの設計判断をMy-Skill-Graphに残して再利用する
 
