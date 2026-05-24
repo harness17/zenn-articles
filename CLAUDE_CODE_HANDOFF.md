@@ -43,56 +43,33 @@ Codex レビュー観点クリア:
 - 両記事公開反映後、`drafts/published-log.md` に追記し、`README.md` の関連記事リンクを更新するか判断
 - Lapras 技術力スコアを数日後に確認
 
-## 2026-05-25 朝の作業手順（Google Workspace MCP 切替 + 記事2 公開）
+## 2026-05-25 朝の作業手順（記事2 公開）
 
-明日朝に順番で実行する。所要時間 15〜20 分。
+### 前提（2026-05-24 夜に判明・確定）
 
-### Step 1: 既存 Calendar MCP の切断（UI 操作）
+`claude mcp list` で確認した結果、既存の「claude.ai Google Calendar」（tool 名 `mcp__0d88e38b-...__*`）は **すでに Google 公式 Workspace MCP** `https://calendarmcp.googleapis.com/mcp/v1` でした（UUID が独自っぽく見えただけ）。Gmail も公式接続済み。**MCP 切替作業は不要**。
 
-1. Claude Code を起動
-2. Settings > Connectors（または `/config` から Connectors 画面）
-3. 既存 Google Calendar 接続（tool 名 `mcp__0d88e38b-13c4-42e4-8f09-8faa28df5c8b__*`）を Disconnect / Remove
-   - 同じ画面で Gmail（`mcp__e1d95e15-...__*`）も非公式 connector なら切るか継続使用か判断（公式 Gmail MCP に置き換える場合のみ切る、今回は Calendar だけで十分なら Gmail はそのまま）
+Google Tasks 自体は公式 MCP 非対応のため、明日朝の publish リマインダーは既存 Calendar MCP で **2026-05-25 09:00 JST のイベントとして作成済み**（event id: `mdesuhn8hj4279tn2f8s9pgfug` / popup 通知 0 分前と 30 分前の 2 段）。
 
-### Step 2: 公式 Workspace Calendar MCP を追加
-
-1. Settings > Connectors > **Add custom connector**
-2. URL: `https://calendarmcp.googleapis.com/mcp/v1`
-3. OAuth 2.0 認可ダイアログで Google アカウント（harnesswinner@gmail.com）を選択
-4. Calendar 操作スコープを許可
-5. 接続成功後、Claude Code を再起動またはセッション開始でツールが読み込まれる
-
-### Step 3: 動作確認（公式 Calendar MCP でリマインダー作成）
-
-公式 MCP の Calendar create event ツールで、Qiita レート制限解除を待つリマインダーを作成：
-
-- タイトル: `Qiita 記事2 (ai-edit-surgical-changes-rule) を publish`
-- 日時: 2026-05-25 朝 9:00（または当日中の終日イベント）
-- 説明: `cd H:/ClaudeCode/技術記事 && npm run qiita:publish -- ai-edit-surgical-changes-rule`
-- リマインダー: 1 時間前 + 当日朝 8 時の 2 段階
-
-### Step 4: 記事2 publish
+### Step 1: 記事2 publish
 
 ```powershell
 cd H:/ClaudeCode/技術記事
 npm run qiita:publish -- ai-edit-surgical-changes-rule
 ```
 
-レート制限が続く場合は時間をあけて再試行。
+レート制限が続く場合は数時間あけて再試行。
 
-### Step 5: 公開後のフォロー
+### Step 2: 公開後のフォロー
 
-1. `drafts/qiita-article-candidates.md` の保留行を実 URL に書き換え
-2. `CLAUDE_CODE_HANDOFF.md` の「次アクション」を完了状態に
-3. git commit + push（個別ファイル指定）
-4. `/qiita-article-publish` スキル起動で残りの連動アクション
+1. `drafts/qiita-article-candidates.md` の保留行（`ai-edit-surgical-changes-rule` の URL 欄）を実 URL に書き換え
+2. この `CLAUDE_CODE_HANDOFF.md` の「次アクション」を完了状態に更新
+3. git commit + push（個別ファイル指定、`git add .` 禁止）
+4. `/qiita-article-publish` スキルで残りの連動アクション（published-log.md 追記、README リンク追加検討、Lapras 確認予約）
 
-### 注意点
+### 数日後
 
-- 公式 Workspace MCP は preview ステージ。挙動が変わる可能性あり
-- Google Tasks 自体は公式 MCP 非対応のため、当面は Calendar イベントで代用
-- 既存 Calendar MCP（0d88e38b）を切らないまま公式を追加すると `create_event` 系ツールが 2 系統並ぶ。AI が誤ったほうを呼ばないよう必ず切ること
-- 「Gmail も公式に置き換えるか」は別判断。jobhunt-mail スキルなど既存依存先がある場合は影響範囲を確認してから切る
+- Lapras 技術力スコアの反映を確認（記事スコア変化を記録）
 
 ## 2026-05-24 追記（Qiita Chrome拡張系3記事レビュー依頼）
 
