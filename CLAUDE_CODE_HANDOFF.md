@@ -3,6 +3,66 @@
 最終更新: 2026-05-24
 対象プロジェクト: `H:/ClaudeCode/技術記事`
 
+## 2026-05-24 追記（ai-handoff-multi-layer-contract-checklist ClaudeCodeレビュー結果）
+
+依頼者: ユーザー
+作成者: Codex
+レビュー担当: ClaudeCode（review-only / `--tools ""` / ファイル編集なし）
+
+対象:
+
+- `articles/ai-handoff-multi-layer-contract-checklist.md`
+
+状態:
+
+- `published: false`
+- Codex 側で文体NG語スキャン済み（ヒットなし）
+- GitHub リンクあり、5行以上のコードブロックあり、topics 5個以内
+
+ClaudeCode レビュー結果:
+
+- 公開可否: 🟡 軽微修正後（条件付き）
+- 重大指摘:
+  - GitHub リポジトリリンク `harness17/zenn-articles` / `harness17/cross-agent-harness` の実在・公開状態確認が必要
+  - 関連記事リンク `cross-agent-harness-automation` / `ai-cross-review-handoff-workflow` の実在確認が必要
+- 軽微指摘:
+  - 体験ベースの失敗シーンがやや薄い
+  - 先行記事との差分が本文冒頭で見えにくい
+  - PowerShell サンプルの `throw` の使いどころ説明が少ない
+  - 「簡易チェックをスクリプト化する」節へのつなぎが少し唐突
+  - topics の `workflow` は任意で `handoff` や `prompt-engineering` も検討可
+- 総合所見:
+  - 構成・文体・守秘は問題なし
+  - 6層分類と具体例は、読者が自分のリポジトリに持ち帰れる実用性がある
+  - 文体NG語、守秘義務違反、ローカル絶対パス、未検証数値の断定は検出なし
+
+Codex 側の追加確認:
+
+- Zenn 関連記事 2 件は Web 確認済み:
+  - `https://zenn.dev/harness/articles/cross-agent-harness-automation`
+  - `https://zenn.dev/harness/articles/ai-cross-review-handoff-workflow`
+- `harness17/zenn-articles` は本リポジトリの `origin` と一致:
+  - `https://github.com/harness17/zenn-articles.git`
+- `harness17/cross-agent-harness` は既存公開記事・公開ログから参照実績あり。ただしこのレビュー時点で GitHub ページ自体の直接表示確認は未完了。
+- 2026-05-24 公開直前に `gh repo view` で GitHub 2リポジトリを確認:
+  - `harness17/zenn-articles`: `PUBLIC` / default branch `main`
+  - `harness17/cross-agent-harness`: `PUBLIC` / default branch `main`
+
+次アクション:
+
+- 本文に先行記事との差分、具体的な失敗シーン、PowerShell サンプルの使いどころを軽く追記する（Codex対応済み）
+- `harness17/cross-agent-harness` の GitHub 直リンクをブラウザで最終確認する
+- 修正後に `published: false` のまま公開前レビューを再確認する
+
+Codex 対応結果（2026-05-24）:
+
+- 「はじめに」に先行記事との差分を追記
+- `handoffを1枚の依頼文にしない` 節に、レビュー対象外まで直しそうになった失敗シーンを追記
+- `簡易チェックをスクリプト化する` 節に、手動確認だけでは抜けるため構造チェックを入れる説明を追記
+- PowerShell サンプル後に、`throw` は CI / pre-commit hook で止める用途、手動確認なら `Write-Warning` でもよい旨を追記
+- 文体NG語・守秘系文字列・ローカル絶対パス・secret/token/password スキャンはヒットなし
+- ユーザーが「公開で」と明示したため、Codex が `published: true` へ変更
+
 ## 2026-05-24 追記（Qiita AIエージェント/AI駆動系2記事の公開作業）
 
 依頼者: ユーザー
