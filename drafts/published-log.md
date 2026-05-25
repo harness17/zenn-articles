@@ -266,6 +266,42 @@
 - slug: `ai-handoff-contract-checklist`
 - 管理ファイル: `qiita/public/ai-handoff-contract-checklist.md`
 - テーマ系統: AI協調開発 / handoff / 作業契約
+- 文字数: 約7,200字
+- レビュー: Codex 初稿、ClaudeCode review-only 重大指摘なし、軽微指摘反映済み
+- 公開状態: Qiita 公開確認済み（2026-05-25 18:18 JST、Qiita CLI `Posted` 応答）
+- Lapras確認予定日: 2026-05-30 〜 2026-06-01
+
+### 3. git add .で余計なファイルを混ぜないために個別ファイル指定へ寄せた
+
+- 媒体: Qiita
+- URL: https://qiita.com/harnesswinner/items/871470b50d10ccbbeac9
+- slug: `git-add-explicit-file-rule`
+- 管理ファイル: `qiita/public/git-add-explicit-file-rule.md`
+- テーマ系統: Git運用 / 開発環境 / セキュリティ
+- 文字数: 約6,600字
+- レビュー: Codex 初稿、ClaudeCode review-only 重大指摘なし、軽微指摘反映済み
+- 公開状態: Qiita 公開確認済み（2026-05-25 18:18 JST、Qiita CLI `Posted` 応答）
+- Lapras確認予定日: 2026-05-30 〜 2026-06-01
+
+### 4. AIに実装を任せる前に完成条件を宣言するSprint Contract運用
+
+- 媒体: Qiita
+- URL: https://qiita.com/harnesswinner/items/98669d5afa40d36299d5
+- slug: `sprint-contract-before-implementation`
+- 管理ファイル: `qiita/public/sprint-contract-before-implementation.md`
+- テーマ系統: AI駆動開発 / テスト戦略 / 開発プロセス
+- 文字数: 約6,800字
+- レビュー: Codex 初稿、ClaudeCode review-only 重大指摘なし、軽微指摘反映済み
+- 公開状態: Qiita 公開確認済み（2026-05-25 18:18 JST、Qiita CLI `Posted` 応答）
+- Lapras確認予定日: 2026-05-30 〜 2026-06-01
+
+### 2. AI同士のhandoffで作業範囲が曖昧になる問題を契約チェックリストで抑えた
+
+- 媒体: Qiita
+- URL: https://qiita.com/harnesswinner/items/5bb47dec500eb36a8369
+- slug: `ai-handoff-contract-checklist`
+- 管理ファイル: `qiita/public/ai-handoff-contract-checklist.md`
+- テーマ系統: AI協調開発 / handoff / 作業契約
 - 文字数: 約3,500字
 - 関連リポジトリ: [zenn-articles](https://github.com/harness17/zenn-articles)
 - 元 Zenn 記事: `articles/ai-handoff-multi-layer-contract-checklist.md` をQiita向けに「handoff契約チェックリスト」へ再構成

@@ -53,6 +53,9 @@ Zenn / Qiita の投稿対象になる Markdown と、公開前レビューに必
 
 ### Qiita
 
+- [AIに実装を任せる前に完成条件を宣言するSprint Contract運用](https://qiita.com/harnesswinner/items/98669d5afa40d36299d5) (2026-05-25)
+- [git add .で余計なファイルを混ぜないために個別ファイル指定へ寄せた](https://qiita.com/harnesswinner/items/871470b50d10ccbbeac9) (2026-05-25)
+- [AI同士のhandoffで作業範囲が曖昧になる問題を契約チェックリストで抑えた](https://qiita.com/harnesswinner/items/5bb47dec500eb36a8369) (2026-05-25)
 - [AIに「修正して」と頼むと無関係コードまで触られる問題をSurgical Changesルールで抑えた](https://qiita.com/harnesswinner/items/e8ac450dbfd60757f487) (2026-05-25)
 - [Claude CodeのCLAUDE.mdを@importで分割してトピック別ルールに整理した](https://qiita.com/harnesswinner/items/6678320489deec25113a) (2026-05-24)
 - [Chrome拡張でDOMを並び替えた後にMutationObserverが再発火する問題への対処](https://qiita.com/harnesswinner/items/5429f56b3a8e23675703) (2026-05-24)
