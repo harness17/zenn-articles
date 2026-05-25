@@ -225,3 +225,36 @@
 - 関連リポジトリ: [DevNext](https://github.com/harness17/DevNext)
 - 想定読者: FullCalendar で色表示や eventContent カスタマイズに詰まった人
 - Lapras確認予定日: 2026-05-16
+
+## 2026-05-24 公開（Qiita）
+
+### 1. Claude CodeのCLAUDE.mdを@importで分割してトピック別ルールに整理した
+
+- 媒体: Qiita
+- URL: https://qiita.com/harnesswinner/items/6678320489deec25113a
+- slug: `claude-md-import-split-rules`
+- 管理ファイル: `qiita/public/claude-md-import-split-rules.md`
+- テーマ系統: AIエージェント運用 / Claude Code 設定
+- 文字数: 約8,700字
+- 関連リポジトリ: [DevNext](https://github.com/harness17/DevNext)（`.claude/rules/` 構成実例として参照）
+- 元 Zenn 記事: なし（独立記事）
+- レビュー: Codex 3ラウンド相互レビュー（thread 019e57ad / 019e589e / 019e58a2）で重大指摘0達成
+- 公開状態: Qiita 公開確認済み（2026-05-25、HTTP 200 + タイトル一致）
+- Lapras確認予定日: 2026-05-29 〜 2026-05-31
+
+## 2026-05-25 公開（Qiita）
+
+### 1. AIに「修正して」と頼むと無関係コードまで触られる問題をSurgical Changesルールで抑えた
+
+- 媒体: Qiita
+- URL: https://qiita.com/harnesswinner/items/e8ac450dbfd60757f487
+- slug: `ai-edit-surgical-changes-rule`
+- 管理ファイル: `qiita/public/ai-edit-surgical-changes-rule.md`
+- テーマ系統: AI駆動開発 / プロンプト設計 / コードレビュー
+- 文字数: 約6,900字
+- 関連リポジトリ: [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills)（Karpathy 原則の出典 OSS）
+- 元 Zenn 記事: なし（独立記事）
+- レビュー: Codex 3ラウンド相互レビュー（thread 019e57ad / 019e589e / 019e58a2）で重大指摘0達成
+- 公開状態: Qiita 公開確認済み（2026-05-25、HTTP 200 + タイトル一致）
+- レート制限メモ: 2026-05-24 に記事1 と同時 publish 試行 → レート制限で記事2 が失敗、翌日 18:06 JST に再 publish 成功
+- Lapras確認予定日: 2026-05-30 〜 2026-06-01
