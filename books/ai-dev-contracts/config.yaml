@@ -1,0 +1,12 @@
+title: "AIエージェントに任せる前に、人間が決めておくべきこと"
+summary: "実装前の完成条件、ハンドオフの多層契約、編集スコープの限定、コミット粒度の規律——AI駆動開発で人間が担う判断の筋を整理する。"
+topics: ["ai", "codex", "claude", "workflow"]
+published: true
+chapters:
+  - ch00-intro
+  - ch01-sprint-contract
+  - ch02-handoff-multi-layer
+  - ch03-handoff-checklist
+  - ch04-surgical-changes
+  - ch05-git-add-explicit
+  - ch06-closing
