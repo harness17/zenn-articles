@@ -1,12 +1,13 @@
-# 技術記事（Zenn）
+# 技術記事
 
-[@harness17](https://github.com/harness17)の Zenn 技術記事リポジトリ。
+[@harness17](https://github.com/harness17)の技術記事リポジトリ。
 
 ## 構成
 
 - `articles/` — 公開記事（zenn-cli が管理）
 - `books/` — Zenn の本
 - `drafts/` — 公開前の下書き・構成メモ
+- `qiita/public/` — Qiita 投稿用の改稿記事（Qiita CLI 管理対象）
 - `images/` — 記事用画像
 
 ## 方針
@@ -39,4 +40,18 @@ npx zenn preview
 
 ```powershell
 npx zenn new:article --slug <slug> --type tech
+```
+
+Qiita 用の記事は `qiita/` に置きます。Zenn 原文を流用する場合は、冒頭に原文リンクと「一部加筆・再構成」の注記を入れ、単純コピーではなく Qiita 読者向けに構成を調整します。
+
+Qiita CLI のプレビュー:
+
+```powershell
+npm run qiita:preview
+```
+
+Qiita への公開・更新:
+
+```powershell
+npm run qiita:publish -- <slug>
 ```

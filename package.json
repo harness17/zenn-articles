@@ -1,15 +1,24 @@
 {
-  "name": "zenn-articles",
+  "name": "tech-articles",
   "version": "1.0.0",
-  "description": "harness17 の Zenn 技術記事リポジトリ",
+  "description": "harness17 の技術記事リポジトリ",
   "private": true,
   "scripts": {
     "preview": "zenn preview",
-    "new:article": "zenn new:article"
+    "new:article": "zenn new:article",
+    "qiita:version": "qiita --config qiita --root qiita version",
+    "qiita:preview": "qiita --config qiita --root qiita preview",
+    "qiita:new": "qiita --config qiita --root qiita new",
+    "qiita:pull": "qiita --config qiita --root qiita pull",
+    "qiita:publish": "qiita --config qiita --root qiita publish",
+    "qiita:publish:all": "qiita --config qiita --root qiita publish --all"
   },
   "author": "harness17",
   "license": "MIT",
   "dependencies": {
     "zenn-cli": "^0.4.7"
+  },
+  "devDependencies": {
+    "@qiita/qiita-cli": "^1.8.0"
   }
 }

@@ -4,7 +4,6 @@ CLAUDE.local.md
 
 # Node.js（zenn-cli）
 node_modules/
-package-lock.json
 npm-debug.log*
 
 # Zenn の作業ディレクトリ

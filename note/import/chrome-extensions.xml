@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+  xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:wp="http://wordpress.org/export/1.2/">
+  <channel>
+    <title>note import</title>
+    <link>https://note.com/</link>
+    <description>Generated WXR for note import</description>
+    <pubDate>Thu, 21 May 2026 21:30:00 -0000</pubDate>
+    <language>ja</language>
+    <wp:wxr_version>1.2</wp:wxr_version>
+    <item>
+      <title>YouTube のプレイリストを投稿日順で追いたくて Chrome 拡張を作った</title>
+      <link>https://note.com/</link>
+      <pubDate>Thu, 21 May 2026 21:30:00 -0000</pubDate>
+      <dc:creator><![CDATA[harness17]]></dc:creator>
+      <guid isPermaLink="false">youtube-playlist-date-sorter</guid>
+      <description></description>
+      <content:encoded><![CDATA[YouTube のプレイリストを見ていて、「これ、投稿日が古い順に追えたら楽なのに」と思うことがあります。<br />
+シリーズものの動画、配信アーカイブ、学習用の再生リストなどは、プレイリストに追加された順番よりも、動画が公開された順番で見たい場面があります。<br />
+ただ、YouTube の標準 UI では、自分が見たい並び順にできない場面があります。長いプレイリストだと、どれが古い動画なのかを目で追うだけでも手間です。<br />
+そこで、プレイリストを投稿日順に並び替えて、その順番で次の動画へ移動できる Chrome 拡張を作りました。<br />
+<h2>作ったもの</h2>
+名前は <strong>YouTube Playlist Date Sorter</strong> です。<br />
+YouTube のプレイリストページや、プレイリスト再生中のページで、表示中の動画を投稿日順に並び替えます。<br />
+できることはこのあたりです。<br />
+<ul>
+<li>プレイリストを古い順 / 新しい順に並び替える</li>
+<li>並び替えた順番で「次の動画へ」移動する</li>
+<li>自動 ON にすると、動画終了後に投稿日順で次の動画へ移動する</li>
+<li>YouTube の通常順に戻す</li>
+<li>日本語 / English を切り替える</li>
+<li>右下パネルを最小化する</li>
+</ul>
+対象は、次のような URL です。<br />
+<ul>
+<li><code>https://www.youtube.com/playlist?list=...</code></li>
+<li><code>https://www.youtube.com/watch?...&amp;list=...</code></li>
+</ul>
+<h2>こういうときに使いたい</h2>
+自分の場合は、配信アーカイブやシリーズものを追うときに欲しくなりました。<br />
+たとえば、過去の動画から順番に追いたいシリーズ、配信アーカイブ、学習用の動画リストです。プレイリストは便利ですが、順番が自分の見たい時系列と違うことがあります。<br />
+この拡張を使うと、表示中の動画に投稿日順の番号が付きます。古い動画から順番に見たいときや、新しい動画から追いたいときに使えます。<br />
+<h2>API キーなしで使えるようにした</h2>
+YouTube Data API は使っていません。<br />
+API キーを作ったり、Google Cloud Console を設定したりしなくても使える形にしたかったからです。<br />
+この拡張では、ページ上に表示されているプレイリストの情報と、各動画ページの HTML から投稿日を読み取っています。プレイリストそのものの順序や、YouTube 側のデータは変更しません。<br />
+あくまで、ブラウザ上で見えている順番と、次に開く動画を拡張側で制御しています。<br />
+<h2>注意点</h2>
+YouTube のページ構造に依存しているので、YouTube 側の変更で動かなくなる可能性があります。<br />
+また、長いプレイリストを完全に読み込むものではなく、ページ上に読み込まれている動画を対象にします。まずは、自分が普段見る範囲で便利に使えることを優先しました。<br />
+Chrome Web Store に公開済みなので、通常の Chrome 拡張として追加できます。<br />
+<h2>リンク</h2>
+Chrome Web Store はこちらです。<br />
+<a href="https://chromewebstore.google.com/detail/youtube-playlist-date-sor/hobigboofokgcnjfobilijbknbmemlbd">https://chromewebstore.google.com/detail/youtube-playlist-date-sor/hobigboofokgcnjfobilijbknbmemlbd</a><br />
+GitHub はこちらです。<br />
+<a href="https://github.com/harness17/google-chrome-extensions/tree/main/youtube-playlist-date-sorter">https://github.com/harness17/google-chrome-extensions/tree/main/youtube-playlist-date-sorter</a><br />]]></content:encoded>
+      <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+      <wp:post_id>1</wp:post_id>
+      <wp:post_date><![CDATA[2026-05-21 21:30:00]]></wp:post_date>
+      <wp:post_date_gmt><![CDATA[2026-05-21 21:30:00]]></wp:post_date_gmt>
+      <wp:comment_status><![CDATA[closed]]></wp:comment_status>
+      <wp:ping_status><![CDATA[closed]]></wp:ping_status>
+      <wp:post_name><![CDATA[youtube-playlist-date-sorter]]></wp:post_name>
+      <wp:status><![CDATA[draft]]></wp:status>
+      <wp:post_parent>0</wp:post_parent>
+      <wp:menu_order>0</wp:menu_order>
+      <wp:post_type><![CDATA[post]]></wp:post_type>
+      <wp:post_password><![CDATA[]]></wp:post_password>
+      <wp:is_sticky>0</wp:is_sticky>
+    </item>
+    <item>
+      <title>Amazon の欲しいものリストからセール中の商品だけ見たくて Chrome 拡張を作った</title>
+      <link>https://note.com/</link>
+      <pubDate>Thu, 21 May 2026 21:30:00 -0000</pubDate>
+      <dc:creator><![CDATA[harness17]]></dc:creator>
+      <guid isPermaLink="false">amazon-wishlist-sale-picker</guid>
+      <description></description>
+      <content:encoded><![CDATA[Amazon の欲しいものリストに商品を入れていると、「今セールになっているものだけ見たい」と思うことがあります。<br />
+ただ、商品が増えてくると、1つずつ開いて値段を確認するのが面倒です。タイムセールや価格下落の表示はありますが、リスト全体からまとめて探すには手間がかかります。<br />
+欲しいものリストは「あとで買うかも」を置いておくには便利です。でも、増えすぎると、値下がりしている商品を探すだけで時間がかかります。<br />
+そこで、Amazon.co.jp の欲しいものリストから、セール中の商品だけを抽出する Chrome 拡張を作りました。<br />
+<h2>作ったもの</h2>
+名前は <strong>Amazon Wishlist Sale Picker</strong> です。<br />
+Amazon.co.jp の欲しいものリストを開くと、「セールのみ表示」ボタンを追加します。ボタンを押すと、リスト内の商品をスキャンして、セール中の商品だけに絞り込みます。<br />
+できることはこのあたりです。<br />
+<ul>
+<li>欲しいものリストに「セールのみ表示」ボタンを追加する</li>
+<li>セール中の商品だけに絞り込む</li>
+<li>割引率フィルターで「○% 以上の割引だけ」を表示する</li>
+<li>lazy load のリストを自動スクロールで読み込む</li>
+<li>ブラウザ内で判定する</li>
+<li>外部サーバーには送信しない</li>
+</ul>
+対象は Amazon.co.jp の欲しいものリストです。<br />
+<ul>
+<li><code>https://www.amazon.co.jp/hz/wishlist/ls/*</code></li>
+<li><code>https://www.amazon.co.jp/hz/wishlist/genericItemsPage/*</code></li>
+<li><code>https://www.amazon.co.jp/gp/registry/wishlist/*</code></li>
+</ul>
+<h2>何をセールとして判定しているか</h2>
+画面上の表示から、セールらしい情報を見ています。<br />
+<ul>
+<li>タイムセールバッジ</li>
+<li>打ち消し価格</li>
+<li>価格下落表示</li>
+<li>セール系のキーワード</li>
+</ul>
+正式な価格履歴サービスではありません。Amazon の画面上に出ている情報をもとに、「今見に行く価値がありそうな商品」を拾うための拡張です。<br />
+<h2>外部サーバーには送らない</h2>
+欲しいものリストの内容を外部サーバーに送る設計にはしていません。<br />
+セール判定はブラウザ内で行います。保存するのは、割引率フィルターなどの設定です。<br />
+買い物リストはかなり個人的な情報なので、ここは最初から外部送信なしにしました。<br />
+<h2>こういう人向け</h2>
+<ul>
+<li>Amazon の欲しいものリストに商品をたくさん入れている</li>
+<li>セール中の商品だけをまとめて見たい</li>
+<li>値下がりしているものから優先して買いたい</li>
+<li>リストを1件ずつ確認するのが面倒</li>
+</ul>
+自分用に作ったものですが、同じように「欲しいものリストが増えすぎた」という人には合うと思います。<br />
+買うものを増やすためというより、すでに入れてあるものの中から、今見る価値がありそうな商品を探しやすくするための拡張です。<br />
+<h2>注意点</h2>
+現時点では Amazon.co.jp 向けです。海外 Amazon は対象外です。<br />
+また、Amazon のページ構造や表示文言に依存しているため、Amazon 側の変更で検出できなくなる可能性があります。<br />
+購入前には、必ず商品ページで価格や条件を確認してください。<br />
+Chrome Web Store に公開済みなので、通常の Chrome 拡張として追加できます。<br />
+<h2>リンク</h2>
+Chrome Web Store はこちらです。<br />
+<a href="https://chromewebstore.google.com/detail/amazon-wishlist-sale-pick/hbjnpfdjifnmofkgadigphfamcnpgbaj">https://chromewebstore.google.com/detail/amazon-wishlist-sale-pick/hbjnpfdjifnmofkgadigphfamcnpgbaj</a><br />
+GitHub はこちらです。<br />
+<a href="https://github.com/harness17/google-chrome-extensions/tree/main/amazon-wishlist-sale-picker">https://github.com/harness17/google-chrome-extensions/tree/main/amazon-wishlist-sale-picker</a><br />]]></content:encoded>
+      <excerpt:encoded><![CDATA[]]></excerpt:encoded>
+      <wp:post_id>2</wp:post_id>
+      <wp:post_date><![CDATA[2026-05-21 21:30:00]]></wp:post_date>
+      <wp:post_date_gmt><![CDATA[2026-05-21 21:30:00]]></wp:post_date_gmt>
+      <wp:comment_status><![CDATA[closed]]></wp:comment_status>
+      <wp:ping_status><![CDATA[closed]]></wp:ping_status>
+      <wp:post_name><![CDATA[amazon-wishlist-sale-picker]]></wp:post_name>
+      <wp:status><![CDATA[draft]]></wp:status>
+      <wp:post_parent>0</wp:post_parent>
+      <wp:menu_order>0</wp:menu_order>
+      <wp:post_type><![CDATA[post]]></wp:post_type>
+      <wp:post_password><![CDATA[]]></wp:post_password>
+      <wp:is_sticky>0</wp:is_sticky>
+    </item>
+  </channel>
+</rss>
