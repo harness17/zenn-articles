@@ -258,3 +258,45 @@
 - 公開状態: Qiita 公開確認済み（2026-05-25、HTTP 200 + タイトル一致）
 - レート制限メモ: 2026-05-24 に記事1 と同時 publish 試行 → レート制限で記事2 が失敗、翌日 18:06 JST に再 publish 成功
 - Lapras確認予定日: 2026-05-30 〜 2026-06-01
+
+### 2. AI同士のhandoffで作業範囲が曖昧になる問題を契約チェックリストで抑えた
+
+- 媒体: Qiita
+- URL: https://qiita.com/harnesswinner/items/5bb47dec500eb36a8369
+- slug: `ai-handoff-contract-checklist`
+- 管理ファイル: `qiita/public/ai-handoff-contract-checklist.md`
+- テーマ系統: AI協調開発 / handoff / 作業契約
+- 文字数: 約3,500字
+- 関連リポジトリ: [zenn-articles](https://github.com/harness17/zenn-articles)
+- 元 Zenn 記事: `articles/ai-handoff-multi-layer-contract-checklist.md` をQiita向けに「handoff契約チェックリスト」へ再構成
+- レビュー: ClaudeCode review-only で重大指摘なし、軽微指摘（タグ修正）対応済み
+- 公開状態: Qiita APIで公開確認済み（2026-05-25、タイトル一致）
+- Lapras確認予定日: 2026-05-30 〜 2026-06-01
+
+### 3. git add .で余計なファイルを混ぜないために個別ファイル指定へ寄せた
+
+- 媒体: Qiita
+- URL: https://qiita.com/harnesswinner/items/871470b50d10ccbbeac9
+- slug: `git-add-explicit-file-rule`
+- 管理ファイル: `qiita/public/git-add-explicit-file-rule.md`
+- テーマ系統: Git / AIエージェント運用 / セキュリティ
+- 文字数: 約3,600字
+- 関連リポジトリ: [zenn-articles](https://github.com/harness17/zenn-articles)
+- 元 Zenn 記事: なし（独立記事）
+- レビュー: ClaudeCode review-only で重大指摘なし、軽微指摘（タグ修正・サンプルパス汎用化）対応済み
+- 公開状態: Qiita APIで公開確認済み（2026-05-25、タイトル一致）
+- Lapras確認予定日: 2026-05-30 〜 2026-06-01
+
+### 4. AIに実装を任せる前に完成条件を宣言するSprint Contract運用
+
+- 媒体: Qiita
+- URL: https://qiita.com/harnesswinner/items/98669d5afa40d36299d5
+- slug: `sprint-contract-before-implementation`
+- 管理ファイル: `qiita/public/sprint-contract-before-implementation.md`
+- テーマ系統: AI駆動開発 / テスト観点 / 開発プロセス
+- 文字数: 約3,200字
+- 関連リポジトリ: [zenn-articles](https://github.com/harness17/zenn-articles)
+- 元 Zenn 記事: なし（独立記事）
+- レビュー: ClaudeCode review-only で重大指摘なし、軽微指摘（独自用語注釈）対応済み
+- 公開状態: Qiita APIで公開確認済み（2026-05-25、タイトル一致）
+- Lapras確認予定日: 2026-05-30 〜 2026-06-01

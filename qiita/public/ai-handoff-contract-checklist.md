@@ -1,17 +1,17 @@
 ---
 title: AI同士のhandoffで作業範囲が曖昧になる問題を契約チェックリストで抑えた
 tags:
-  - AI
-  - ClaudeCode
-  - Codex
   - 開発プロセス
-  - Markdown
+  - AI
+  - 生産性向上
+  - codex
+  - ClaudeCode
 private: false
-updated_at: ''
-id: null
+updated_at: '2026-05-25T18:18:12+09:00'
+id: 5bb47dec500eb36a8369
 organization_url_name: null
 slide: false
-ignorePublish: true
+ignorePublish: false
 ---
 
 ## はじめに

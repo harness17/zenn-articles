@@ -42,14 +42,15 @@ Zenn 記事の再投稿ではなく、Qiita 向けに独立して書ける「1�
 | 2026-05-24 | `chrome-extension-mutationobserver-rerender-loop` | Chrome拡張でDOMを並び替えた後にMutationObserverが再発火する問題への対処 | （独立記事） | https://qiita.com/harnesswinner/items/5429f56b3a8e23675703 |
 | 2026-05-24 | `claude-md-import-split-rules` | Claude CodeのCLAUDE.mdを@importで分割してトピック別ルールに整理した | （独立記事） | https://qiita.com/harnesswinner/items/6678320489deec25113a |
 | 2026-05-25 | `ai-edit-surgical-changes-rule` | AIに「修正して」と頼むと無関係コードまで触られる問題をSurgical Changesルールで抑えた | （独立記事） | https://qiita.com/harnesswinner/items/e8ac450dbfd60757f487 |
+| 2026-05-25 | `ai-handoff-contract-checklist` | AI同士のhandoffで作業範囲が曖昧になる問題を契約チェックリストで抑えた | （独立記事） | https://qiita.com/harnesswinner/items/5bb47dec500eb36a8369 |
+| 2026-05-25 | `git-add-explicit-file-rule` | git add .で余計なファイルを混ぜないために個別ファイル指定へ寄せた | （独立記事） | https://qiita.com/harnesswinner/items/871470b50d10ccbbeac9 |
+| 2026-05-25 | `sprint-contract-before-implementation` | AIに実装を任せる前に完成条件を宣言するSprint Contract運用 | （独立記事） | https://qiita.com/harnesswinner/items/98669d5afa40d36299d5 |
 
 ## Qiita 下書き記事
 
 | 作成日 | slug | タイトル | 状態 |
 | --- | --- | --- | --- |
-| 2026-05-25 | `ai-handoff-contract-checklist` | AI同士のhandoffで作業範囲が曖昧になる問題を契約チェックリストで抑えた | `qiita/public` 作成済み / `ignorePublish: true` |
-| 2026-05-25 | `git-add-explicit-file-rule` | git add .で余計なファイルを混ぜないために個別ファイル指定へ寄せた | `qiita/public` 作成済み / `ignorePublish: true` |
-| 2026-05-25 | `sprint-contract-before-implementation` | AIに実装を任せる前に完成条件を宣言するSprint Contract運用 | `qiita/public` 作成済み / `ignorePublish: true` |
+| - | - | - | 現在なし |
 
 ## 最優先候補
 
@@ -197,7 +198,7 @@ Zenn 記事の再投稿ではなく、Qiita 向けに独立して書ける「1�
 | A | Claude Codeに「テスト書いて」と頼むとハッピーパスしか作らない | テスト観点リストを先に渡して網羅性を上げた手順 | `ai-test-perspective-prefeed` | ルール文確認後 |
 | C | AIにEF Coreのクエリ最適化を任せる前にSQLログを見せた | 推測実装を防ぐための「観測データ先渡し」運用 | `ai-efcore-optimization-with-logs` | Phycock 由来の体験のため公開許可待ち |
 | A | Claude Codeにマイグレーションを書かせる前に決めた4項目 | 削除方式・ID型・TZ・Null許容のレビューゲート | `ai-migration-pre-decision-gate` | ルール文確認後 |
-| A | AIへの実装依頼でIPC・APIなど層を跨ぐ契約の片側だけ書いて漏れた話 | handoffテンプレに「層を跨ぐ契約」チェックリスト（契約名/実装ファイル/公開層/payload/error・permission/互換性）を加えて再発防止した運用メモ | `ai-handoff-multi-layer-contract-checklist` | Qiita下書き `ai-handoff-contract-checklist` 作成済み |
+| A | AIへの実装依頼でIPC・APIなど層を跨ぐ契約の片側だけ書いて漏れた話 | handoffテンプレに「層を跨ぐ契約」チェックリスト（契約名/実装ファイル/公開層/payload/error・permission/互換性）を加えて再発防止した運用メモ | `ai-handoff-multi-layer-contract-checklist` | Qiita公開済み（`ai-handoff-contract-checklist`） |
 | B | AIが事実誤認したコードを書いた回数を減らすために導入した確認ルール | 中心主張のファイル全体確認・反証クエリ運用 | `ai-implementation-fact-check-rule` | ルール文確認後 |
 | B | AIに新しいライブラリを使わせるときに公式docを先に貼る運用 | 推測実装を防ぐ「一次情報先渡し」パターン | `ai-new-library-doc-prefeed` | 体験整理後 |
 | B | git worktreeで2つのAIセッションに同時実装させてマージ衝突した | 並列分担の境界設計と統合タイミング | `ai-parallel-worktree-merge-conflict` | 体験整理後 |
@@ -212,10 +213,10 @@ Zenn 記事の再投稿ではなく、Qiita 向けに独立して書ける「1�
 
 | 優先 | 候補 | Zenn との差分 | 想定 slug | 次の扱い |
 | --- | --- | --- | --- | --- |
-| A | `git add .`をやめて個別ファイル指定に統一した理由 | `.env`混入事故の再現条件と回避ルール | `git-add-explicit-file-rule` | Qiita下書き作成済み |
+| A | `git add .`をやめて個別ファイル指定に統一した理由 | `.env`混入事故の再現条件と回避ルール | `git-add-explicit-file-rule` | Qiita公開済み |
 | A | pre-commit hookが落ちたときに`--no-verify`せず直す運用 | 原因分類と対処パターンに絞る | `pre-commit-hook-no-skip-policy` | 体験整理後 |
 | A | リリース前チェックリストをスキル化して毎回回す運用 | チェック項目ではなく仕組み化に絞る | `pre-release-checklist-as-skill` | 既存skill確認後 |
-| A | 実装前に「完成条件」を宣言するSprint Contract運用 | 観点別の具体化ガイド付きの最小テンプレ | `sprint-contract-before-implementation` | Qiita下書き作成済み |
+| A | 実装前に「完成条件」を宣言するSprint Contract運用 | 観点別の具体化ガイド付きの最小テンプレ | `sprint-contract-before-implementation` | Qiita公開済み |
 | B | 外部APIの上限件数を1つの計算式で決めた話 | 安全係数とバッファの考え方に絞る | `external-api-quota-formula` | 既存Qiita記事と差分整理 |
 | B | ログイン済みチェックと所有権チェックを分けてIDORを防いだ | 失敗パターンと最小コード例 | `aspnet-core-auth-vs-ownership-idor` | 実コード確認後 |
 | B | 個人開発OAuthで`refresh_token`だけ保存して再ログインを最小化した | トークン保存の判断軸とファイル設計 | `oauth-refresh-token-only-storage` | 実装確認後 |

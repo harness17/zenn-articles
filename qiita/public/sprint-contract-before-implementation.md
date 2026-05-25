@@ -1,17 +1,17 @@
 ---
 title: AIに実装を任せる前に完成条件を宣言するSprint Contract運用
 tags:
-  - AI
-  - 開発プロセス
   - テスト
+  - 開発プロセス
+  - AI
+  - codex
   - ClaudeCode
-  - Codex
 private: false
-updated_at: ''
-id: null
+updated_at: '2026-05-25T18:18:46+09:00'
+id: 98669d5afa40d36299d5
 organization_url_name: null
 slide: false
-ignorePublish: true
+ignorePublish: false
 ---
 
 ## はじめに
@@ -23,7 +23,7 @@ AI コーディングエージェントに「この機能を実装して」と�
 - テストは通ったが、何を確認したテストか分からない
 - no-regression の観点が抜けている
 
-この問題を減らすために、実装前に「完成条件」を短く宣言する Sprint Contract を置くようにしました。
+この問題を減らすために、実装前に「完成条件」を短く宣言する Sprint Contract（本記事での独自の呼び名）を置くようにしました。
 
 ## 詰まったポイント
 

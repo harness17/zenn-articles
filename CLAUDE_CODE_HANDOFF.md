@@ -3,6 +3,62 @@
 最終更新: 2026-05-24
 対象プロジェクト: `H:/ClaudeCode/技術記事`
 
+## 2026-05-25 追記（Qiita下書き3記事 ClaudeCodeレビュー依頼）
+
+依頼者: ユーザー
+作成者: Codex
+レビュー担当: ClaudeCode（review-only / 編集なし）
+
+対象:
+
+- `qiita/public/ai-handoff-contract-checklist.md`
+- `qiita/public/git-add-explicit-file-rule.md`
+- `qiita/public/sprint-contract-before-implementation.md`
+
+状態:
+
+- 3本とも `ignorePublish: true`
+- Codex 側で初稿作成済み
+- ユーザー依頼: 「書いた記事のレビューをClaudeCodeに投げて修正」
+
+レビュー観点:
+
+- Qiita向けに「1記事1トラブル」になっているか
+- 冒頭で結論や解決策が見えるか
+- 文体NG語、守秘義務、ローカルパス、未検証の断定がないか
+- tags が5個以内で空タグがないか
+- `ignorePublish: true` のまま公開前レビューとして妥当か
+- 参考リンクや公式情報が必要な箇所がないか
+- 直すべき重大指摘と、任意改善を分けて返すこと
+
+触ってよい範囲:
+
+- ClaudeCode はレビューのみ。ファイル編集、commit、push はしない。
+- Codex がレビュー結果を読んで、必要な最小修正だけ反映する。
+
+ClaudeCode レビュー結果:
+
+- 総合判定:
+  - `ai-handoff-contract-checklist.md`: 軽微修正後に公開可
+  - `git-add-explicit-file-rule.md`: 軽微修正後に公開可
+  - `sprint-contract-before-implementation.md`: 公開可（任意改善あり）
+- 重大指摘: 3本ともなし
+- 軽微指摘:
+  - `ai-handoff-contract-checklist.md`: `Markdown` タグが内容とミスマッチ
+  - `git-add-explicit-file-rule.md`: `AI` タグ追加、サンプルパスの汎用化
+  - `sprint-contract-before-implementation.md`: `Sprint Contract` が独自用語である注釈を追加
+
+Codex 対応結果（2026-05-25）:
+
+- 上記3点を最小修正
+- 3本とも `ignorePublish: false` に変更
+- Qiita CLI publish 成功:
+  - `ai-handoff-contract-checklist`: https://qiita.com/harnesswinner/items/5bb47dec500eb36a8369
+  - `git-add-explicit-file-rule`: https://qiita.com/harnesswinner/items/871470b50d10ccbbeac9
+  - `sprint-contract-before-implementation`: https://qiita.com/harnesswinner/items/98669d5afa40d36299d5
+- Qiita API で3本のタイトル一致を確認済み
+- `drafts/qiita-article-candidates.md` / `drafts/published-log.md` 更新済み
+
 ## 2026-05-24 追記（ai-handoff-multi-layer-contract-checklist ClaudeCodeレビュー結果）
 
 依頼者: ユーザー

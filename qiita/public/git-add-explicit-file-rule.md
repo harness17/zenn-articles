@@ -3,14 +3,14 @@ title: git add .で余計なファイルを混ぜないために個別ファイ�
 tags:
   - Git
   - 開発環境
-  - チーム開発
-  - セキュリティ
+  - Security
+  - AI
 private: false
-updated_at: ''
-id: null
+updated_at: '2026-05-25T18:18:28+09:00'
+id: 871470b50d10ccbbeac9
 organization_url_name: null
 slide: false
-ignorePublish: true
+ignorePublish: false
 ---
 
 ## はじめに
@@ -29,8 +29,8 @@ ignorePublish: true
 
 ```text
  M README.md
- M drafts/qiita-article-candidates.md
-?? qiita/public/new-article.md
+ M drafts/article-ideas.md
+?? articles/new-post.md
 ?? qiita/public/.remote/example.md
 ?? .env.local
 ```
