@@ -9,6 +9,14 @@ npm-debug.log*
 # Zenn の作業ディレクトリ
 .zenn/
 
+# Qiita CLI の同期キャッシュ・空テンプレ
+qiita/public/.remote/
+qiita/public/newArticle*.md
+
+# 公開リポジトリに出さない個人メモ
+drafts/private/
+drafts/*-local.md
+
 # 環境変数
 .env
 .env.local
