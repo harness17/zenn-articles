@@ -109,23 +109,24 @@ Codex レビュー観点クリア:
 
 `claude mcp list` で確認した結果、既存の「claude.ai Google Calendar」（tool 名 `mcp__0d88e38b-...__*`）は **すでに Google 公式 Workspace MCP** `https://calendarmcp.googleapis.com/mcp/v1` でした（UUID が独自っぽく見えただけ）。Gmail も公式接続済み。**MCP 切替作業は不要**。
 
-Google Tasks 自体は公式 MCP 非対応のため、明日朝の publish リマインダーは既存 Calendar MCP で **2026-05-25 09:00 JST のイベントとして作成済み**（event id: `mdesuhn8hj4279tn2f8s9pgfug` / popup 通知 0 分前と 30 分前の 2 段）。
+Google Tasks 自体は公式 MCP 非対応のため、publish リマインダーは既存 Calendar MCP で **2026-05-25 09:00 JST のイベントとして作成済み**（event id: `mdesuhn8hj4279tn2f8s9pgfug` / popup 通知 0 分前と 30 分前の 2 段）。
 
-### Step 1: 記事2 publish
+### Step 1: 記事2 publish ✅ 完了（2026-05-25 18:06 JST）
 
 ```powershell
 cd H:/ClaudeCode/技術記事
 npm run qiita:publish -- ai-edit-surgical-changes-rule
 ```
 
-レート制限が続く場合は数時間あけて再試行。
+- 結果: 公開成功（id: `e8ac450dbfd60757f487`）
+- URL: https://qiita.com/harnesswinner/items/e8ac450dbfd60757f487
 
 ### Step 2: 公開後のフォロー
 
-1. `drafts/qiita-article-candidates.md` の保留行（`ai-edit-surgical-changes-rule` の URL 欄）を実 URL に書き換え
-2. この `CLAUDE_CODE_HANDOFF.md` の「次アクション」を完了状態に更新
-3. git commit + push（個別ファイル指定、`git add .` 禁止）
-4. `/qiita-article-publish` スキルで残りの連動アクション（published-log.md 追記、README リンク追加検討、Lapras 確認予約）
+1. ✅ `drafts/qiita-article-candidates.md` の保留行を実 URL に書き換え済み
+2. ✅ この `CLAUDE_CODE_HANDOFF.md` の「次アクション」更新
+3. ⏳ git commit + push（次の作業）
+4. ⏳ `/qiita-article-publish` スキルで残りの連動アクション（README リンク追加検討、Lapras 確認予約）
 
 ### 数日後
 

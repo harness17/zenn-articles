@@ -41,7 +41,7 @@ Zenn 記事の再投稿ではなく、Qiita 向けに独立して書ける「1�
 | 2026-05-24 | `youtube-spa-content-script-matches` | Chrome拡張でYouTubeのSPA遷移後にcontent scriptが効かない問題を直した | （独立記事） | https://qiita.com/harnesswinner/items/3bac40961a0b5ff20dee |
 | 2026-05-24 | `chrome-extension-mutationobserver-rerender-loop` | Chrome拡張でDOMを並び替えた後にMutationObserverが再発火する問題への対処 | （独立記事） | https://qiita.com/harnesswinner/items/5429f56b3a8e23675703 |
 | 2026-05-24 | `claude-md-import-split-rules` | Claude CodeのCLAUDE.mdを@importで分割してトピック別ルールに整理した | （独立記事） | https://qiita.com/harnesswinner/items/6678320489deec25113a |
-| 2026-05-24 | `ai-edit-surgical-changes-rule` | AIに「修正して」と頼むと無関係コードまで触られる問題をSurgical Changesルールで抑えた | （独立記事） | レート制限により公開保留中（記事1公開後すぐ再試行→失敗）|
+| 2026-05-25 | `ai-edit-surgical-changes-rule` | AIに「修正して」と頼むと無関係コードまで触られる問題をSurgical Changesルールで抑えた | （独立記事） | https://qiita.com/harnesswinner/items/e8ac450dbfd60757f487 |
 
 ## Qiita 下書き記事
 

@@ -1,13 +1,13 @@
 ---
 title: AIに「修正して」と頼むと無関係コードまで触られる問題をSurgical Changesルールで抑えた
 tags:
-  - AI
-  - ClaudeCode
   - 開発プロセス
-  - CodeReview
+  - AI
+  - codereview
+  - ClaudeCode
 private: false
-updated_at: ''
-id: null
+updated_at: '2026-05-25T18:06:11+09:00'
+id: e8ac450dbfd60757f487
 organization_url_name: null
 slide: false
 ignorePublish: false
