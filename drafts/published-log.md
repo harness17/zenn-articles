@@ -79,20 +79,20 @@
 - 元記事: https://zenn.dev/harness17/articles/youtube-data-api-rss-quota-reduction
 - 管理ファイル: `qiita/public/youtube-data-api-rss-quota-reduction.md`
 - テーマ系統: YouTube Data API / API クォータ / RSS
-- 関連リポジトリ: [youtube-schedule](https://github.com/harness17/youtube-schedule)
+- 関連リポジトリ: [YouTom](https://github.com/harness17/youtube-schedule)
 - レビュー: Codex 初稿、ClaudeCode review-only `REVIEWED_OK`
 - 公開状態: Qiita 公開確認済み（2026-05-20、Qiita CLI `published=true` / URL確認）
 
-### 2. YouTubeの配信予定を追うWindowsアプリ Youtom を作った
+### 2. YouTubeの配信予定を追うWindowsアプリ YouTom を作った
 
 - URL: https://qiita.com/harnesswinner/items/52c94119fed2aba20f7e
 - 元記事: https://zenn.dev/harness17/articles/youtom-introduction
 - 管理ファイル: `qiita/public/youtom-introduction.md`
 - テーマ系統: Electron / React / YouTube / 個人開発
-- 関連リポジトリ: [youtube-schedule](https://github.com/harness17/youtube-schedule)
+- 関連リポジトリ: [YouTom](https://github.com/harness17/youtube-schedule)
 - レビュー: Codex 初稿、ClaudeCode review-only `REVIEWED_OK`
 - 公開状態: Qiita 公開確認済み（2026-05-20、Qiita CLI `published=true` / URL確認）
-- 連動更新: Youtom repo `docs/signpath-readiness.md` に Qiita 外部言及 2件として追記済み
+- 連動更新: YouTom repo `docs/signpath-readiness.md` に Qiita 外部言及 2件として追記済み
 
 ## 2026-05-19 公開
 
@@ -173,16 +173,16 @@
 - URL: https://zenn.dev/harness/articles/electron-smartscreen-oss-distribution
 - テーマ系統: 個人開発 / Electron / Windows 配布
 - 文字数: 約7,700字
-- 関連リポジトリ: [youtube-schedule](https://github.com/harness17/youtube-schedule)
+- 関連リポジトリ: [YouTom](https://github.com/harness17/youtube-schedule)
 - 想定読者: 個人開発 Electron アプリを Windows 向けに配布したい人
 - Lapras確認予定日: 2026-05-18
 
-### 2. 推しの配信予定を見逃さないために Youtom を作った
+### 2. 推しの配信予定を見逃さないために YouTom を作った
 
 - URL: https://zenn.dev/harness/articles/youtom-introduction
 - テーマ系統: 個人開発 / Electron / React / YouTube
 - 文字数: 約4,700字
-- 関連リポジトリ: [youtube-schedule](https://github.com/harness17/youtube-schedule)
+- 関連リポジトリ: [YouTom](https://github.com/harness17/youtube-schedule)
 - 想定読者: YouTube の配信予定管理や個人開発デスクトップアプリに興味がある人
 - Lapras確認予定日: 2026-05-18
 
@@ -193,7 +193,7 @@
 - URL: https://zenn.dev/harness/articles/youtube-data-api-rss-quota-reduction
 - テーマ系統: 個人開発 / API クォータ設計
 - 文字数: 約4,500字
-- 関連リポジトリ: [youtube-schedule](https://github.com/harness17/youtube-schedule)
+- 関連リポジトリ: [YouTom](https://github.com/harness17/youtube-schedule)
 - 想定読者: 個人開発で外部 API を使うエンジニア、YouTube Data API を扱う人
 - Lapras確認予定日: 2026-05-16
 

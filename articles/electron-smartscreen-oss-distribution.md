@@ -8,7 +8,7 @@ published: true
 
 ## はじめに
 
-個人開発の Electron デスクトップアプリ [Youtom](https://github.com/harness17/youtube-schedule) を Windows 向けに配布しようとしたとき、アプリ本体とは別のところで詰まりました。
+個人開発の Electron デスクトップアプリ [YouTom](https://github.com/harness17/youtube-schedule) を Windows 向けに配布しようとしたとき、アプリ本体とは別のところで詰まりました。
 
 ビルドして installer を作ることはできます。GitHub Releases に置くこともできます。ただ、未署名の `.exe` をダウンロードして実行すると、Microsoft Defender SmartScreen の警告が出ます。
 
@@ -18,13 +18,13 @@ published: true
 
 ## ビルドできても、そのまま信頼されるわけではない
 
-Youtom は YouTube の登録チャンネルの配信予定やライブ中の動画を一覧表示する Windows デスクトップアプリです。
+YouTom は YouTube の登録チャンネルの配信予定やライブ中の動画を一覧表示する Windows デスクトップアプリです。
 
 Electron アプリとしては、`electron-builder` で Windows installer を作っています。
 
 ```yaml
 appId: io.github.harness17.youtube-schedule
-productName: Youtom
+productName: YouTom
 win:
   executableName: YouTubeSchedule
 nsis:
@@ -62,7 +62,7 @@ Electron 公式ドキュメントでも、配布するアプリはコード署�
 
 ただ、個人 OSS で最初から商用のコード署名証明書を用意するのは重いです。証明書の費用、審査、更新、CI への組み込み、秘密情報の管理が必要になります。
 
-そこで、Youtom では [SignPath Foundation](https://signpath.io/solutions/open-source-community) の OSS コード署名を検討しました。実際に申請もしましたが、2026 年 5 月時点では、外部の利用実績や第三者による言及などの信頼シグナル不足で未承認です。
+そこで、YouTom では [SignPath Foundation](https://signpath.io/solutions/open-source-community) の OSS コード署名を検討しました。実際に申請もしましたが、2026 年 5 月時点では、外部の利用実績や第三者による言及などの信頼シグナル不足で未承認です。
 
 ここで判断が必要になりました。
 
@@ -76,7 +76,7 @@ Electron 公式ドキュメントでも、配布するアプリはコード署�
 
 ## README では警告が出ることを先に書いた
 
-Youtom の README では、インストーラー版の手順に SmartScreen の説明を入れています。記事として載せるなら、たとえば次のような案内です。
+YouTom の README では、インストーラー版の手順に SmartScreen の説明を入れています。記事として載せるなら、たとえば次のような案内です。
 
 ```markdown
 > #### ⚠️ Windows セキュリティの警告が出た場合
@@ -233,11 +233,11 @@ Electron アプリは、`electron-builder` で installer を作れた時点で�
 
 自分にとってこの件は、「アプリを作る」と「アプリを配る」は別の設計問題だと気づくきっかけでした。
 
-Youtom の実装と release workflow は [youtube-schedule リポジトリ](https://github.com/harness17/youtube-schedule) にあります。今後 SignPath Foundation を再申請できる状態になったら、この記事の続きとして、署名後の workflow と SmartScreen の見え方も記録する予定です。
+YouTom の実装と release workflow は [YouTom リポジトリ](https://github.com/harness17/youtube-schedule) にあります。今後 SignPath Foundation を再申請できる状態になったら、この記事の続きとして、署名後の workflow と SmartScreen の見え方も記録する予定です。
 
 ## 参考リンク
 
-- [youtube-schedule リポジトリ](https://github.com/harness17/youtube-schedule)
+- [YouTom リポジトリ](https://github.com/harness17/youtube-schedule)
 - [SmartScreen reputation for Windows app developers](https://learn.microsoft.com/en-us/windows/apps/package-and-deploy/smartscreen-reputation)
 - [Code signing options for Windows app developers](https://learn.microsoft.com/en-us/windows/apps/package-and-deploy/code-signing-options)
 - [Electron - Code Signing](https://www.electronjs.org/docs/latest/tutorial/code-signing)

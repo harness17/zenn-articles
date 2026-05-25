@@ -119,7 +119,7 @@ hookで全部を判定しようとはしていません。保存時に重いレ�
 - URL: https://zenn.dev/harness/articles/youtube-data-api-rss-quota-reduction
 - テーマ系統: 個人開発 / API クォータ設計
 - 文字数: 約4,500字
-- 関連リポジトリ: [youtube-schedule](https://github.com/harness17/youtube-schedule)
+- 関連リポジトリ: [YouTom](https://github.com/harness17/youtube-schedule)
 - 想定読者: 個人開発で外部 API を使うエンジニア、YouTube Data API を扱う人
 - Lapras確認予定日: 2026-05-16
 ```

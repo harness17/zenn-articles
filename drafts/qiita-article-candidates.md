@@ -36,7 +36,7 @@ Zenn 記事の再投稿ではなく、Qiita 向けに独立して書ける「1�
 | 公開日 | slug | タイトル | 元記事 | URL |
 | --- | --- | --- | --- | --- |
 | 2026-05-20 | `youtube-data-api-rss-quota-reduction` | YouTube Data API のクォータ枯渇を RSS で避ける設計にした話 | `articles/youtube-data-api-rss-quota-reduction.md` | https://qiita.com/harnesswinner/items/e2d5dba192540222d8d5 |
-| 2026-05-20 | `youtom-introduction` | YouTubeの配信予定を追うWindowsアプリ Youtom を作った | `articles/youtom-introduction.md` | https://qiita.com/harnesswinner/items/52c94119fed2aba20f7e |
+| 2026-05-20 | `youtom-introduction` | YouTubeの配信予定を追うWindowsアプリ YouTom を作った | `articles/youtom-introduction.md` | https://qiita.com/harnesswinner/items/52c94119fed2aba20f7e |
 | 2026-05-24 | `youtube-playlist-restore-dom-order` | YouTubeプレイリストのDOM順を一度保存して通常順に戻す実装 | （独立記事） | https://qiita.com/harnesswinner/items/fa3a124e5fa50229a887 |
 | 2026-05-24 | `youtube-spa-content-script-matches` | Chrome拡張でYouTubeのSPA遷移後にcontent scriptが効かない問題を直した | （独立記事） | https://qiita.com/harnesswinner/items/3bac40961a0b5ff20dee |
 | 2026-05-24 | `chrome-extension-mutationobserver-rerender-loop` | Chrome拡張でDOMを並び替えた後にMutationObserverが再発火する問題への対処 | （独立記事） | https://qiita.com/harnesswinner/items/5429f56b3a8e23675703 |

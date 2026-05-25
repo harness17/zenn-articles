@@ -198,7 +198,7 @@ Electron アプリはビルドして `.exe` や installer を作るだけなら�
 
 ### 自分のリポジトリ
 
-- youtube-schedule または Youtom の該当リポジトリ
+- YouTom の該当リポジトリ
 - README の SmartScreen 案内
 - release workflow の署名・upload フロー
 
@@ -215,7 +215,7 @@ Electron アプリはビルドして `.exe` や installer を作るだけなら�
 
 ## 残タスク（執筆前に確認すること）
 
-- [ ] 対象リポジトリを youtube-schedule / Youtom のどちらにするか確定する
+- [ ] 対象リポジトリを YouTom にするか確定する
 - [ ] README の SmartScreen 案内を確認し、記事に引用する範囲を決める
 - [ ] `.github/workflows/release.yml` の署名分岐を確認する
 - [ ] SignPath Foundation などの申請状況を、公開可能な事実として書けるか確認する

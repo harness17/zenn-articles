@@ -8,7 +8,7 @@ published: true
 
 ## はじめに
 
-個人開発の Electron デスクトップアプリ [youtube-schedule](https://github.com/harness17/youtube-schedule) で、YouTube Data API のクォータを数時間で使い切った話です。最終的には `search.list` を RSS フィードに切り替えてクォータ消費を 99% 削減しましたが、そこに至るまでの設計の階段を順に書きます。
+個人開発の Electron デスクトップアプリ [YouTom](https://github.com/harness17/youtube-schedule) で、YouTube Data API のクォータを数時間で使い切った話です。最終的には `search.list` を RSS フィードに切り替えてクォータ消費を 99% 削減しましたが、そこに至るまでの設計の階段を順に書きます。
 
 同じように外部 API のクォータで詰まっている個人開発者向けに、「公開フィードがあるなら API より先にそっちを試す」という考え方を共有します。
 
@@ -215,11 +215,11 @@ useEffect(() => {
 
 > **公開フィードがあるなら API より先にそっちを試す**
 
-実装は [youtube-schedule](https://github.com/harness17/youtube-schedule) の `src/main/fetchers/` と `src/main/services/schedulerService.js` にあります。自分はこの一件以来、新しい外部 API を触るときは公式ドキュメントよりも先に「公開フィードはあるか」「キャッシュで節約できる呼び出しはどれか」を確認する手癖がつきました。
+実装は [YouTom](https://github.com/harness17/youtube-schedule) の `src/main/fetchers/` と `src/main/services/schedulerService.js` にあります。自分はこの一件以来、新しい外部 API を触るときは公式ドキュメントよりも先に「公開フィードはあるか」「キャッシュで節約できる呼び出しはどれか」を確認する手癖がつきました。
 
 ## 参考リンク
 
 - [YouTube Data API v3 — Quota and Usage](https://developers.google.com/youtube/v3/getting-started#quota)
 - [YouTube Data API v3 — Methods](https://developers.google.com/youtube/v3/docs)
-- [youtube-schedule リポジトリ](https://github.com/harness17/youtube-schedule)
+- [YouTom リポジトリ](https://github.com/harness17/youtube-schedule)
 - 該当コミット: [`f815c16` perf: replace search.list with RSS feed to reduce quota usage 99%](https://github.com/harness17/youtube-schedule/commit/f815c16)

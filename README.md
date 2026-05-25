@@ -46,7 +46,7 @@ Zenn / Qiita の投稿対象になる Markdown と、公開前レビューに必
 ## 関連リポジトリ
 
 - [DevNext](https://github.com/harness17/DevNext) — ASP.NET Core 10 製テンプレート
-- [youtube-schedule](https://github.com/harness17/youtube-schedule) — Electron アプリ
+- [YouTom](https://github.com/harness17/youtube-schedule) — Electron アプリ
 - [google-chrome-extensions](https://github.com/harness17/google-chrome-extensions) — Manifest V3
 
 ## 最近の公開記事
@@ -61,7 +61,7 @@ Zenn / Qiita の投稿対象になる Markdown と、公開前レビューに必
 - [Chrome拡張でDOMを並び替えた後にMutationObserverが再発火する問題への対処](https://qiita.com/harnesswinner/items/5429f56b3a8e23675703) (2026-05-24)
 - [Chrome拡張でYouTubeのSPA遷移後にcontent scriptが効かない問題を直した](https://qiita.com/harnesswinner/items/3bac40961a0b5ff20dee) (2026-05-24)
 - [YouTubeプレイリストのDOM順を一度保存して通常順に戻す実装](https://qiita.com/harnesswinner/items/fa3a124e5fa50229a887) (2026-05-24)
-- [YouTubeの配信予定を追うWindowsアプリ Youtom を作った](https://qiita.com/harnesswinner/items/52c94119fed2aba20f7e) (2026-05-20)
+- [YouTubeの配信予定を追うWindowsアプリ YouTom を作った](https://qiita.com/harnesswinner/items/52c94119fed2aba20f7e) (2026-05-20)
 - [YouTube Data API のクォータ枯渇を RSS で避ける設計にした話](https://qiita.com/harnesswinner/items/e2d5dba192540222d8d5) (2026-05-20)
 
 Zenn 公開記事は [zenn.dev/harness](https://zenn.dev/harness) を参照。

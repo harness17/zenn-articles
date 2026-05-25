@@ -46,7 +46,7 @@
 
 ### はじめに（200〜300字）
 
-- youtube-schedule の概要：購読チャンネルの配信予定を一覧表示する Electron デスクトップアプリ
+- YouTom の概要：購読チャンネルの配信予定を一覧表示する Electron デスクトップアプリ
 - 最初の実装：300チャンネルの subscriptions に対して **search.list（100ユニット/呼び出し）** で動画ID取得 → 30分ごとにポーリング
 - 起きたこと：**数時間で 10,000 ユニットを使い切った**（10,000 ÷ 100 = 100呼び出しで枯渇）
 - この記事で学べること：search.list を RSS に切り替えるだけで 99% 削減できる、その後の階段化設計
@@ -165,11 +165,11 @@
 - [YouTube RSS フィードの仕様（非公式・コミュニティドキュメント）](https://stackoverflow.com/questions/30630071/find-youtube-channel-rss-feed)
 
 ### 自分のリポジトリ
-- [youtube-schedule](https://github.com/harness17/youtube-schedule) — 本記事の実装元
+- [YouTom](https://github.com/harness17/youtube-schedule) — 本記事の実装元
 - 該当コミット: [`f815c16`](https://github.com/harness17/youtube-schedule/commit/f815c16) — 「`perf: replace search.list with RSS feed to reduce quota usage 99%`」（2026-04-12）
 
 ### 関連記事候補（後続）
-- 候補I「未署名 Electron アプリの SmartScreen 問題」（同じ youtube-schedule から派生）
+- 候補I「未署名 Electron アプリの SmartScreen 問題」（同じ YouTom から派生）
 - 候補J「Phycock で Schedule を削除した設計判断」（別アプリ）
 
 ---

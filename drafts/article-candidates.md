@@ -27,7 +27,7 @@
 | 2026-05-11 | `youtube-data-api-rss-quota-reduction` | YouTube Data API のクォータ枯渇を RSS で99%削減した話 | 候補H | 200 / 公開確認 | YouTube Data API / API クォータ |
 | 2026-05-11 | `claude-code-workflow-evolution` | Claude Code運用を数ヶ月で見直してrulesとskillsに分けた話 | 候補N | 200 / 公開確認 | Claude Code / AI協調開発 |
 | 2026-05-13 | `electron-smartscreen-oss-distribution` | 未署名Electronアプリを配布するとSmartScreenで止まる問題に向き合った話 | 候補I | 200 / 公開確認 | Electron / Windows 配布 |
-| 2026-05-13 | `youtom-introduction` | 推しの配信予定を見逃さないために Youtom を作った | 派生記事 | 200 / 公開確認 | Electron / React / YouTube |
+| 2026-05-13 | `youtom-introduction` | 推しの配信予定を見逃さないために YouTom を作った | 派生記事 | 200 / 公開確認 | Electron / React / YouTube |
 | 2026-05-17 | `codex-claude-skill-graph-worklog` | AIとの設計判断をMy-Skill-Graphに残して再利用する | 候補O | 200 / 公開確認 | AI協調開発 / ナレッジ管理 |
 | 2026-05-17 | `cross-agent-harness-introduction` | CodexとClaude Codeの共同作業をcross-agent-harnessに切り出した | 派生記事 | 200 / 公開確認 | AI協調開発 / OSS |
 | 2026-05-19 | `cross-agent-harness-automation` | CodexとClaude Codeを相互呼び出しするハーネスを組んだ | 派生記事 | 200 / 公開確認 | AI協調開発 / 自動化 |
@@ -43,7 +43,7 @@ Zenn 原文をベースに Qiita 向けへ一部加筆・再構成した記事�
 | 公開日 | slug | タイトル | 元記事 | Qiita公開状態 | URL |
 | --- | --- | --- | --- | --- | --- |
 | 2026-05-20 | `youtube-data-api-rss-quota-reduction` | YouTube Data API のクォータ枯渇を RSS で避ける設計にした話 | `articles/youtube-data-api-rss-quota-reduction.md` | 公開確認 | https://qiita.com/harnesswinner/items/e2d5dba192540222d8d5 |
-| 2026-05-20 | `youtom-introduction` | YouTubeの配信予定を追うWindowsアプリ Youtom を作った | `articles/youtom-introduction.md` | 公開確認 | https://qiita.com/harnesswinner/items/52c94119fed2aba20f7e |
+| 2026-05-20 | `youtom-introduction` | YouTubeの配信予定を追うWindowsアプリ YouTom を作った | `articles/youtom-introduction.md` | 公開確認 | https://qiita.com/harnesswinner/items/52c94119fed2aba20f7e |
 
 ## 公開保留・下書きリスト
 
@@ -77,7 +77,7 @@ Zenn 原文をベースに Qiita 向けへ一部加筆・再構成した記事�
 | S | AI エージェント用 Skill Graph を軽量化した話 | 未着手 | なし | `self/session-brief.md` と archive 分離の実例を中心に構成化する |
 | T | ASP.NET Core の認証必須ページを Playwright で PDF 化した話 | 未着手 | なし | Phycock の実装確認後、PDF / Chart.js / Cookie 転送の詰まりに絞る |
 | U | Phycock で IDOR 対策を Service 層に置いた話 | 未着手 | なし | 個人データを扱うため守秘・医療情報の一般化を前提にする |
-| V | ライブ開始通知を状態遷移だけで出すようにした話 | 未着手 | なし | Youtom / YouTube Schedule の軽め記事候補。起動時通知連打の回避に絞る |
+| V | ライブ開始通知を状態遷移だけで出すようにした話 | 未着手 | なし | YouTom の軽め記事候補。起動時通知連打の回避に絞る |
 | W | YouTube メンバー限定配信を RSS と API の二段構えで扱った話 | 一部カバー | `articles/youtube-data-api-rss-quota-reduction.md` | 候補Hとの差分として、メン限・存在しない API・クォータ上限に絞れば別記事化可能 |
 | X | AI 活用証跡をプロジェクト単位で整理して面接説明に使う話 | 未着手 | なし | note「AI使った就活がソシャゲじみてきた。」のZenn派生。就活雑感ではなく、証跡管理・レビュー・記事候補化の運用に絞る |
 
@@ -91,7 +91,7 @@ Zenn 原文をベースに Qiita 向けへ一部加筆・再構成した記事�
 | 2 | S: Skill Graph 軽量化 | 公開済みの候補Oと近いが、token肥大と起動入口圧縮という別の詰まりで書ける | vault の個人情報・ローカルパスを出さない |
 | 3 | T: Playwright PDF 化 | ASP.NET Core / 認証 / Chart.js / PDF で技術深度が出る | Phycock 実コードとテスト、守秘範囲の確認 |
 | 4 | U: IDOR 対策を Service 層へ置いた話 | セキュリティ判断として説明価値が高い | 実コード・回帰テスト・個人データ表現の一般化 |
-| 5 | V / W / R | 軽めの Youtom 派生。短期で本数を増やす候補 | 既存 H / I / Youtom 紹介記事との差分確認 |
+| 5 | V / W / R | 軽めの YouTom 派生。短期で本数を増やす候補 | 既存 H / I / YouTom 紹介記事との差分確認 |
 
 ## Skill Graph 由来の追加候補
 
