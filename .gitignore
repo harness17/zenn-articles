@@ -9,13 +9,56 @@ npm-debug.log*
 # Zenn の作業ディレクトリ
 .zenn/
 
+# 公開済みの記事だけを GitHub に出す
+articles/*.md
+!articles/ai-agent-session-brief-memory.md
+!articles/ai-cross-review-handoff-workflow.md
+!articles/ai-handoff-multi-layer-contract-checklist.md
+!articles/aspnet-core-identity-to-commonlibrary.md
+!articles/claude-code-workflow-evolution.md
+!articles/codex-claude-skill-graph-worklog.md
+!articles/cross-agent-harness-automation.md
+!articles/cross-agent-harness-introduction.md
+!articles/devnext-mvc-helper-extensions.md
+!articles/electron-smartscreen-oss-distribution.md
+!articles/fullcalendar-event-color-rendering.md
+!articles/youtom-introduction.md
+!articles/youtube-data-api-rss-quota-reduction.md
+!articles/zenn-article-repo-workflow.md
+
+# Qiita も公開済みの記事だけを GitHub に出す
+qiita/public/*.md
+!qiita/public/ai-edit-surgical-changes-rule.md
+!qiita/public/ai-handoff-contract-checklist.md
+!qiita/public/ai-test-perspective-prefeed.md
+!qiita/public/chrome-extension-mutationobserver-rerender-loop.md
+!qiita/public/claude-code-posttool-style-warning-hook.md
+!qiita/public/claude-md-import-split-rules.md
+!qiita/public/codex-agents-claude-md-split.md
+!qiita/public/codex-refactor-scope-declaration.md
+!qiita/public/git-add-explicit-file-rule.md
+!qiita/public/sprint-contract-before-implementation.md
+!qiita/public/youtom-introduction.md
+!qiita/public/youtube-data-api-rss-quota-reduction.md
+!qiita/public/youtube-playlist-restore-dom-order.md
+!qiita/public/youtube-spa-content-script-matches.md
+
 # Qiita CLI の同期キャッシュ・空テンプレ
 qiita/public/.remote/
 qiita/public/newArticle*.md
 
-# 公開リポジトリに出さない個人メモ
-drafts/private/
-drafts/*-local.md
+# 公開リポジトリに出さない下書き・候補・handoff
+drafts/*
+!drafts/.gitkeep
+handoffs/
+CLAUDE_CODE_HANDOFF.md
+.mcp.json
+note/drafts/
+note/import/
+note/published-log.md
+*-handoff*.md
+*candidate*.md
+*candidates*.md
 
 # 環境変数
 .env

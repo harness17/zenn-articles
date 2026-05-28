@@ -17,25 +17,27 @@
 
 ## Git 管理方針
 
-Zenn / Qiita の投稿対象になる Markdown と、公開前レビューに必要な構成メモはコミットします。
+GitHub には公開済みの記事と、公開記事の再現に必要な設定だけをコミットします。
 
 コミット対象:
 
-- `articles/*.md` — Zenn 投稿対象。`published: false` の下書きも、公開前レビュー対象なら含める
+- `articles/*.md` — Zenn 公開済み記事
 - `books/` — Zenn 本の投稿対象
-- `qiita/public/*.md` — Qiita 投稿対象。`ignorePublish: true` の下書きも、レビュー対象なら含める
-- `drafts/*.md` — 公開してもよい構成メモ、候補表、公開ログ
-- `note/drafts/`, `note/promo/`, `note/import/` — note 投稿用の原稿とインポート成果物
+- `qiita/public/*.md` — Qiita 公開済み記事
+- `note/promo/` — note 投稿用の公開済み告知原稿
 - `.agents/skills/`, `.claude/skills/` — 記事運用に使うスキル
 
 コミットしないもの:
 
+- `drafts/` — 下書き、構成メモ、記事候補表、公開ログ
+- `handoffs/`, `CLAUDE_CODE_HANDOFF.md` — エージェント間の作業引き継ぎ
+- `note/drafts/`, `note/import/`, `note/published-log.md` — note 下書き、インポート成果物、公開ログ
 - `qiita/public/.remote/` — Qiita CLI の同期キャッシュ
 - `qiita/public/newArticle*.md` — Qiita CLI が作る空テンプレ記事
-- `drafts/private/`, `drafts/*-local.md` — 個人事情、応募戦略、未整理の候補メモ
-- `.env*`, `CLAUDE.local.md`, ローカル設定
+- `articles/*.md` の `published: false` 記事、`qiita/public/*.md` の `ignorePublish: true` 記事
+- `.env*`, `CLAUDE.local.md`, `.mcp.json`, ローカル設定
 
-記事候補リストや下書きは、外に出してよい編集計画ならコミット対象にします。就職戦略、守秘判断前の案件情報、個人事情を含む候補は My-Skill-Graph か `drafts/private/` に置き、公開リポジトリには含めません。
+記事候補リストや下書きは、公開リポジトリではなくローカル作業領域か My-Skill-Graph に置きます。新しい記事を公開したら、対象ファイルを `.gitignore` の allowlist に追加してからコミットします。
 
 ## 主な技術領域
 
@@ -53,6 +55,10 @@ Zenn / Qiita の投稿対象になる Markdown と、公開前レビューに必
 
 ### Qiita
 
+- [AIにテストを書かせる前に観点リストを渡すようにした](https://qiita.com/harnesswinner/items/b4b6dde76d36bf25c2c1) (2026-05-28)
+- [Codexにリファクタを任せる前に触る範囲を明示した](https://qiita.com/harnesswinner/items/8fa8058d2260273ac98b) (2026-05-28)
+- [Claude CodeのPostToolUse hookで保存時に文体NG語を警告した](https://qiita.com/harnesswinner/items/55e03ef8ce0ae81170ec) (2026-05-28)
+- [Codex用AGENTS.mdとClaude用CLAUDE.mdを分けて運用したメモ](https://qiita.com/harnesswinner/items/cb82e8caafa8daf52bcb) (2026-05-28)
 - [AIに実装を任せる前に完成条件を宣言するSprint Contract運用](https://qiita.com/harnesswinner/items/98669d5afa40d36299d5) (2026-05-25)
 - [git add .で余計なファイルを混ぜないために個別ファイル指定へ寄せた](https://qiita.com/harnesswinner/items/871470b50d10ccbbeac9) (2026-05-25)
 - [AI同士のhandoffで作業範囲が曖昧になる問題を契約チェックリストで抑えた](https://qiita.com/harnesswinner/items/5bb47dec500eb36a8369) (2026-05-25)

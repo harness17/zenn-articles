@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash 'H:\\ClaudeCode\\技術記事\\.codex\\hooks\\check-article-style.sh' 2>/dev/null || true",
+            "command": "bash '.codex/hooks/check-article-style.sh' 2>/dev/null || true",
             "timeout": 10
           }
         ]
