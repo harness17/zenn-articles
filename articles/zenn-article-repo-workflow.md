@@ -1,9 +1,9 @@
 ---
-title: "Zenn記事をリポジトリ管理して公開前レビューまで回した話"
+title: "Zenn記事をリポジトリ管理して公開前レビューまで回した実践メモ"
 emoji: "📝"
 type: "tech"
 topics: ["zenn", "github", "codex", "claudecode", "writing"]
-published: false
+published: true
 ---
 
 ## はじめに
@@ -11,6 +11,8 @@ published: false
 Zenn記事を書き始めたときは、Markdownを置いて公開できれば十分だと思っていました。ところが記事数を増やすと、テーマ候補、下書き、公開前レビュー、公開後の確認予定が別々の場所に散らばり、どの記事がどの状態なのかを思い出すところから始まるようになりました。
 
 この記事では、Zenn記事を単なるMarkdown置き場ではなく、小さな運用リポジトリとして扱うようにした話を書きます。対象読者は、Zenn投稿を続けたいが、ネタ管理や公開前チェックが人間の記憶に寄りすぎている個人開発者です。
+
+ここでいう Codex は、ローカルリポジトリを読み書きしながら作業できる OpenAI のコーディングエージェントです。Claude Code と役割を分け、片方が書いた記事をもう片方がレビューする前提で運用しています。
 
 実例として使っているリポジトリは、Zenn記事を管理している [harness17/zenn-articles](https://github.com/harness17/zenn-articles) です。
 

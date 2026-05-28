@@ -336,3 +336,30 @@
 - レビュー: ClaudeCode review-only で重大指摘なし、軽微指摘（独自用語注釈）対応済み
 - 公開状態: Qiita APIで公開確認済み（2026-05-25、タイトル一致）
 - Lapras確認予定日: 2026-05-30 〜 2026-06-01
+
+## 2026-05-28 公開（Zenn）
+
+### 1. Zenn記事をリポジトリ管理して公開前レビューまで回した実践メモ
+
+- 媒体: Zenn
+- URL: https://zenn.dev/harness/articles/zenn-article-repo-workflow
+- slug: `zenn-article-repo-workflow`
+- 管理ファイル: `articles/zenn-article-repo-workflow.md`
+- テーマ系統: Zenn / 記事運用 / AI協調レビュー
+- 文字数: 約5,000字
+- 関連リポジトリ: [zenn-articles](https://github.com/harness17/zenn-articles)
+- レビュー: Codex 初稿、ClaudeCode review-only で重大指摘なし、軽微指摘反映済み
+- 公開状態: GitHub連携公開指定済み、Zenn実サイト確認待ち
+- Lapras確認予定日: 2026-06-02 〜 2026-06-04
+
+### 2. AIエージェントの長期記憶を軽く保つためにsession-briefを作った
+
+- 媒体: Zenn
+- URL: https://zenn.dev/harness/articles/ai-agent-session-brief-memory
+- slug: `ai-agent-session-brief-memory`
+- 管理ファイル: `articles/ai-agent-session-brief-memory.md`
+- テーマ系統: AI協調開発 / ナレッジ管理 / コンテキスト圧縮
+- 文字数: 約4,200字
+- 関連リポジトリ: [zenn-articles](https://github.com/harness17/zenn-articles)
+- レビュー: Codex 初稿、ClaudeCode review-only で重大指摘なし、軽微指摘反映済み
+- 公開状態: GitHub連携公開指定済み、Zenn実サイト確認待ち

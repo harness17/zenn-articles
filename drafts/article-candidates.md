@@ -31,6 +31,8 @@
 | 2026-05-17 | `codex-claude-skill-graph-worklog` | AIとの設計判断をMy-Skill-Graphに残して再利用する | 候補O | 200 / 公開確認 | AI協調開発 / ナレッジ管理 |
 | 2026-05-17 | `cross-agent-harness-introduction` | CodexとClaude Codeの共同作業をcross-agent-harnessに切り出した | 派生記事 | 200 / 公開確認 | AI協調開発 / OSS |
 | 2026-05-19 | `cross-agent-harness-automation` | CodexとClaude Codeを相互呼び出しするハーネスを組んだ | 派生記事 | 200 / 公開確認 | AI協調開発 / 自動化 |
+| 2026-05-28 | `zenn-article-repo-workflow` | Zenn記事をリポジトリ管理して公開前レビューまで回した実践メモ | 候補Q | 実公開未確認 | Zenn / 記事運用 / AI協調レビュー |
+| 2026-05-28 | `ai-agent-session-brief-memory` | AIエージェントの長期記憶を軽く保つためにsession-briefを作った | 候補S | 実公開未確認 | AI協調開発 / ナレッジ管理 / コンテキスト圧縮 |
 | 公開ログ未記録 | `aspnet-core-identity-to-commonlibrary` | ASP.NET Core移行でIdentityエンティティを共通化した判断 | 候補M | 200 / 公開確認 | ASP.NET Core / Identity |
 | 公開ログ未記録 | `ai-cross-review-handoff-workflow` | AI 2 台クロスレビューで技術記事の盲点を拾う | 派生記事 | 200 / 公開確認 | AI協調開発 / 記事レビュー |
 
@@ -52,7 +54,6 @@ Zenn 原文をベースに Qiita 向けへ一部加筆・再構成した記事�
 | slug | タイトル | 候補対応 | 状態 | 次の扱い |
 | --- | --- | --- | --- | --- |
 | `phycock-schedule-entry-consolidation` | ASP.NET Core MVCでScheduleEntryに寄せた設計判断 | 候補J | 公開保留 | リタリコ確認が取れたら公開判断する |
-| `zenn-article-repo-workflow` | Zenn記事をリポジトリ管理して公開前レビューまで回した話 | 候補Q | 下書きあり | 公開前レビューと相互レビュー後に公開判断する |
 | `youtube-playlist-date-sorter-introduction` | YouTubeプレイリストを投稿日順に見るChrome拡張を作った話 | 候補K 派生 | 下書きあり | 実装判断に絞った構成メモから本文化する |
 
 ## 候補対応表
@@ -70,11 +71,11 @@ Zenn 原文をベースに Qiita 向けへ一部加筆・再構成した記事�
 | N | Claude Code 導入から数ヶ月の運用変遷 | 公開済み | `articles/claude-code-workflow-evolution.md` | 選定対象外。派生は cross-agent / skill graph 側で扱う |
 | O | My-Skill-Graph で設計判断を再利用する運用 | 公開済み | `articles/codex-claude-skill-graph-worklog.md` | 選定対象外。軽量化の話は候補Sへ分離 |
 | P | ASP.NET Core MVC で入力フォームの責務を ViewModel に寄せた話 | 未着手 | なし | DevNext / Phycock の実コード確認が必要 |
-| Q | Zenn 記事をリポジトリ管理して公開前レビューまで自動化した話 | 下書きあり（未公開） | `articles/zenn-article-repo-workflow.md` / `drafts/zenn-article-repo-workflow.md` | 公開前レビュー後に公開判断 |
+| Q | Zenn 記事をリポジトリ管理して公開前レビューまで自動化した話 | 公開指定済み / Zenn未確認 | `articles/zenn-article-repo-workflow.md` / `drafts/zenn-article-repo-workflow.md` | Zenn実サイトの200確認後に公開済みへ更新 |
 | 派生 | Codex / Claude Code 共同作業ハーネスの切り出し | 公開済み | `articles/cross-agent-harness-introduction.md` | 選定対象外。自動呼び出しは別派生で公開済み |
 | 派生 | Codex / Claude Code 相互呼び出しハーネス | 公開済み | `articles/cross-agent-harness-automation.md` / `drafts/cross-agent-harness-automation.md` | 選定対象外 |
 | R | Electron 個人開発アプリを公開した後に必要だった運用メモ | 一部カバー | `articles/electron-smartscreen-oss-distribution.md` / `articles/youtom-introduction.md` | README / Releases / 署名方針の運用に絞れば別記事化可能 |
-| S | AI エージェント用 Skill Graph を軽量化した話 | 未着手 | なし | `self/session-brief.md` と archive 分離の実例を中心に構成化する |
+| S | AI エージェント用 Skill Graph を軽量化した話 | 公開指定済み / Zenn未確認 | `articles/ai-agent-session-brief-memory.md` | Zenn実サイトの200確認後に公開済みへ更新 |
 | T | ASP.NET Core の認証必須ページを Playwright で PDF 化した話 | 未着手 | なし | Phycock の実装確認後、PDF / Chart.js / Cookie 転送の詰まりに絞る |
 | U | Phycock で IDOR 対策を Service 層に置いた話 | 未着手 | なし | 個人データを扱うため守秘・医療情報の一般化を前提にする |
 | V | ライブ開始通知を状態遷移だけで出すようにした話 | 未着手 | なし | YouTom の軽め記事候補。起動時通知連打の回避に絞る |
