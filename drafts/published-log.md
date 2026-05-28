@@ -349,7 +349,7 @@
 - 文字数: 約5,000字
 - 関連リポジトリ: [zenn-articles](https://github.com/harness17/zenn-articles)
 - レビュー: Codex 初稿、ClaudeCode review-only で重大指摘なし、軽微指摘反映済み
-- 公開状態: GitHub連携公開指定済み、Zenn実サイト確認待ち
+- 公開状態: Zenn URL 200 確認済み（2026-05-28）
 - Lapras確認予定日: 2026-06-02 〜 2026-06-04
 
 ### 2. AIエージェントの長期記憶を軽く保つためにsession-briefを作った
@@ -362,4 +362,4 @@
 - 文字数: 約4,200字
 - 関連リポジトリ: [zenn-articles](https://github.com/harness17/zenn-articles)
 - レビュー: Codex 初稿、ClaudeCode review-only で重大指摘なし、軽微指摘反映済み
-- 公開状態: GitHub連携公開指定済み、Zenn実サイト確認待ち
+- 公開状態: Zenn URL 200 確認済み（2026-05-28）
