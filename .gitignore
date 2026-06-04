@@ -23,6 +23,7 @@ articles/*.md
 !articles/electron-smartscreen-oss-distribution.md
 !articles/fullcalendar-event-color-rendering.md
 !articles/kindle-series-sale-tracker-introduction.md
+!articles/phycock-playwright-pdf-export.md
 !articles/youtom-introduction.md
 !articles/youtube-data-api-rss-quota-reduction.md
 !articles/zenn-article-repo-workflow.md
@@ -41,6 +42,9 @@ qiita/public/*.md
 !qiita/public/codex-refactor-scope-declaration.md
 !qiita/public/git-add-explicit-file-rule.md
 !qiita/public/kindle-series-sale-tracker-introduction.md
+!qiita/public/aspnet-core-playwright-chartjs-ready-pdf.md
+!qiita/public/aspnet-core-playwright-auth-cookie-loopback.md
+!qiita/public/aspnet-core-idor-service-layer.md
 !qiita/public/sprint-contract-before-implementation.md
 !qiita/public/youtom-introduction.md
 !qiita/public/youtube-data-api-rss-quota-reduction.md
