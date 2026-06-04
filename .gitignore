@@ -22,6 +22,7 @@ articles/*.md
 !articles/devnext-mvc-helper-extensions.md
 !articles/electron-smartscreen-oss-distribution.md
 !articles/fullcalendar-event-color-rendering.md
+!articles/kindle-series-sale-tracker-introduction.md
 !articles/youtom-introduction.md
 !articles/youtube-data-api-rss-quota-reduction.md
 !articles/zenn-article-repo-workflow.md
