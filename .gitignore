@@ -93,3 +93,6 @@ tmp/
 
 # Claude Code worktree
 .claude/worktrees/
+
+# qiita pull がルートレベルに作成する public/ ディレクトリ
+public/
