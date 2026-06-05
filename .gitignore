@@ -30,6 +30,8 @@ articles/*.md
 !articles/zenn-article-repo-workflow.md
 !articles/youtube-membership-rss-api-two-tier.md
 !articles/youtube-live-notification-state-transition.md
+!articles/youtube-playlist-date-sorter.md
+!articles/electron-app-post-release-operations.md
 
 # Qiita も公開済みの記事だけを GitHub に出す
 qiita/public/*.md
@@ -56,6 +58,9 @@ qiita/public/*.md
 !qiita/public/codex-mcp-server-claude-code-setup.md
 !qiita/public/pre-commit-hook-no-skip-policy.md
 !qiita/public/aspnet-core-mvc-form-viewmodel.md
+!qiita/public/manifest-v3-storage-without-background.md
+!qiita/public/aspnet-core-entity-base-soft-delete.md
+!qiita/public/electron-github-releases-setup.md
 
 # Qiita CLI の同期キャッシュ・空テンプレ
 qiita/public/.remote/
@@ -94,5 +99,5 @@ tmp/
 # Claude Code worktree
 .claude/worktrees/
 
-# qiita pull がルートレベルに作成する public/ ディレクトリ
-public/
+# qiita pull がルートレベルに作成する public/ ディレクトリ（ルート限定）
+/public/
