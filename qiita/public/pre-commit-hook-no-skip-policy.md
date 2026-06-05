@@ -2,9 +2,9 @@
 title: hookが落ちても--no-verifyで飛ばさず原因を直す運用にした
 tags:
   - Git
-  - pre-commit
   - 開発環境
   - AI
+  - pre-commit
   - ClaudeCode
 private: false
 updated_at: '2026-06-02T22:00:28+09:00'

@@ -4,11 +4,11 @@ tags:
   - JavaScript
   - Chrome
   - ChromeExtension
-  - ManifestV3
   - 個人開発
+  - ManifestV3
 private: false
-updated_at: ''
-id: null
+updated_at: '2026-06-05T23:04:19+09:00'
+id: 3e9f691a14dcd91c2e28
 organization_url_name: null
 slide: false
 ignorePublish: false

@@ -1,14 +1,14 @@
 ---
 title: ASP.NET Core MVC のフォームで Entity を直接使うのをやめて FormViewModel を分けた話
 tags:
-  - CSharp
+  - C#
   - ASP.NET
-  - AspNetCore
-  - MVC
+  - mvc
   - 個人開発
+  - aspnetcore
 private: false
-updated_at: ''
-id: null
+updated_at: '2026-06-05T23:04:10+09:00'
+id: c05c947d8115f23bff90
 organization_url_name: null
 slide: false
 ignorePublish: false

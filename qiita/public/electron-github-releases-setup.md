@@ -1,14 +1,14 @@
 ---
 title: ElectronアプリをGitHub Releasesで配布するまでに整えたもの
 tags:
-  - Electron
-  - GitHub
-  - 個人開発
   - Windows
+  - GitHub
+  - Electron
+  - 個人開発
   - electron-builder
 private: false
-updated_at: ''
-id: null
+updated_at: '2026-06-05T23:04:35+09:00'
+id: caa95cf8a06c86d7e04b
 organization_url_name: null
 slide: false
 ignorePublish: false

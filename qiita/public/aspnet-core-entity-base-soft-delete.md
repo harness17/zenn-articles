@@ -1,14 +1,14 @@
 ---
 title: ASP.NET Core の Entity 基底クラスで論理削除と監査カラムの設定を自動化した話
 tags:
-  - CSharp
+  - C#
   - ASP.NET
-  - AspNetCore
-  - EntityFrameworkCore
   - 個人開発
+  - aspnetcore
+  - EntityFrameworkCore
 private: false
-updated_at: ''
-id: null
+updated_at: '2026-06-05T23:04:29+09:00'
+id: a544108f793ed7342d39
 organization_url_name: null
 slide: false
 ignorePublish: false
