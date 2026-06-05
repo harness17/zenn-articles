@@ -24,6 +24,7 @@ articles/*.md
 !articles/fullcalendar-event-color-rendering.md
 !articles/kindle-series-sale-tracker-introduction.md
 !articles/phycock-playwright-pdf-export.md
+!articles/phycock-schedule-entry-consolidation.md
 !articles/youtom-introduction.md
 !articles/youtube-data-api-rss-quota-reduction.md
 !articles/zenn-article-repo-workflow.md
@@ -54,6 +55,7 @@ qiita/public/*.md
 !qiita/public/ai-migration-pre-decision-gate.md
 !qiita/public/codex-mcp-server-claude-code-setup.md
 !qiita/public/pre-commit-hook-no-skip-policy.md
+!qiita/public/aspnet-core-mvc-form-viewmodel.md
 
 # Qiita CLI の同期キャッシュ・空テンプレ
 qiita/public/.remote/

@@ -1,6 +1,5 @@
 ---
-title: PlaywrightでChart.jsの描画完了を待ってからPDF化する
-tags:
+title: PlaywrightでChart.jsの描画完亁E��征E��てからPDF化すめEtags:
   - C#
   - PDF
   - chartjs
@@ -16,16 +15,12 @@ ignorePublish: false
 
 ## 背景
 
-ASP.NET Core MVC で作っている、療養中に自主制作した体調管理ツール（Phycock）に、週次・月次の統計グラフをPDFで出力する機能を追加しました。
+ASP.NET Core MVC で作ってぁE��、療養中に自主制作した体調管琁E��ール�E�Ehycock�E�に、E��次・月次の統計グラフをPDFで出力する機�Eを追加しました、E
+サーバ�E側で Playwright を動かし、統計�Eージを�E部URLでレンダリングしてから `Page.PdfAsync` でPDF化する構�Eです、E
+実裁E��てみると、PDF を開くとグラフ部刁E��**白紁E*になってぁE��した、E
+## 問題：`NetworkIdle` 完亁E��もグラフが未描画
 
-サーバー側で Playwright を動かし、統計ページを内部URLでレンダリングしてから `Page.PdfAsync` でPDF化する構成です。
-
-実装してみると、PDF を開くとグラフ部分が**白紙**になっていました。
-
-## 問題：`NetworkIdle` 完了後もグラフが未描画
-
-最初のコードはこうでした。
-
+最初�Eコード�Eこうでした、E
 ```csharp
 var response = await page.GotoAsync(url, new PageGotoOptions
 {
@@ -36,23 +31,17 @@ var response = await page.GotoAsync(url, new PageGotoOptions
 var pdfBytes = await page.PdfAsync(new PagePdfOptions { Format = "A4" });
 ```
 
-`WaitUntil = NetworkIdle` は「2秒以上ネットワーク接続が0本になった状態」で完了とみなします。
+`WaitUntil = NetworkIdle` は、E秒以上ネチE��ワーク接続が0本になった状態」で完亁E��みなします、E
+Chart.js はペ�Eジ読み込み後に JS で描画を開始するため、`NetworkIdle` が解決したタイミングではアニメーション途中のことがあります。PDF化�Eそ�Eタイミングで走る�Eで、グラフが空白か途中の状態でキャプチャされます、E
+## 解決�E�`window.chartsReady` フラグ + `WaitForFunctionAsync`
 
-Chart.js はページ読み込み後に JS で描画を開始するため、`NetworkIdle` が解決したタイミングではアニメーション途中のことがあります。PDF化はそのタイミングで走るので、グラフが空白か途中の状態でキャプチャされます。
-
-## 解決：`window.chartsReady` フラグ + `WaitForFunctionAsync`
-
-グラフの描画完了を JS 側から通知する仕組みを作りました。
-
-### 統計ページ側（JS）
-
-URLに `?print=1` を付けた印刷モードの場合は Chart.js アニメーションを無効化し、すべてのチャートを生成した後、`requestAnimationFrame` を2回挟んでから `window.chartsReady` を立てます。
-
+グラフ�E描画完亁E�� JS 側から通知する仕絁E��を作りました、E
+### 統計�Eージ側�E�ES�E�E
+URLに `?print=1` を付けた印刷モード�E場合�E Chart.js アニメーションを無効化し、すべてのチャートを生�Eした後、`requestAnimationFrame` めE回挟んでから `window.chartsReady` を立てます、E
 ```javascript
 const isPrintMode = new URLSearchParams(location.search).get('print') === '1';
 
-// 印刷モードではアニメーションを無効化（描画が即座に完了する）
-new Chart(ctx, {
+// 印刷モードではアニメーションを無効化（描画が即座に完亁E��る！Enew Chart(ctx, {
     type: 'bar',
     data: { /* ... */ },
     options: {
@@ -61,30 +50,25 @@ new Chart(ctx, {
 });
 
 if (isPrintMode) {
-    createAllCharts();  // 全チャートを生成
-    // requestAnimationFrame を2回挟んでレイアウト確定を待つ
+    createAllCharts();  // 全チャートを生�E
+    // requestAnimationFrame めE回挟んでレイアウト確定を征E��
     requestAnimationFrame(() => requestAnimationFrame(() => {
         window.chartsReady = true;
     }));
 }
 ```
 
-アニメーションを無効化することで Chart.js の描画は同期的に完了します。その後 `requestAnimationFrame` を2回挟むのは、Canvas のレイアウト計算が確定するのを待つためです。
-
-### サーバー側（Playwright）
-
-`WaitForFunctionAsync` で `window.chartsReady === true` になるまで待ちます。
-
+アニメーションを無効化することで Chart.js の描画は同期皁E��完亁E��ます。その征E`requestAnimationFrame` めE回挟むのは、Canvas のレイアウト計算が確定する�Eを征E��ためです、E
+### サーバ�E側�E�Elaywright�E�E
+`WaitForFunctionAsync` で `window.chartsReady === true` になるまで征E��ます、E
 ```csharp
-// GotoAsync で NetworkIdle まで待機
-var response = await page.GotoAsync(url, new PageGotoOptions
+// GotoAsync で NetworkIdle まで征E��Evar response = await page.GotoAsync(url, new PageGotoOptions
 {
     WaitUntil = WaitUntilState.NetworkIdle,
     Timeout = timeoutMs
 });
 
-// さらに JS フラグが true になるまで待機
-await page.WaitForFunctionAsync(
+// さらに JS フラグぁEtrue になるまで征E��Eawait page.WaitForFunctionAsync(
     "() => window.chartsReady === true",
     null,
     new PageWaitForFunctionOptions { Timeout = timeoutMs }
@@ -99,26 +83,18 @@ var pdfBytes = await page.PdfAsync(new PagePdfOptions
 });
 ```
 
-`WaitForFunctionAsync` は JS 式をポーリングし、truthy になるまで待ちます。
-
-## URLの設計：印刷モードを分ける
-
-Playwright がアクセスする URL に `?print=1` を付けることで：
-
-1. サーバー側で「Playwright によるPDF生成用リクエスト」と判断できる
-2. JS 側でアニメーションや不要なUI要素（ヘッダー・ボタン等）を非表示にできる
-3. `@media print` CSS を当てられる
-
+`WaitForFunctionAsync` は JS 式をポ�Eリングし、truthy になるまで征E��ます、E
+## URLの設計：印刷モードを刁E��めE
+Playwright がアクセスする URL に `?print=1` を付けることで�E�E
+1. サーバ�E側で「Playwright によるPDF生�E用リクエスト」と判断できる
+2. JS 側でアニメーションめE��要なUI要素�E��EチE��ー・ボタン等）を非表示にできる
+3. `@media print` CSS を当てられめE
 ```csharp
 var url = $"http://localhost:{port}/Statistics?print=1&weekStart={weekStart}&section={section}";
 ```
 
-## まとめ
-
-- Playwright の `NetworkIdle` は Chart.js の描画完了を保証しない
-- 印刷モード（`?print=1`）では Chart.js アニメーションを無効化し、`requestAnimationFrame` x2 後に `window.chartsReady = true` をセットする
-- `WaitForFunctionAsync("() => window.chartsReady === true")` で待ってからPDF化する
-
-認証が必要なページへの Playwright アクセス方法（Cookie 渡し）については別記事にまとめています。
-
-実装は体調管理ツール Phycock の `PdfExportService.cs` / `StatisticsController.cs` にあります。
+## まとめE
+- Playwright の `NetworkIdle` は Chart.js の描画完亁E��保証しなぁE- 印刷モード！E?print=1`�E�では Chart.js アニメーションを無効化し、`requestAnimationFrame` x2 後に `window.chartsReady = true` をセチE��する
+- `WaitForFunctionAsync("() => window.chartsReady === true")` で征E��てからPDF化すめE
+認証が忁E��なペ�Eジへの Playwright アクセス方法！Eookie 渡し）につぁE��は別記事にまとめてぁE��す、E
+実裁E�E体調管琁E��ール Phycock の `PdfExportService.cs` / `StatisticsController.cs` にあります、E
