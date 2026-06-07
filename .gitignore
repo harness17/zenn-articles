@@ -32,6 +32,7 @@ articles/*.md
 !articles/youtube-live-notification-state-transition.md
 !articles/youtube-playlist-date-sorter.md
 !articles/electron-app-post-release-operations.md
+!articles/webextension-browser-manifest-split.md
 
 # Qiita も公開済みの記事だけを GitHub に出す
 qiita/public/*.md
@@ -61,6 +62,10 @@ qiita/public/*.md
 !qiita/public/manifest-v3-storage-without-background.md
 !qiita/public/aspnet-core-entity-base-soft-delete.md
 !qiita/public/electron-github-releases-setup.md
+!qiita/public/webextension-i18n-manifest-message-key-missing.md
+!qiita/public/efcore-include-forget-n-plus-1-detect.md
+!qiita/public/sqlserver-non-sargable-where-clause.md
+!qiita/public/json-stringify-date-utc-shift.md
 
 # Qiita CLI の同期キャッシュ・空テンプレ
 qiita/public/.remote/
