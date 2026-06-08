@@ -33,6 +33,7 @@ articles/*.md
 !articles/youtube-playlist-date-sorter.md
 !articles/electron-app-post-release-operations.md
 !articles/webextension-browser-manifest-split.md
+!articles/claude-code-harness-layer-map.md
 
 # Qiita も公開済みの記事だけを GitHub に出す
 qiita/public/*.md
