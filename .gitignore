@@ -34,6 +34,7 @@ articles/*.md
 !articles/electron-app-post-release-operations.md
 !articles/webextension-browser-manifest-split.md
 !articles/claude-code-harness-layer-map.md
+!articles/claude-code-harness-build-order.md
 
 # Qiita も公開済みの記事だけを GitHub に出す
 qiita/public/*.md
