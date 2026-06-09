@@ -35,6 +35,7 @@ articles/*.md
 !articles/webextension-browser-manifest-split.md
 !articles/claude-code-harness-layer-map.md
 !articles/claude-code-harness-build-order.md
+!articles/claude-code-harness-design-philosophy.md
 
 # Qiita も公開済みの記事だけを GitHub に出す
 qiita/public/*.md
@@ -68,6 +69,9 @@ qiita/public/*.md
 !qiita/public/efcore-include-forget-n-plus-1-detect.md
 !qiita/public/sqlserver-non-sargable-where-clause.md
 !qiita/public/json-stringify-date-utc-shift.md
+!qiita/public/claude-code-harness-layer-map.md
+!qiita/public/claude-code-harness-build-order.md
+!qiita/public/claude-code-harness-design-philosophy.md
 
 # Qiita CLI の同期キャッシュ・空テンプレ
 qiita/public/.remote/
