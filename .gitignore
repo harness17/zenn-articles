@@ -36,6 +36,8 @@ articles/*.md
 !articles/claude-code-harness-layer-map.md
 !articles/claude-code-harness-build-order.md
 !articles/claude-code-harness-design-philosophy.md
+!articles/chrome-mv3-offscreen-dom-parser-design.md
+!articles/chrome-storage-quota-schema-reduction.md
 
 # Qiita も公開済みの記事だけを GitHub に出す
 qiita/public/*.md
