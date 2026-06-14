@@ -2,13 +2,13 @@
 title: JSON.stringifyでDateがUTC文字列になりサーバーで日付が1日ズレた
 tags:
   - JavaScript
-  - JSON
-  - DateTime
-  - フロントエンド
   - ASP.NET
+  - JSON
+  - datetime
+  - フロントエンド
 private: false
-updated_at: ''
-id: null
+updated_at: '2026-06-13T19:36:52+09:00'
+id: 309169191ca2822b00c7
 organization_url_name: null
 slide: false
 ignorePublish: false

@@ -1,14 +1,14 @@
 ---
 title: インデックスを貼ったのにScanされていた — WHERE句の関数がインデックスを殺す話
 tags:
-  - SQLServer
   - SQL
-  - インデックス
+  - SQLServer
+  - Database
   - パフォーマンス
-  - データベース
+  - インデックス
 private: false
-updated_at: ''
-id: null
+updated_at: '2026-06-13T19:36:50+09:00'
+id: 7f8c787b4383f2d4db80
 organization_url_name: null
 slide: false
 ignorePublish: false

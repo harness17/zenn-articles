@@ -74,6 +74,10 @@ qiita/public/*.md
 !qiita/public/claude-code-harness-layer-map.md
 !qiita/public/claude-code-harness-build-order.md
 !qiita/public/claude-code-harness-design-philosophy.md
+!qiita/public/chrome-mv3-service-worker-domparser-offscreen.md
+!qiita/public/chrome-storage-quota-remove-duplicate-data.md
+!qiita/public/sqlite-fts5-japanese-partial-match-like.md
+!qiita/public/youtube-playlist-virtual-dom-scroll-restore.md
 
 # Qiita CLI の同期キャッシュ・空テンプレ
 qiita/public/.remote/

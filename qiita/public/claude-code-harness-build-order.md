@@ -1,14 +1,14 @@
 ---
 title: Claude Codeのハーネスを最初から全部組もうとして失敗した話
 tags:
-  - ClaudeCode
-  - Codex
+  - 開発環境
   - AI
   - 個人開発
-  - 開発環境
+  - codex
+  - ClaudeCode
 private: false
-updated_at: ''
-id: null
+updated_at: '2026-06-13T19:36:46+09:00'
+id: e8273fd7bea00794245f
 organization_url_name: null
 slide: false
 ignorePublish: false
