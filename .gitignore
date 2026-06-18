@@ -38,6 +38,8 @@ articles/*.md
 !articles/claude-code-harness-design-philosophy.md
 !articles/chrome-mv3-offscreen-dom-parser-design.md
 !articles/chrome-storage-quota-schema-reduction.md
+!articles/youtube-playlist-virtual-dom-loading-order.md
+!articles/iis-aspnet-core-apppool-data-protection.md
 
 # Qiita も公開済みの記事だけを GitHub に出す
 qiita/public/*.md
@@ -78,6 +80,8 @@ qiita/public/*.md
 !qiita/public/chrome-storage-quota-remove-duplicate-data.md
 !qiita/public/sqlite-fts5-japanese-partial-match-like.md
 !qiita/public/youtube-playlist-virtual-dom-scroll-restore.md
+!qiita/public/iis-aspnet-core-migrateasy-apppool-login.md
+!qiita/public/chrome-extension-background-run-state-storage.md
 
 # Qiita CLI の同期キャッシュ・空テンプレ
 qiita/public/.remote/
