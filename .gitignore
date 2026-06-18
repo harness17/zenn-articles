@@ -37,6 +37,7 @@ articles/*.md
 !articles/claude-code-harness-build-order.md
 !articles/claude-code-harness-design-philosophy.md
 !articles/chrome-mv3-offscreen-dom-parser-design.md
+!articles/chrome-mv3-sw-background-design-evolution.md
 !articles/chrome-storage-quota-schema-reduction.md
 !articles/youtube-playlist-virtual-dom-loading-order.md
 !articles/iis-aspnet-core-apppool-data-protection.md
@@ -77,6 +78,8 @@ qiita/public/*.md
 !qiita/public/claude-code-harness-build-order.md
 !qiita/public/claude-code-harness-design-philosophy.md
 !qiita/public/chrome-mv3-service-worker-domparser-offscreen.md
+!qiita/public/chrome-mv3-sw-cursor-storage-resume.md
+!qiita/public/chrome-extension-bg-probe-full-cycle.md
 !qiita/public/chrome-storage-quota-remove-duplicate-data.md
 !qiita/public/sqlite-fts5-japanese-partial-match-like.md
 !qiita/public/youtube-playlist-virtual-dom-scroll-restore.md
