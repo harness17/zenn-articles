@@ -3,7 +3,7 @@ title: "Chrome MV3の定期処理を8件分割から全件巡回へ変えた"
 emoji: "⏱️"
 type: "tech"
 topics: ["chrome拡張", "manifestv3", "javascript", "設計", "個人開発"]
-published: false
+published: true
 ---
 
 ## はじめに

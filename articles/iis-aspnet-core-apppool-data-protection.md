@@ -3,7 +3,7 @@ title: "ASP.NET CoreをIISに配置したら500が出た — AppPool専用化・
 emoji: "🔧"
 type: "tech"
 topics: ["aspnetcore", "iis", "windows", "csharp", "個人開発"]
-published: false
+published: true
 ---
 
 ## はじめに
