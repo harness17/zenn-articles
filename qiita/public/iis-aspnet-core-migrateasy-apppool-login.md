@@ -1,14 +1,14 @@
 ---
 title: IISのASP.NET CoreでMigrateAsyncが失敗するときはAppPool IDをSQL Serverログインに登録する
 tags:
-  - ASP.NET_Core
-  - IIS
-  - SQLServer
-  - EntityFrameworkCore
   - Windows
+  - SQLServer
+  - IIS
+  - ASP.NET_Core
+  - EntityFrameworkCore
 private: false
-updated_at: ''
-id: null
+updated_at: '2026-06-19T10:47:24+09:00'
+id: 81f81283d2bfb0c23ea7
 organization_url_name: null
 slide: false
 ignorePublish: false

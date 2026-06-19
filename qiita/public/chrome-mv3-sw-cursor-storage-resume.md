@@ -4,11 +4,11 @@ tags:
   - JavaScript
   - Chrome
   - ChromeExtension
-  - ManifestV3
   - ServiceWorker
+  - ManifestV3
 private: false
-updated_at: ''
-id: null
+updated_at: '2026-06-19T10:48:28+09:00'
+id: 087d016b316e90c7d328
 organization_url_name: null
 slide: false
 ignorePublish: false
