@@ -1,5 +1,5 @@
 ---
-title: Chrome拡張のバックグラウンド処理が動いたか分からないのでstorageに状態を保存してバッジで見せた
+title: Chrome拡張のバックグラウンド処理が動いたか分からないのでstorageに状態を保存してUIに表示した
 tags:
   - JavaScript
   - Chrome
@@ -13,6 +13,18 @@ organization_url_name: null
 slide: false
 ignorePublish: false
 ---
+
+## TL;DR
+
+バックグラウンド処理の各段階を `chrome.storage.local` に保存し、`storage.onChanged` で UI に即座に反映する。
+
+```javascript
+await chrome.storage.local.set({ kstAutoScanRunState: { state: 'completed', firedAt, completedAt, totalItems, addedItems } });
+
+chrome.storage.onChanged.addListener((changes, area) => {
+  if (area === 'local' && changes.kstAutoScanRunState) updateAutoScanDisplay(changes.kstAutoScanRunState.newValue);
+});
+```
 
 ## 何が起きたか
 
@@ -90,10 +102,18 @@ alarm 駆動のバックグラウンド処理なら、「前回: 12:00 / 次回:
 
 状態を保存することで「ページを開いたが動かなかった理由」まで表示できるようになった。
 
+## 確認方法
+
+開発ビルドで以下の状態遷移を確認した。
+
+- options ページを開いたまま蔵書一覧ページを訪問し、`checking` → `running` → `completed` の表示変化をリロードなしで確認
+- 間隔未到来の状態で訪問し、`checking` → `skipped-not-due` が表示されることを確認
+- `chrome.storage.local.get('kstAutoScanRunState')` で保存値が期待通りか DevTools で確認
+
 ## 注意点
 
 - 次回期限は「ページを開いた際に期限判定が通る時刻」であり、実行保証時刻ではない。ページを開かなければ発火しない
-- タブ終了や拡張更新で `running` が残ることがある。次回ページ訪問時の `checking` で上書きされるため、手動リカバリは不要
+- タブ終了や拡張更新で `running` が残ることがある。次回ページ訪問時の `checking` で上書きされるため手動リカバリは不要だが、その間 UI には `running` が表示され続ける。頻度は低く、利用者のアクションを妨げないため許容した
 - 自動スキャンがOFFの場合は状態保存自体を行わない
 
 ## 参考

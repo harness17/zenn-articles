@@ -78,30 +78,34 @@ CREATE USER [IIS APPPOOL\MyApp] FOR LOGIN [IIS APPPOOL\MyApp];
 ALTER ROLE [db_owner] ADD MEMBER [IIS APPPOOL\MyApp];
 ```
 
-DB がまだ存在しない場合は `MigrateAsync` が `CREATE DATABASE` を試みるため、サーバーロール `dbcreator` も必要になる。
+DB がまだ存在しない場合、今回の構成では `MigrateAsync` が `CREATE DATABASE` を試みたため、サーバーロール `dbcreator` も追加した。
 
 ```sql
 -- DB が未作成の場合のみ。作成後に外す
 ALTER SERVER ROLE [dbcreator] ADD MEMBER [IIS APPPOOL\MyApp];
 ```
 
-DB 作成後は `dbcreator` を外すのが望ましい。サーバーレベルの権限を持ち続ける必要はない。
+DB 作成後は `dbcreator` を外す。サーバーレベルの権限を持ち続ける必要はない。
 
 ```sql
 ALTER SERVER ROLE [dbcreator] DROP MEMBER [IIS APPPOOL\MyApp];
 ```
 
+この構成は **個人開発の単一サーバー環境** で採用した。本番環境では、アプリに `db_owner` や `dbcreator` を常時付与する運用は Microsoft が非推奨としている。本番では `dotnet ef migrations bundle` で生成した migration bundle を配置工程で実行するか、SQL スクリプトを `dotnet ef migrations script` で出力して DBA が適用する方法が推奨される。
+
 ### 罠: Error 1801「データベースは既に存在します」
 
 DB は実在するのに `MigrateAsync` が「DB がない」と判断して `CREATE DATABASE` を試み、`1801: データベースは既に存在します` エラーになることがある。
 
-原因は、ログインに対象 DB 内のユーザーマッピングがないこと。EF Core は DB の存在確認に失敗すると `CREATE DATABASE` にフォールバックする。ログインを作るだけでなく、**DB 内のユーザーとロールも必ず設定** する。
+今回の構成では、ログインに対象 DB 内のユーザーマッピングがないことが原因だった。EF Core（SQL Server プロバイダー）は DB の存在確認で接続に失敗すると `CREATE DATABASE` を試みる経路がある。ログインを作るだけでなく、**DB 内のユーザーとロールも設定する** のが確実だ。接続先 DB やプロバイダー構成によってエラー番号は変わるため、実際のイベントログで確認する。
 
 ## 原因③: Data Protection キーの書き込み権限
 
 SQL Server の問題を直したら、アプリは起動した。しかし Cookie 認証が動かない。ログインしても即座にログアウトされる。
 
-ASP.NET Core の Cookie 認証は、**Data Protection** という仕組みで Cookie を暗号化する。暗号化キーはファイルシステムに保存される。`PersistKeysToFileSystem` でパスを指定している場合、そのパスへの書き込み権限が AppPool ID に必要だ。
+ASP.NET Core の Cookie 認証は、**Data Protection** という仕組みで Cookie を暗号化する。暗号化キーの保存先はホスト環境によって異なり、IIS では `PersistKeysToFileSystem` で明示指定するか、レジストリやデフォルトパスが使われる。今回は `PersistKeysToFileSystem` でアプリ直下のフォルダを指定していたため、そのパスへの書き込み権限が AppPool ID に必要だった。
+
+イベントログの「アプリケーション」で Data Protection のキー保存失敗ログが出ていたことで、この原因にたどり着いた。
 
 ```csharp
 builder.Services.AddDataProtection()
@@ -119,7 +123,9 @@ icacls "C:\inetpub\MyApp\DataProtectionKeys" /grant "IIS AppPool\MyApp:(OI)(CI)M
 
 `(OI)(CI)` はサブフォルダ・ファイルへの継承指定。`M` は Modify 権限（読み書き削除）。
 
-`PersistKeysToFileSystem` を指定していない場合、ASP.NET Core はデフォルトで `%LOCALAPPDATA%\ASP.NET\DataProtection-Keys` に保存する。この場合も AppPool ID で書き込めるか確認が必要になる。
+`PersistKeysToFileSystem` を指定していない場合、IIS 環境ではレジストリ（`HKLM\SOFTWARE\Microsoft\ASP.NET\DataProtection`）やプロファイルフォルダなど、構成によって保存先が変わる。IIS のアプリプール設定で「ユーザー プロファイルの読み込み」が有効かどうかでも動作が異なるため、キーの保存先は明示的に指定して確認するのが確実だ。
+
+なお、この記事は **単一サーバー構成** を前提としている。Web Farm（複数サーバー）構成では、共有キーリング（Redis や Azure Blob Storage など）と DPAPI-NG 等でのキー暗号化が別途必要になる。
 
 ## 3点セットのチェックリスト
 

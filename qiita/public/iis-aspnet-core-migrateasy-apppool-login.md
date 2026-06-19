@@ -14,9 +14,20 @@ slide: false
 ignorePublish: false
 ---
 
+## TL;DR
+
+IIS の AppPool ID（`IIS AppPool\<プール名>`）を SQL Server ログインに登録し、対象 DB の `db_owner` を付与する。
+
+```sql
+CREATE LOGIN [IIS APPPOOL\MyApp] FROM WINDOWS;
+USE [MyAppDb];
+CREATE USER [IIS APPPOOL\MyApp] FOR LOGIN [IIS APPPOOL\MyApp];
+ALTER ROLE [db_owner] ADD MEMBER [IIS APPPOOL\MyApp];
+```
+
 ## 何が起きたか
 
-ASP.NET Core アプリを IIS InProcess で配置し、起動時に `MigrateAsync` で DB を自動作成・マイグレーションする構成にしていた。
+ASP.NET Core（.NET 9 / EF Core 9 / SQL Server 2025）を IIS InProcess で配置し、起動時に `MigrateAsync` で DB を自動作成・マイグレーションする構成にしていた。
 
 ```csharp
 using var scope = app.Services.CreateScope();
@@ -46,7 +57,7 @@ CREATE USER [IIS APPPOOL\MyApp] FOR LOGIN [IIS APPPOOL\MyApp];
 ALTER ROLE [db_owner] ADD MEMBER [IIS APPPOOL\MyApp];
 ```
 
-DB がまだ存在しない場合は `MigrateAsync` が `CREATE DATABASE` を試みるため、サーバーロール `dbcreator` も必要になる。
+DB がまだ存在しない場合、今回の構成では `MigrateAsync` が `CREATE DATABASE` を試みたため、サーバーロール `dbcreator` も追加した。
 
 ```sql
 -- DB が未作成の場合のみ。作成後に外す
@@ -59,6 +70,8 @@ DB 作成後は `dbcreator` を外す。サーバーレベルの権限は最小�
 ALTER SERVER ROLE [dbcreator] DROP MEMBER [IIS APPPOOL\MyApp];
 ```
 
+この構成は個人開発の単一サーバー環境で採用した。本番環境では `dotnet ef migrations bundle` で生成した migration bundle を配置工程で実行するか、`dotnet ef migrations script` で SQL スクリプトを出力して適用する方法が推奨される。
+
 ## 罠: Error 1801「データベースは既に存在します」
 
 DB は実在するのに `MigrateAsync` がエラーになるケースがある。
@@ -67,7 +80,7 @@ DB は実在するのに `MigrateAsync` がエラーになるケースがある�
 Error Number:1801 データベース 'MyAppDb' は既に存在します。
 ```
 
-原因は、ログインに対象 DB 内のユーザーマッピングがないこと。EF Core は DB の存在確認で SQL Server へ接続するが、ログインがあっても DB 内のユーザーがなければ「DB にアクセスできない＝存在しない」と判断し、`CREATE DATABASE` にフォールバックする。
+今回の構成では、ログインに対象 DB 内のユーザーマッピングがないことが原因だった。EF Core（SQL Server プロバイダー）は DB の存在確認で接続に失敗すると `CREATE DATABASE` を試みる経路がある。接続先 DB やプロバイダー構成によってエラー番号は変わるため、実際のイベントログで判断する。
 
 **ログインだけでなく、DB 内の `CREATE USER` + `ALTER ROLE` も必ず実行する。**
 
