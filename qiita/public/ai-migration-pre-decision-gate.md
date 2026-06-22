@@ -1,13 +1,13 @@
 ---
 title: AIにマイグレーションを書かせる前に「後から変えにくい4項目」を先に決める
 tags:
-  - AI
   - EntityFramework
-  - データベース
   - 設計
+  - Database
+  - AI
   - ClaudeCode
 private: false
-updated_at: '2026-06-02T22:00:05+09:00'
+updated_at: '2026-06-20T19:49:45+09:00'
 id: d17e2e9ce8f782ad61e9
 organization_url_name: null
 slide: false

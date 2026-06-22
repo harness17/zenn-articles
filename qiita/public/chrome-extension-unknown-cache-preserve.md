@@ -6,8 +6,8 @@ tags:
   - キャッシュ
   - ManifestV3
 private: false
-updated_at: ''
-id: null
+updated_at: '2026-06-20'
+id: 1e8682fbb0e9d6195e9f
 organization_url_name: null
 slide: false
 ignorePublish: false

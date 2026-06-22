@@ -7,7 +7,7 @@ tags:
   - aspnetcore
   - Playwright
 private: false
-updated_at: '2026-06-04T22:39:47+09:00'
+updated_at: '2026-06-20T19:49:45+09:00'
 id: 1c60b2da24f194939485
 organization_url_name: null
 slide: false

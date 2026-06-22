@@ -6,8 +6,8 @@ tags:
   - ManifestV3
   - JavaScript
 private: false
-updated_at: ''
-id: null
+updated_at: '2026-06-20'
+id: 9e3eb0c313afb6ba67f0
 organization_url_name: null
 slide: false
 ignorePublish: false

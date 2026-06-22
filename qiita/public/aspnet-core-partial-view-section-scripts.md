@@ -1,13 +1,13 @@
 ---
-title: '部分ビューの@section Scriptsが読み込まれずクリック処理が動かなかった'
+title: 部分ビューの@section Scriptsが読み込まれずクリック処理が動かなかった
 tags:
-  - ASP.NET Core
+  - mvc
   - Razor
-  - MVC
+  - aspnetcore
   - 部分ビュー
 private: false
-updated_at: ''
-id: null
+updated_at: '2026-06-21T20:08:30+09:00'
+id: c018947a6ae23717b693
 organization_url_name: null
 slide: false
 ignorePublish: false

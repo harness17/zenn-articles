@@ -52,11 +52,12 @@ YouTube のページ構造に依存しているため、YouTube 側の DOM 変�
 ## リンク
 
 - Chrome Web Store: https://chromewebstore.google.com/detail/youtube-playlist-date-sor/hobigboofokgcnjfobilijbknbmemlbd
+- Firefox Add-ons: https://addons.mozilla.org/ja/firefox/addon/youtube-playlist-date-sorter/
 - GitHub: https://github.com/harness17/google-chrome-extensions/tree/main/youtube-playlist-date-sorter
 
 ## 短文版（X / Bluesky 向け）
 
-YouTube のプレイリストを投稿日順に並び替える Chrome 拡張を作りました。
+YouTube のプレイリストを投稿日順に並び替える Chrome / Firefox 拡張を作りました。
 
 - 古い順 / 新しい順
 - 並び替え順で次の動画へ移動
@@ -67,6 +68,9 @@ YouTube のプレイリストを投稿日順に並び替える Chrome 拡張を�
 
 Chrome Web Store:
 https://chromewebstore.google.com/detail/youtube-playlist-date-sor/hobigboofokgcnjfobilijbknbmemlbd
+
+Firefox Add-ons:
+https://addons.mozilla.org/ja/firefox/addon/youtube-playlist-date-sorter/
 
 GitHub:
 https://github.com/harness17/google-chrome-extensions/tree/main/youtube-playlist-date-sorter
