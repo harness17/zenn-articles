@@ -44,6 +44,7 @@ articles/*.md
 !articles/iis-aspnet-core-apppool-data-protection.md
 !articles/chrome-extension-popup-to-sidepanel.md
 !articles/chrome-extension-unknown-cache-preserve-design.md
+!articles/sqlite-retention-bias-favorite-rate.md
 
 # Qiita も公開済みの記事だけを GitHub に出す
 qiita/public/*.md
