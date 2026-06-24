@@ -1,14 +1,14 @@
 ---
-title: 'ASP.NET Core IdentityでLockoutEndを設定しても既存Cookieが残った'
+title: ASP.NET Core IdentityでLockoutEndを設定しても既存Cookieが残った
 tags:
-  - ASP.NET Core
-  - Identity
-  - セキュリティ
-  - Cookie認証
-  - CSharp
+  - C#
+  - Security
+  - cookie
+  - ASP.NETCore
+  - identity
 private: false
-updated_at: ''
-id: null
+updated_at: '2026-06-24T18:01:19+09:00'
+id: 1bee38e9cabc8a56e82f
 organization_url_name: null
 slide: false
 ignorePublish: false
