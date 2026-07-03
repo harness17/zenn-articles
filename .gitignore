@@ -100,6 +100,10 @@ qiita/public/*.md
 !qiita/public/aspnet-core-identity-lockout-cookie-securitystamp.md
 !qiita/public/cursor-not-advance-on-batch-failure.md
 !qiita/public/powershell-post-install-project-name-check.md
+!qiita/public/sqlite-retention-bias-rate-metric.md
+!qiita/public/agents-claude-rule-duplication-drift.md
+!qiita/public/consecutive-unknown-fail-retry.md
+!qiita/public/batch-chunk-carry-error-streak.md
 
 # Qiita CLI の同期キャッシュ・空テンプレ
 qiita/public/.remote/
