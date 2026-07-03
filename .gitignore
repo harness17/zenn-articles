@@ -45,6 +45,7 @@ articles/*.md
 !articles/chrome-extension-popup-to-sidepanel.md
 !articles/chrome-extension-unknown-cache-preserve-design.md
 !articles/sqlite-retention-bias-favorite-rate.md
+!articles/ai-agent-rules-common-source-of-truth.md
 !articles/youtom-sqlite-insights-without-api.md
 !articles/aspnet-core-identity-lockout-securitystamp.md
 !articles/electron-ipc-safe-error-code.md
