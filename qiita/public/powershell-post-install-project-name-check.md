@@ -1,13 +1,13 @@
 ---
-title: 'PowerShellインストーラーでコピー先のプレースホルダーを検査しないと古い指示が残る'
+title: PowerShellインストーラーでコピー先のプレースホルダーを検査しないと古い指示が残る
 tags:
   - PowerShell
-  - AIエージェント
-  - 自動化
   - テンプレート
+  - 自動化
+  - AIエージェント
 private: false
-updated_at: ''
-id: null
+updated_at: '2026-07-14T15:00:32+09:00'
+id: b52a1ef29100426fffba
 organization_url_name: null
 slide: false
 ignorePublish: false
