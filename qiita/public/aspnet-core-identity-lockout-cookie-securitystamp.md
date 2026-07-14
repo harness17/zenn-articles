@@ -78,7 +78,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 
 ## 修正
 
-`DisableUserAsync` に `UpdateSecurityStampAsync` を追加する。
+`DisableUserAsync` に `UpdateSecurityStampAsync` を追加する修正案にした。
 
 ```csharp
 public async Task<IdentityResult> DisableUserAsync(string id)
@@ -111,7 +111,7 @@ public async Task<IdentityResult> DisableUserAsync(string id)
 
 ## 確認ポイント
 
-- `DisableUserAsync` で `UpdateSecurityStampAsync` を呼んでいるか
+- `DisableUserAsync` で `UpdateSecurityStampAsync` を呼ぶ修正になっているか
 - `SecurityStampValidationInterval` の設定値を把握しているか（未指定なら既定30分）
 - 「即時失効」ではなく「次の検証間隔で失効」であることをユーザーに説明できるか
 - パスワードリセット時にも SecurityStamp が変わるか（`ResetPasswordAsync` は内部で更新する）

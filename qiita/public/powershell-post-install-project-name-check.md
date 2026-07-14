@@ -35,14 +35,14 @@ function Test-HarnessWarnings {
 }
 ```
 
-対象リポジトリ: [harness17/cross-agent-harness](https://github.com/harness17/cross-agent-harness)（非公開）
+対象リポジトリは非公開のため、この記事では実装意図が追えるように必要な抜粋コードを本文内に載せる。
 
 ## 起きたこと
 
 Codex と Claude Code の共同作業で使うハーネスを、新しいプロジェクトへ導入するインストーラーを作った。
 
 ```powershell
-.\install.ps1 -TargetPath H:\ClaudeCode\NewProject
+.\install.ps1 -TargetPath C:\Projects\NewProject
 ```
 
 インストーラーは 2 種類のコピーを行う。
@@ -131,5 +131,5 @@ if ($warnings.Count -gt 0) {
 
 ## 参考
 
-- [harness17/cross-agent-harness](https://github.com/harness17/cross-agent-harness)（非公開）
+- cross-agent-harness（非公開） — 本文内の抜粋コードで post-install 検査の要点を示した
 - [PowerShell System.IO.File](https://learn.microsoft.com/ja-jp/dotnet/api/system.io.file)

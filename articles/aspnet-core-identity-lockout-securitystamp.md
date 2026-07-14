@@ -12,7 +12,7 @@ ASP.NET Core 10 で個人開発している Web アプリに、管理者がユ�
 
 問題は「既にログインしているユーザー」のほうだった。管理画面から無効化しても、そのユーザーがブラウザを開いたままなら、ページを更新してもまだ操作できる。無効化したはずなのにセッションが切れない。
 
-この記事では、`LockoutEnd` と `SecurityStamp` の役割の違い、既存 Cookie が残る仕組み、そして `UpdateSecurityStampAsync` を併用する修正を書く。
+この記事では、`LockoutEnd` と `SecurityStamp` の役割の違い、既存 Cookie が残る仕組み、そして `UpdateSecurityStampAsync` を併用する修正案を書く。
 
 **対象読者**: ASP.NET Core Identity の Cookie 認証で、ユーザー無効化や強制ログアウトを実装する開発者。
 
@@ -95,7 +95,7 @@ options.Events.OnValidatePrincipal =
 
 無効化するユーザーの SecurityStamp だけを変えれば、そのユーザーの Cookie だけが次の検証で無効化される。全体の検証間隔は変えなくていい。
 
-## 修正: UpdateSecurityStampAsync を追加
+## 修正案: UpdateSecurityStampAsync を追加
 
 ```csharp
 public async Task<IdentityResult> DisableUserAsync(string id)
