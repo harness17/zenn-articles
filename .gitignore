@@ -106,6 +106,10 @@ qiita/public/*.md
 !qiita/public/agents-claude-rule-duplication-drift.md
 !qiita/public/consecutive-unknown-fail-retry.md
 !qiita/public/batch-chunk-carry-error-streak.md
+!qiita/public/amazon-kindle-pagination-asin-dedup.md
+!qiita/public/kindle-unlimited-zero-price-priority.md
+!qiita/public/analytics-retention-window-no-long-term-trend.md
+!qiita/public/chrome-sidepanel-open-on-action-click.md
 
 # Qiita CLI の同期キャッシュ・空テンプレ
 qiita/public/.remote/
