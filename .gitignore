@@ -49,6 +49,8 @@ articles/*.md
 !articles/youtom-sqlite-insights-without-api.md
 !articles/aspnet-core-identity-lockout-securitystamp.md
 !articles/electron-ipc-safe-error-code.md
+!articles/kindle-library-dual-sort-asin-merge.md
+!articles/sqlite-fts5-like-japanese-search.md
 
 # Qiita も公開済みの記事だけを GitHub に出す
 qiita/public/*.md
