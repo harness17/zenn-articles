@@ -3,7 +3,7 @@ title: "ASP.NET Core移行でIdentityエンティティを共通化した判断"
 emoji: "🪪"
 type: "tech"
 topics: ["aspnetcore", "csharp", "identity", "dotnet", "architecture"]
-published: true
+published: false
 ---
 
 ## はじめに
